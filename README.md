@@ -1,5 +1,9 @@
 # MdtExecutableFile
 
+# Work on MdtExecutableFile
+
+To build MdtExecutableFile and run the unit tests, see [BUILD](BUILD.md).
+
 
 
 ## Getting started
