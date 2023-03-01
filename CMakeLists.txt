@@ -240,6 +240,11 @@ endif()
 # Sources
 #######################
 
+if(BUILD_TESTS OR BUILD_BENCHMARKS)
+  enable_testing()
+  add_subdirectory(libs/Catch2)
+endif()
+
 # add_subdirectory(libs/DeployUtils_Core)
 
 if(BUILD_DOCS)
