@@ -1,0 +1,9 @@
+
+.windows_runner:
+  tags:
+    - docker-windows
+
+stages:
+  - build
+  - test
+  - deploy
