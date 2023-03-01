@@ -5,7 +5,10 @@
 include(MdtInstallLibrary)
 
 add_library(Mdt_ExecutableFile_Common STATIC
+  Mdt/ExecutableFile/QRuntimeError.cpp
+  Mdt/ExecutableFile/FileOpenError.cpp
   Mdt/ExecutableFile/ByteArraySpan.cpp
+  Mdt/ExecutableFile/FileMapper.cpp
 )
 
 add_library(Mdt::ExecutableFile_Common ALIAS Mdt_ExecutableFile_Common)

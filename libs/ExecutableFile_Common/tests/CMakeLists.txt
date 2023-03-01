@@ -9,3 +9,11 @@ mdt_add_test(
   SOURCE_FILES
     src/ByteArraySpanTest.cpp
 )
+
+mdt_add_test(
+  NAME FileMapperTest
+  TARGET fileMapperTest
+  DEPENDENCIES Mdt::ExecutableFile_Common TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/FileMapperTest.cpp
+)
