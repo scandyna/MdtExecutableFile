@@ -1,5 +1,8 @@
 # MdtExecutableFile
 
+C++ library to help reading and partially editing some binary files like ELF and Pe.
+
+
 # Work on MdtExecutableFile
 
 To build MdtExecutableFile and run the unit tests, see [BUILD](BUILD.md).
