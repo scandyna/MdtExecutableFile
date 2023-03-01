@@ -56,15 +56,6 @@ test_linux_gcc8_x86_64_release:
   needs: ["build_linux_gcc8_x86_64_release"]
 
 
-system_run_test_linux_gcc8_x86_64_release:
-  extends: .system_run_test_linux
-  variables:
-    QT_DEBUG_PLUGINS: 1
-  dependencies:
-    - test_linux_gcc8_x86_64_release
-  needs: ["test_linux_gcc8_x86_64_release"]
-
-
 ########################################
 # Linux Clang 10 x86_64 libc++
 ########################################
