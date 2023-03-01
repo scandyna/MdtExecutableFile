@@ -243,6 +243,7 @@ endif()
 if(BUILD_TESTS OR BUILD_BENCHMARKS)
   enable_testing()
   add_subdirectory(libs/Catch2)
+  add_subdirectory(libs/TestLib)
 endif()
 
 add_subdirectory(libs/ExecutableFile_Common)
