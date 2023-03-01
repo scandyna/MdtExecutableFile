@@ -245,7 +245,7 @@ if(BUILD_TESTS OR BUILD_BENCHMARKS)
   add_subdirectory(libs/Catch2)
 endif()
 
-# add_subdirectory(libs/DeployUtils_Core)
+add_subdirectory(libs/ExecutableFile_Common)
 
 if(BUILD_DOCS)
   add_subdirectory(doc)
