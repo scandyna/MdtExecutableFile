@@ -1,0 +1,44 @@
+
+include:
+  - local: 'ci_cd/GitLab/Common.yml'
+  - local: 'ci_cd/GitLab/Conan_Templates.yml'
+
+###############################
+# API doc
+###############################
+
+build_api_doc:
+  stage: build
+  image: registry.gitlab.com/scandyna/docker-images-ubuntu/ubuntu-18.04-gcc-8-doc:latest
+  before_script:
+    - !reference [.setup_conan, script]
+  script:
+    - mkdir build
+    - cd build
+    - conan install --profile:build linux_gcc8_x86_64 --profile:host linux_ubuntu-18.04_gcc8_x86_64_qt_widgets_modules_boost
+      --settings:build build_type=Release --settings:host build_type=Debug
+      ..
+    - source conanbuild.sh || true  # Workaround to https://gitlab.com/gitlab-org/ci-cd/pipeline-authoring-stack-rank/-/issues/1
+    - cmake -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_DOCS=ON ..
+    - make CppApiDoc
+    - source deactivate_conanbuild.sh
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - build
+
+
+pages:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: on_success
+    - when: never
+  dependencies:
+    - build_api_doc
+  script:
+    - mkdir public
+    - mv build/doc/cpp-api/html public
+  artifacts:
+    paths:
+      - public
