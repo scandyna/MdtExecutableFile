@@ -28,6 +28,8 @@ target_link_libraries(Mdt_ExecutableFileCore
     Qt5::Core
     Mdt::ExecutableFile_Common
   PRIVATE
+    Mdt::ExecutableFileElf
+    Mdt::ExecutableFilePe
 #     Boost::boost
 )
 

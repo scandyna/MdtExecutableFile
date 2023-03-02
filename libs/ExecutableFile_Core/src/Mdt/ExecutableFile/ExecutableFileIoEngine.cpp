@@ -9,6 +9,11 @@
  *****************************************************************************************/
 #include "ExecutableFileIoEngine.h"
 #include "AbstractExecutableFileIoEngine.h"
+#include "Mdt/ExecutableFile/ExecutableFileFormat.h"
+// #include "ElfFileIoEngine.h"
+// #include "PeFileIoEngine.h"
+#include <cassert>
+
 
 namespace Mdt{ namespace ExecutableFile{
 

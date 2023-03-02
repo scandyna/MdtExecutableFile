@@ -10,17 +10,10 @@
 #ifndef MDT_EXECUTABLE_FILE_EXECUTABLE_FILE_IO_ENGINE_H
 #define MDT_EXECUTABLE_FILE_EXECUTABLE_FILE_IO_ENGINE_H
 
-// #include "FileOpenError.h"
-// #include "ExecutableFileReadError.h"
-// #include "ExecutableFileOpenMode.h"
-// #include "Platform.h"
-
-
-
-
-
 #include "Mdt/ExecutableFile/FileOpenError.h"
-
+#include "Mdt/ExecutableFile/ExecutableFileReadError.h"
+#include "Mdt/ExecutableFile/ExecutableFileOpenMode.h"
+#include "Mdt/ExecutableFile/Platform.h"
 #include "mdt_executablefilecore_export.h"
 #include <QObject>
 #include <QFileInfo>
