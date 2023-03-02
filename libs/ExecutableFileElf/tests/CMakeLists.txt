@@ -9,3 +9,19 @@ mdt_add_test(
   SOURCE_FILES
     src/ElfAlgorithmTest.cpp
 )
+
+mdt_add_test(
+  NAME ElfStringTableTest
+  TARGET elfStringTableTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfStringTableTest.cpp
+)
+
+mdt_add_test(
+  NAME ElfStringTableErrorTest
+  TARGET elfStringTableErrorTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfStringTableErrorTest.cpp
+)

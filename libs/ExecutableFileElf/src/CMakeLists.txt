@@ -3,6 +3,10 @@
 
 add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/Algorithm.cpp
+  Mdt/ExecutableFile/Elf/Ident.cpp
+  Mdt/ExecutableFile/Elf/FileHeader.cpp
+  Mdt/ExecutableFile/Elf/StringTable.cpp
+#   Mdt/ExecutableFile/Elf/Debug.cpp
 )
 
 add_library(Mdt::ExecutableFileElf ALIAS Mdt_ExecutableFileElf)
