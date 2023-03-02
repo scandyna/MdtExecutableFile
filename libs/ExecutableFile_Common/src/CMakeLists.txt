@@ -7,6 +7,8 @@ include(MdtInstallLibrary)
 add_library(Mdt_ExecutableFile_Common STATIC
   Mdt/ExecutableFile/QRuntimeError.cpp
   Mdt/ExecutableFile/FileOpenError.cpp
+  Mdt/ExecutableFile/ExecutableFileReadError.cpp
+  Mdt/ExecutableFile/Platform.cpp
   Mdt/ExecutableFile/ByteArraySpan.cpp
   Mdt/ExecutableFile/FileMapper.cpp
 )
@@ -35,3 +37,38 @@ target_link_libraries(Mdt_ExecutableFile_Common
 )
 
 # generate_export_header(Mdt_ExecutableFile_Common)
+
+#
+# If we build ExecutableFileCore as shared library,
+# this static library will ne be required.
+#
+# But, if ExecutableFileCore is built static,
+# then this library will be required.
+#
+# For all cases, at least public headers must be installed
+# for dev component.
+#
+# Probably other files are also required in the dev package.
+#
+# For now, simply use mdt_install_library()
+#
+mdt_install_library(
+  TARGET Mdt_ExecutableFile_Common
+  RUNTIME_DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY_DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE_DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  INCLUDES_DIRECTORY .
+  INCLUDES_FILE_WITHOUT_EXTENSION
+#   ADDITIONAL_INCLUDES_FILES "${CMAKE_CURRENT_BINARY_DIR}/mdt_executablefilecore_export.h"
+  INCLUDES_DESTINATION ${MDT_INSTALL_INCLUDEDIR}
+  EXPORT_NAME ExecutableFileCommon
+  EXPORT_NAMESPACE Mdt${PROJECT_VERSION_MAJOR}::
+  INSTALL_NAMESPACE ${MDT_INSTALL_PACKAGE_NAME}
+  FIND_PACKAGE_PATHS ..
+  INSTALL_IS_UNIX_SYSTEM_WIDE ${MDT_INSTALL_IS_UNIX_SYSTEM_WIDE}
+  VERSION ${PROJECT_VERSION}
+  SOVERSION ${PROJECT_VERSION_MAJOR}
+  VERSION_COMPATIBILITY ExactVersion
+  RUNTIME_COMPONENT MdtExecutableFileCore_Runtime
+  DEVELOPMENT_COMPONENT MdtExecutableFileCore_Dev
+)

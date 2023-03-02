@@ -247,6 +247,7 @@ if(BUILD_TESTS OR BUILD_BENCHMARKS)
 endif()
 
 add_subdirectory(libs/ExecutableFile_Common)
+add_subdirectory(libs/ExecutableFile_Core)
 
 if(BUILD_DOCS)
   add_subdirectory(doc)
