@@ -25,3 +25,35 @@ mdt_add_test(
   SOURCE_FILES
     src/ElfStringTableErrorTest.cpp
 )
+
+mdt_add_test(
+  NAME ElfNoteSectionTest
+  TARGET elfNoteSectionTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfNoteSectionTest.cpp
+)
+
+mdt_add_test(
+  NAME ElfNoteSectionTableTest
+  TARGET elfNoteSectionTableTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfNoteSectionTableTest.cpp
+)
+
+# mdt_add_test(
+#   NAME ElfNoteSectionReaderWriterTest
+#   TARGET elfNoteSectionReaderWriterTest
+#   DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+#   SOURCE_FILES
+#     src/ElfNoteSectionReaderWriterTest.cpp
+# )
+
+# mdt_add_test(
+#   NAME ElfNoteSectionReaderWriterErrorTest
+#   TARGET elfNoteSectionReaderWriterErrorTest
+#   DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+#   SOURCE_FILES
+#     src/ElfNoteSectionReaderWriterErrorTest.cpp
+# )

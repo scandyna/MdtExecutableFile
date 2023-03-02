@@ -5,7 +5,14 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/Algorithm.cpp
   Mdt/ExecutableFile/Elf/Ident.cpp
   Mdt/ExecutableFile/Elf/FileHeader.cpp
+  Mdt/ExecutableFile/Elf/SectionHeader.cpp
+  Mdt/ExecutableFile/Elf/SectionIndexChangeMap.cpp
+  Mdt/ExecutableFile/Elf/SectionHeaderTable.cpp
   Mdt/ExecutableFile/Elf/StringTable.cpp
+  Mdt/ExecutableFile/Elf/NoteSection.cpp
+  Mdt/ExecutableFile/Elf/NoteSectionTable.cpp
+#   Mdt/ExecutableFile/Elf/NoteSectionReader.cpp
+#   Mdt/ExecutableFile/Elf/NoteSectionWriter.cpp
 #   Mdt/ExecutableFile/Elf/Debug.cpp
 )
 
