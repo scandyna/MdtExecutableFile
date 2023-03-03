@@ -13,7 +13,6 @@
 #include "Mdt/ExecutableFile/Elf/NoteSection.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeader.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeaderTable.h"
-
 #include <vector>
 #include <string>
 #include <algorithm>
