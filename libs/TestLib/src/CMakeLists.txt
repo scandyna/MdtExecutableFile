@@ -2,6 +2,7 @@
 # file Copyright.txt or https://cmake.org/licensing for details.
 
 add_library(TestLib STATIC
+  TestUtils.cpp
   TestFileUtils.cpp
   ByteArraySpanTestUtils.cpp
 )
