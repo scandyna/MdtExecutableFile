@@ -2,6 +2,7 @@
 # file Copyright.txt or https://cmake.org/licensing for details.
 
 add_library(Mdt_ExecutableFileElf STATIC
+  Mdt/ExecutableFile/Elf/Exceptions.cpp
   Mdt/ExecutableFile/Elf/Algorithm.cpp
   Mdt/ExecutableFile/Elf/Ident.cpp
   Mdt/ExecutableFile/Elf/FileHeader.cpp
