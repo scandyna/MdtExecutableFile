@@ -9,7 +9,7 @@
  *****************************************************************************************/
 #include "catch2/catch.hpp"
 #include "Catch2QString.h"
-#include "ElfFileIoTestCommon.h"
+#include "ByteArraySpanTestUtils.h"
 #include "Mdt/ExecutableFile/Elf/StringTable.h"
 
 using namespace Mdt::ExecutableFile;

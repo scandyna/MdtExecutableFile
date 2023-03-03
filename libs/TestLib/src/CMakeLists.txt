@@ -3,6 +3,7 @@
 
 add_library(TestLib STATIC
   TestFileUtils.cpp
+  ByteArraySpanTestUtils.cpp
 )
 
 target_include_directories(TestLib
@@ -14,4 +15,5 @@ target_include_directories(TestLib
 target_link_libraries(TestLib
   PUBLIC
     Qt5::Core
+    Mdt::ExecutableFile_Common
 )
