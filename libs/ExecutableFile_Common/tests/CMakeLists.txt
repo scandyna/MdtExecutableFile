@@ -25,3 +25,19 @@ mdt_add_test(
   SOURCE_FILES
     src/FileMapperTest.cpp
 )
+
+mdt_add_test(
+  NAME ExecutableFileReaderUtilsTest
+  TARGET executableFileReaderUtilsTest
+  DEPENDENCIES Mdt::ExecutableFile_Common TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ExecutableFileReaderUtilsTest.cpp
+)
+
+mdt_add_test(
+  NAME ExecutableFileReaderUtilsErrorTest
+  TARGET executableFileReaderUtilsErrorTest
+  DEPENDENCIES Mdt::ExecutableFile_Common Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ExecutableFileReaderUtilsErrorTest.cpp
+)

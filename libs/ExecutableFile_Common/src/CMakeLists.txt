@@ -8,10 +8,12 @@ add_library(Mdt_ExecutableFile_Common STATIC
   Mdt/ExecutableFile/QRuntimeError.cpp
   Mdt/ExecutableFile/FileOpenError.cpp
   Mdt/ExecutableFile/ExecutableFileReadError.cpp
+  Mdt/ExecutableFile/NotNullTerminatedStringError.cpp
   Mdt/ExecutableFile/StringTableError.cpp
   Mdt/ExecutableFile/Platform.cpp
   Mdt/ExecutableFile/ByteArraySpan.cpp
   Mdt/ExecutableFile/FileMapper.cpp
+  Mdt/ExecutableFile/ExecutableFileReaderUtils.cpp
 )
 
 add_library(Mdt::ExecutableFile_Common ALIAS Mdt_ExecutableFile_Common)

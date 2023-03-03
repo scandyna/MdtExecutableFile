@@ -15,11 +15,12 @@
 #include "Mdt/ExecutableFile/Elf/FileHeader.h"
 #include "Mdt/ExecutableFile/Elf/Algorithm.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeader.h"
+#include "Mdt/ExecutableFile/ByteArraySpan.h"
 
 #include "FileWriterUtils.h"
 
 #include "Exceptions.h"
-#include "Mdt/DeployUtils/Impl/ByteArraySpan.h"
+
 // #include "mdt_deployutilscore_export.h"
 #include <QObject>
 #include <cstdint>
