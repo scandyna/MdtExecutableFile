@@ -27,6 +27,22 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfDynamicSectionTest
+  TARGET elfDynamicSectionTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfDynamicSectionTest.cpp
+)
+
+mdt_add_test(
+  NAME ElfDynamicSectionErrorTest
+  TARGET elfDynamicSectionErrorTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfDynamicSectionErrorTest.cpp
+)
+
+mdt_add_test(
   NAME ElfNoteSectionTest
   TARGET elfNoteSectionTest
   DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt

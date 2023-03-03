@@ -12,6 +12,7 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/SectionHeaderReaderWriterCommon.cpp
   Mdt/ExecutableFile/Elf/StringTable.cpp
   Mdt/ExecutableFile/Elf/FileHeaderReaderWriterCommon.cpp
+  Mdt/ExecutableFile/Elf/DynamicSection.cpp
   Mdt/ExecutableFile/Elf/NoteSection.cpp
   Mdt/ExecutableFile/Elf/NoteSectionTable.cpp
 #   Mdt/ExecutableFile/Elf/NoteSectionReader.cpp
