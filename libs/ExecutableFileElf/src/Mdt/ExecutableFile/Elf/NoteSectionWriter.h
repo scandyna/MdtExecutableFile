@@ -19,7 +19,7 @@
 
 #include "FileWriterUtils.h"
 
-#include "Exceptions.h"
+#include "Mdt/ExecutableFile/Elf/Exceptions.h"
 
 // #include "mdt_deployutilscore_export.h"
 #include <QObject>

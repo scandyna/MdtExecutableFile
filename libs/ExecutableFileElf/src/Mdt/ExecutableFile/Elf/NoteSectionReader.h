@@ -14,9 +14,7 @@
 
 #include "Mdt/ExecutableFile/Elf/SectionHeader.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeaderTable.h"
-
-#include "Exceptions.h"
-
+#include "Mdt/ExecutableFile/Elf/Exceptions.h"
 #include "Mdt/ExecutableFile/ExecutableFileReaderUtils.h"
 #include "Mdt/ExecutableFile/Elf/NoteSection.h"
 #include "Mdt/ExecutableFile/Elf/NoteSectionTable.h"
