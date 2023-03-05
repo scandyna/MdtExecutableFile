@@ -81,3 +81,11 @@ mdt_add_test(
   SOURCE_FILES
     src/ElfProgramInterpreterSectionTest.cpp
 )
+
+mdt_add_test(
+  NAME ElfGnuHashTableTest
+  TARGET elfGnuHashTableTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfGnuHashTableTest.cpp
+)
