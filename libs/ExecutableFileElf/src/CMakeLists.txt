@@ -17,6 +17,7 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/NoteSectionTable.cpp
 #   Mdt/ExecutableFile/Elf/NoteSectionReader.cpp
 #   Mdt/ExecutableFile/Elf/NoteSectionWriter.cpp
+  Mdt/ExecutableFile/Elf/ProgramInterpreterSection.cpp
 #   Mdt/ExecutableFile/Elf/Debug.cpp
 )
 

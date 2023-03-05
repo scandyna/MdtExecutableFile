@@ -73,3 +73,11 @@ mdt_add_test(
 #   SOURCE_FILES
 #     src/ElfNoteSectionReaderWriterErrorTest.cpp
 # )
+
+mdt_add_test(
+  NAME ElfProgramInterpreterSectionTest
+  TARGET elfProgramInterpreterSectionTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfProgramInterpreterSectionTest.cpp
+)
