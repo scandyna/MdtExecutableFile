@@ -20,6 +20,7 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/ProgramInterpreterSection.cpp
   Mdt/ExecutableFile/Elf/HashTable.cpp
   Mdt/ExecutableFile/Elf/GnuHashTable.cpp
+  Mdt/ExecutableFile/Elf/GlobalOffsetTable.cpp
 #   Mdt/ExecutableFile/Elf/Debug.cpp
 )
 
