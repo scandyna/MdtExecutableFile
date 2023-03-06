@@ -51,6 +51,14 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfSectionSegmentUtilsTest
+  TARGET elfSectionSegmentUtilsTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfSectionSegmentUtilsTest.cpp
+)
+
+mdt_add_test(
   NAME ElfStringTableTest
   TARGET elfStringTableTest
   DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
