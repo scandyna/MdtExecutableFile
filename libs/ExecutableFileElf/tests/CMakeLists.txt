@@ -105,3 +105,11 @@ mdt_add_test(
   SOURCE_FILES
     src/ElfGlobalOffsetTableTest.cpp
 )
+
+mdt_add_test(
+  NAME ElfSymbolTableTest
+  TARGET elfSymbolTableTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfSymbolTableTest.cpp
+)
