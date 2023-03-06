@@ -43,6 +43,14 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfOffsetRangeTest
+  TARGET elfOffsetRangeTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfOffsetRangeTest.cpp
+)
+
+mdt_add_test(
   NAME ElfStringTableTest
   TARGET elfStringTableTest
   DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
