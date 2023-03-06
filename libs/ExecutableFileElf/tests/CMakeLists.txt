@@ -59,6 +59,22 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfFileAllHeadersTestUtilsTest
+  TARGET elfFileAllHeadersTestUtilsTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfFileAllHeadersTestUtilsTest.cpp
+)
+
+mdt_add_test(
+  NAME ElfFileAllHeadersTest
+  TARGET elfFileAllHeadersTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfFileAllHeadersTest.cpp
+)
+
+mdt_add_test(
   NAME ElfStringTableTest
   TARGET elfStringTableTest
   DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
