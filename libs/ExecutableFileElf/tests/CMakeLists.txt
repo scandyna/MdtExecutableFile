@@ -11,6 +11,22 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfSectionHeaderTest
+  TARGET elfSectionHeaderTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfSectionHeaderTest.cpp
+)
+
+mdt_add_test(
+  NAME ElfSectionHeaderTableTest
+  TARGET elfSectionHeaderTableTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfSectionHeaderTableTest.cpp
+)
+
+mdt_add_test(
   NAME ElfProgramHeaderTest
   TARGET elfProgramHeaderTest
   DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
