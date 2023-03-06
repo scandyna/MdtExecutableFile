@@ -10,6 +10,8 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/SectionIndexChangeMap.cpp
   Mdt/ExecutableFile/Elf/SectionHeaderTable.cpp
   Mdt/ExecutableFile/Elf/SectionHeaderReaderWriterCommon.cpp
+  Mdt/ExecutableFile/Elf/ProgramHeader.cpp
+  Mdt/ExecutableFile/Elf/ProgramHeaderTable.cpp
   Mdt/ExecutableFile/Elf/StringTable.cpp
   Mdt/ExecutableFile/Elf/FileHeaderReaderWriterCommon.cpp
   Mdt/ExecutableFile/Elf/DynamicSection.cpp
