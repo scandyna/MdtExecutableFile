@@ -10,19 +10,19 @@
 #ifndef MDT_EXECUTABLE_FILE_ELF_DEBUG_H
 #define MDT_EXECUTABLE_FILE_ELF_DEBUG_H
 
-#include "FileHeader.h"
-#include "ProgramHeader.h"
-#include "ProgramHeaderTable.h"
-#include "FileAllHeaders.h"
-#include "SectionHeader.h"
-#include "DynamicSection.h"
-#include "SymbolTable.h"
-#include "GlobalOffsetTable.h"
-#include "ProgramInterpreterSection.h"
-#include "GnuHashTable.h"
-#include "NoteSection.h"
-#include "NoteSectionTable.h"
-#include "mdt_deployutilscore_export.h"
+#include "Mdt/ExecutableFile/Elf/FileHeader.h"
+#include "Mdt/ExecutableFile/Elf/ProgramHeader.h"
+#include "Mdt/ExecutableFile/Elf/ProgramHeaderTable.h"
+#include "Mdt/ExecutableFile/Elf/FileAllHeaders.h"
+#include "Mdt/ExecutableFile/Elf/SectionHeader.h"
+#include "Mdt/ExecutableFile/Elf/DynamicSection.h"
+#include "Mdt/ExecutableFile/Elf/SymbolTable.h"
+#include "Mdt/ExecutableFile/Elf/GlobalOffsetTable.h"
+#include "Mdt/ExecutableFile/Elf/ProgramInterpreterSection.h"
+#include "Mdt/ExecutableFile/Elf/GnuHashTable.h"
+#include "Mdt/ExecutableFile/Elf/NoteSection.h"
+#include "Mdt/ExecutableFile/Elf/NoteSectionTable.h"
+// #include "mdt_deployutilscore_export.h"
 #include <QString>
 #include <QLatin1String>
 #include <vector>
@@ -33,67 +33,67 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(Class c);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(DataFormat dataFormat);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(OsAbiType osAbiType);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const Ident & ident);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(ObjectFileType type);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(Machine machine);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const FileHeader & header);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(SegmentType type);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const ProgramHeader & header);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const ProgramHeaderTable & headers);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(SectionType type);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const SectionHeader & header);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const std::vector<SectionHeader> & headers);
 
   /** \internal Get the sections / segments mapping
@@ -103,7 +103,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
    * 01 PT_INTERP .interp
    * \endcode
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString sectionSegmentMappingToDebugString(const ProgramHeaderTable & programHeaderTable, const std::vector<SectionHeader> & sectionHeaderTable);
 
   /*! \internal
@@ -116,62 +116,62 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const StringTable & table);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(DynamicSectionTagType type);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const DynamicStruct & section, const QString & leftPad = QLatin1String("  "));
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const DynamicSection & section, const QString & leftPad = QLatin1String("  "));
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const SymbolTableEntry & entry, const QString & leftPad = QLatin1String("  "));
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const PartialSymbolTable & table, const QString & leftPad = QLatin1String("  "));
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const GlobalOffsetTableEntry & entry, const QString & leftPad = QLatin1String("  "));
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const GlobalOffsetTable & table, const QString & leftPad = QLatin1String("  "));
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const ProgramInterpreterSection & section);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const GnuHashTable & table);
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const NoteSection & section, const QString & leftPad = QLatin1String("  "));
 
   /*! \internal
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString toDebugString(const NoteSectionTable & table, const QString & leftPad = QLatin1String("  "));
 
   /** \internal Print the file layout regarding all headers (File, Programm, Section)
@@ -186,7 +186,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
    * from 0x5001 to 0x6000 : section header table
    * \endcode
    */
-  MDT_DEPLOYUTILSCORE_EXPORT
+//   MDT_DEPLOYUTILSCORE_EXPORT
   QString fileLayoutToDebugString(const FileHeader & fileHeader, ProgramHeaderTable programHeaders, std::vector<SectionHeader> sectionHeaders);
 
 }}} // namespace Mdt{ namespace ExecutableFile{ namespace Elf{

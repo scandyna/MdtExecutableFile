@@ -14,7 +14,7 @@
 #include <QLatin1Char>
 #include <algorithm>
 
-namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
+namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
 QString toDebugString(Class c)
 {
@@ -659,4 +659,4 @@ QString fileLayoutToDebugString(const FileHeader & fileHeader, ProgramHeaderTabl
   return str;
 }
 
-}}}} // namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
+}}} // namespace Mdt{ namespace ExecutableFile{ namespace Elf{

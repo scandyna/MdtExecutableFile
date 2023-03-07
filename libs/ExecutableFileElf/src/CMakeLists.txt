@@ -27,7 +27,7 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/GnuHashTable.cpp
   Mdt/ExecutableFile/Elf/GlobalOffsetTable.cpp
   Mdt/ExecutableFile/Elf/SymbolTable.cpp
-#   Mdt/ExecutableFile/Elf/Debug.cpp
+  Mdt/ExecutableFile/Elf/Debug.cpp
 )
 
 add_library(Mdt::ExecutableFileElf ALIAS Mdt_ExecutableFileElf)
