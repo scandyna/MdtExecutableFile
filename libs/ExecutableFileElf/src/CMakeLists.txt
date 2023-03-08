@@ -30,6 +30,7 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/GlobalOffsetTableReaderWriterCommon.cpp
   Mdt/ExecutableFile/Elf/SymbolTable.cpp
   Mdt/ExecutableFile/Elf/Debug.cpp
+  Mdt/ExecutableFile/Elf/FileReader.cpp
 )
 
 add_library(Mdt::ExecutableFileElf ALIAS Mdt_ExecutableFileElf)

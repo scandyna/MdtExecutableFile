@@ -177,3 +177,11 @@ mdt_add_test(
   SOURCE_FILES
     src/ElfSymbolTableTest.cpp
 )
+
+mdt_add_test(
+  NAME ElfFileReaderTest
+  TARGET elfFileReaderTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfFileReaderTest.cpp
+)
