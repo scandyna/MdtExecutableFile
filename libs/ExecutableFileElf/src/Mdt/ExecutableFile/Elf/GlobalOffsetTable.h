@@ -10,7 +10,7 @@
 #ifndef MDT_EXECUTABLE_FILE_ELF_GLOBAL_OFFSET_TABLE_H
 #define MDT_EXECUTABLE_FILE_ELF_GLOBAL_OFFSET_TABLE_H
 
-#include "Ident.h"
+#include "Mdt/ExecutableFile/Elf/Ident.h"
 #include <cstdint>
 #include <vector>
 #include <cassert>
