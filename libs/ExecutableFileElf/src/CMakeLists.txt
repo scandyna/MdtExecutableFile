@@ -22,8 +22,8 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/DynamicSectionWriter.cpp
   Mdt/ExecutableFile/Elf/NoteSection.cpp
   Mdt/ExecutableFile/Elf/NoteSectionTable.cpp
-#   Mdt/ExecutableFile/Elf/NoteSectionReader.cpp
-#   Mdt/ExecutableFile/Elf/NoteSectionWriter.cpp
+  Mdt/ExecutableFile/Elf/NoteSectionReader.cpp
+  Mdt/ExecutableFile/Elf/NoteSectionWriter.cpp
   Mdt/ExecutableFile/Elf/ProgramInterpreterSection.cpp
   Mdt/ExecutableFile/Elf/HashTable.cpp
   Mdt/ExecutableFile/Elf/GnuHashTable.cpp

@@ -16,9 +16,7 @@
 #include "Mdt/ExecutableFile/Elf/Algorithm.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeader.h"
 #include "Mdt/ExecutableFile/ByteArraySpan.h"
-
-#include "FileWriterUtils.h"
-
+#include "Mdt/ExecutableFile/Elf/FileWriterUtils.h"
 #include "Mdt/ExecutableFile/Elf/Exceptions.h"
 
 // #include "mdt_deployutilscore_export.h"

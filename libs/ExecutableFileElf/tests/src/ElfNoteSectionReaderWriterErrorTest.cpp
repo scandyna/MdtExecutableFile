@@ -10,11 +10,12 @@
 #include "catch2/catch.hpp"
 #include "Catch2QString.h"
 #include "ElfFileIoTestUtils.h"
-#include "Mdt/DeployUtils/Impl/Elf/NoteSectionReader.h"
-#include "Mdt/DeployUtils/Impl/Elf/NoteSectionWriter.h"
+#include "ByteArraySpanTestUtils.h"
+#include "Mdt/ExecutableFile/Elf/NoteSectionReader.h"
+#include "Mdt/ExecutableFile/Elf/NoteSectionWriter.h"
 
-using namespace Mdt::DeployUtils::Impl::Elf;
-using Mdt::DeployUtils::Impl::ByteArraySpan;
+using namespace Mdt::ExecutableFile::Elf;
+using Mdt::ExecutableFile::ByteArraySpan;
 
 TEST_CASE("noteSectionFromArray")
 {

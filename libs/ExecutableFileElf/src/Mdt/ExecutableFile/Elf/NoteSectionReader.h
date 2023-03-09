@@ -10,8 +10,7 @@
 #ifndef MDT_EXECUTABLE_FILE_ELF_NOTE_SECTION_READER_H
 #define MDT_EXECUTABLE_FILE_ELF_NOTE_SECTION_READER_H
 
-#include "FileReader.h"
-
+#include "Mdt/ExecutableFile/Elf/FileReader.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeader.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeaderTable.h"
 #include "Mdt/ExecutableFile/Elf/Exceptions.h"
