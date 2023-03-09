@@ -19,6 +19,7 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/FileAllHeaders.cpp
   Mdt/ExecutableFile/Elf/FileHeaderReaderWriterCommon.cpp
   Mdt/ExecutableFile/Elf/DynamicSection.cpp
+  Mdt/ExecutableFile/Elf/DynamicSectionWriter.cpp
   Mdt/ExecutableFile/Elf/NoteSection.cpp
   Mdt/ExecutableFile/Elf/NoteSectionTable.cpp
 #   Mdt/ExecutableFile/Elf/NoteSectionReader.cpp
@@ -34,6 +35,7 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/FileOffsetChanges.cpp
   Mdt/ExecutableFile/Elf/FileWriterFileLayout.cpp
   Mdt/ExecutableFile/Elf/FileWriterFile.cpp
+  Mdt/ExecutableFile/Elf/FileWriterUtils.cpp
 )
 
 add_library(Mdt::ExecutableFileElf ALIAS Mdt_ExecutableFileElf)
