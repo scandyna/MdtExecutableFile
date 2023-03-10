@@ -43,6 +43,30 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfProgramHeaderReaderTest
+  TARGET elfProgramHeaderReaderTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfProgramHeaderReaderTest.cpp
+)
+
+mdt_add_test(
+  NAME ElfProgramHeaderReaderErrorTest
+  TARGET elfProgramHeaderReaderErrorTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfProgramHeaderReaderErrorTest.cpp
+)
+
+mdt_add_test(
+  NAME ElfProgramHeaderWriterTest
+  TARGET elfProgramHeaderWriterTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfProgramHeaderWriterTest.cpp
+)
+
+mdt_add_test(
   NAME ElfOffsetRangeTest
   TARGET elfOffsetRangeTest
   DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt

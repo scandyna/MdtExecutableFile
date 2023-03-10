@@ -13,10 +13,15 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/ProgramHeader.cpp
   Mdt/ExecutableFile/Elf/ProgramHeaderTable.cpp
   Mdt/ExecutableFile/Elf/ProgramHeaderReaderWriterCommon.cpp
+  Mdt/ExecutableFile/Elf/ProgramHeaderReader.cpp
+  Mdt/ExecutableFile/Elf/ProgramHeaderWriter.cpp
   Mdt/ExecutableFile/Elf/StringTable.cpp
   Mdt/ExecutableFile/Elf/OffsetRange.cpp
   Mdt/ExecutableFile/Elf/SectionSegmentUtils.cpp
   Mdt/ExecutableFile/Elf/FileAllHeaders.cpp
+#   Mdt/ExecutableFile/Elf/FileAllHeadersReaderWriterCommon.cpp
+#   Mdt/ExecutableFile/Elf/FileAllHeadersReader.cpp
+#   Mdt/ExecutableFile/Elf/FileAllHeadersWriter.cpp
   Mdt/ExecutableFile/Elf/FileHeaderReaderWriterCommon.cpp
   Mdt/ExecutableFile/Elf/DynamicSection.cpp
   Mdt/ExecutableFile/Elf/DynamicSectionWriter.cpp
