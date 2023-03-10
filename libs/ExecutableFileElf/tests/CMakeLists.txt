@@ -203,6 +203,14 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfGnuHashTableReaderWriterTest
+  TARGET elfGnuHashTableReaderWriterTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfGnuHashTableReaderWriterTest.cpp
+)
+
+mdt_add_test(
   NAME ElfGlobalOffsetTableTest
   TARGET elfGlobalOffsetTableTest
   DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
