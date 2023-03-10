@@ -6,6 +6,8 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/Algorithm.cpp
   Mdt/ExecutableFile/Elf/Ident.cpp
   Mdt/ExecutableFile/Elf/FileHeader.cpp
+  Mdt/ExecutableFile/Elf/FileHeaderReaderWriterCommon.cpp
+  Mdt/ExecutableFile/Elf/FileHeaderWriter.cpp
   Mdt/ExecutableFile/Elf/SectionHeader.cpp
   Mdt/ExecutableFile/Elf/SectionIndexChangeMap.cpp
   Mdt/ExecutableFile/Elf/SectionHeaderTable.cpp
@@ -22,7 +24,6 @@ add_library(Mdt_ExecutableFileElf STATIC
 #   Mdt/ExecutableFile/Elf/FileAllHeadersReaderWriterCommon.cpp
 #   Mdt/ExecutableFile/Elf/FileAllHeadersReader.cpp
 #   Mdt/ExecutableFile/Elf/FileAllHeadersWriter.cpp
-  Mdt/ExecutableFile/Elf/FileHeaderReaderWriterCommon.cpp
   Mdt/ExecutableFile/Elf/DynamicSection.cpp
   Mdt/ExecutableFile/Elf/DynamicSectionWriter.cpp
   Mdt/ExecutableFile/Elf/NoteSection.cpp
