@@ -187,6 +187,14 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfProgramInterpreterSectionReaderWriterTest
+  TARGET elfProgramInterpreterSectionReaderWriterTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfProgramInterpreterSectionReaderWriterTest.cpp
+)
+
+mdt_add_test(
   NAME ElfHashTableTest
   TARGET elfHashTableTest
   DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
