@@ -123,6 +123,14 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfStringTableWriterTest
+  TARGET elfStringTableWriterTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfStringTableWriterTest.cpp
+)
+
+mdt_add_test(
   NAME ElfDynamicSectionTest
   TARGET elfDynamicSectionTest
   DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt

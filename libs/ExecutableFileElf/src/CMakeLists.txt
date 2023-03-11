@@ -18,6 +18,7 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/ProgramHeaderReader.cpp
   Mdt/ExecutableFile/Elf/ProgramHeaderWriter.cpp
   Mdt/ExecutableFile/Elf/StringTable.cpp
+  Mdt/ExecutableFile/Elf/StringTableWriter.cpp
   Mdt/ExecutableFile/Elf/OffsetRange.cpp
   Mdt/ExecutableFile/Elf/SectionSegmentUtils.cpp
   Mdt/ExecutableFile/Elf/FileAllHeaders.cpp
