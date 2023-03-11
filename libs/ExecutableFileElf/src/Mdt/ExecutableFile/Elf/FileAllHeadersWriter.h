@@ -7,19 +7,19 @@
  ** Copyright (C) 2021-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#ifndef MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_WRITER_H
-#define MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_WRITER_H
+#ifndef MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_WRITER_H
+#define MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_WRITER_H
 
-#include "FileAllHeaders.h"
-#include "FileAllHeadersReaderWriterCommon.h"
-#include "FileHeader.h"
-#include "FileHeaderWriter.h"
-#include "ProgramHeaderWriter.h"
-#include "SectionHeaderWriter.h"
-#include "Mdt/DeployUtils/Impl/ByteArraySpan.h"
+#include "Mdt/ExecutableFile/Elf/FileAllHeaders.h"
+#include "Mdt/ExecutableFile/Elf/FileAllHeadersReaderWriterCommon.h"
+#include "Mdt/ExecutableFile/Elf/FileHeader.h"
+#include "Mdt/ExecutableFile/Elf/FileHeaderWriter.h"
+#include "Mdt/ExecutableFile/Elf/ProgramHeaderWriter.h"
+#include "Mdt/ExecutableFile/Elf/SectionHeaderWriter.h"
+#include "Mdt/ExecutableFile/ByteArraySpan.h"
 #include <cassert>
 
-namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
+namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
   /*! \internal
    */
@@ -35,6 +35,6 @@ namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
     setSectionHeadersToMap( map, headers.sectionHeaderTable(), headers.fileHeader() );
   }
 
-}}}} // namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
+}}} // namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
-#endif // #ifndef MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_WRITER_H
+#endif // #ifndef MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_WRITER_H

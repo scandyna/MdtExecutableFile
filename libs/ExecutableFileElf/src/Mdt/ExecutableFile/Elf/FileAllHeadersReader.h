@@ -7,18 +7,19 @@
  ** Copyright (C) 2021-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#ifndef MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_READER_H
-#define MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_READER_H
+#ifndef MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_READER_H
+#define MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_READER_H
 
-#include "FileAllHeaders.h"
-#include "FileAllHeadersReaderWriterCommon.h"
-#include "FileHeader.h"
-#include "FileReader.h"
-#include "ProgramHeaderReader.h"
-#include "Mdt/DeployUtils/Impl/ByteArraySpan.h"
+#include "Mdt/ExecutableFile/Elf/FileAllHeaders.h"
+#include "Mdt/ExecutableFile/Elf/FileAllHeadersReaderWriterCommon.h"
+#include "Mdt/ExecutableFile/Elf/FileHeader.h"
+#include "Mdt/ExecutableFile/Elf/FileReader.h"
+#include "Mdt/ExecutableFile/Elf/ProgramHeaderReader.h"
+#include "Mdt/ExecutableFile/ByteArraySpan.h"
+
 #include <cassert>
 
-namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
+namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
   /*! \internal
    */
@@ -39,6 +40,6 @@ namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
     return headers;
   }
 
-}}}} // namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
+}}} // namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
-#endif // #ifndef MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_READER_H
+#endif // #ifndef MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_READER_H

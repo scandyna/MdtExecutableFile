@@ -23,9 +23,9 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/OffsetRange.cpp
   Mdt/ExecutableFile/Elf/SectionSegmentUtils.cpp
   Mdt/ExecutableFile/Elf/FileAllHeaders.cpp
-#   Mdt/ExecutableFile/Elf/FileAllHeadersReaderWriterCommon.cpp
-#   Mdt/ExecutableFile/Elf/FileAllHeadersReader.cpp
-#   Mdt/ExecutableFile/Elf/FileAllHeadersWriter.cpp
+  Mdt/ExecutableFile/Elf/FileAllHeadersReaderWriterCommon.cpp
+  Mdt/ExecutableFile/Elf/FileAllHeadersReader.cpp
+  Mdt/ExecutableFile/Elf/FileAllHeadersWriter.cpp
   Mdt/ExecutableFile/Elf/DynamicSection.cpp
   Mdt/ExecutableFile/Elf/DynamicSectionWriter.cpp
   Mdt/ExecutableFile/Elf/NoteSection.cpp

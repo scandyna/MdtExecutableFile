@@ -7,10 +7,10 @@
  ** Copyright (C) 2021-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#ifndef MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_READER_WRITER_COMMON_H
-#define MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_READER_WRITER_COMMON_H
+#ifndef MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_READER_WRITER_COMMON_H
+#define MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_READER_WRITER_COMMON_H
 
-namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
-}}}} // namespace Mdt{ namespace DeployUtils{ namespace Impl{ namespace Elf{
+namespace Mdt{ namespace ExecutableFile{ namespace Elf{
+}}} // namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
-#endif // #ifndef MDT_DEPLOY_UTILS_IMPL_ELF_FILE_ALL_HEADERS_READER_WRITER_COMMON_H
+#endif // #ifndef MDT_EXECUTABLE_FILE_ELF_FILE_ALL_HEADERS_READER_WRITER_COMMON_H
