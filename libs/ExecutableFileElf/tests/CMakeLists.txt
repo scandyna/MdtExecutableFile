@@ -195,6 +195,14 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfHashTableReaderWriterTest
+  TARGET elfHashTableReaderWriterTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfHashTableReaderWriterTest.cpp
+)
+
+mdt_add_test(
   NAME ElfGnuHashTableTest
   TARGET elfGnuHashTableTest
   DEPENDENCIES Mdt::ExecutableFileElf Mdt::Catch2Main Mdt::Catch2Qt
