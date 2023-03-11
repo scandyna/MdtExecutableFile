@@ -259,6 +259,14 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ElfSymbolTableReaderWriterTest
+  TARGET elfSymbolTableReaderWriterTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfSymbolTableReaderWriterTest.cpp
+)
+
+mdt_add_test(
   NAME ElfFileReaderTest
   TARGET elfFileReaderTest
   DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
