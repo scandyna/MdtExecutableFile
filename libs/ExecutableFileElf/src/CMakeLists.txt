@@ -54,6 +54,8 @@ add_library(Mdt_ExecutableFileElf STATIC
   Mdt/ExecutableFile/Elf/FileWriterFileLayout.cpp
   Mdt/ExecutableFile/Elf/FileWriterFile.cpp
   Mdt/ExecutableFile/Elf/FileWriterUtils.cpp
+  Mdt/ExecutableFile/Elf/FileWriter.cpp
+#   Mdt/ExecutableFile/Elf/FileIoEngine.cpp
 )
 
 add_library(Mdt::ExecutableFileElf ALIAS Mdt_ExecutableFileElf)
