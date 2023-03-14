@@ -291,9 +291,9 @@ mdt_add_test(
 )
 
 mdt_add_test(
-  NAME ElfFileWriterTest
-  TARGET elfFileWriterTest
+  NAME ElfFileWriterUnitTest
+  TARGET elfFileWriterUnitTest
   DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
   SOURCE_FILES
-    src/ElfFileWriterTest.cpp
+    src/ElfFileWriterUnitTest.cpp
 )
