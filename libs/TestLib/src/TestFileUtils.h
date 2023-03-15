@@ -14,7 +14,7 @@
 #include <QStringList>
 #include <QTemporaryDir>
 #include <QProcessEnvironment>
-
+#include <QFile>
 
 /*
  * Make a absolute path that retruns the correct result
@@ -43,6 +43,12 @@ bool createTextFileUtf8(const QString & filePath , const QString & content);
 QString readTextFileUtf8(const QString & filePath);
 
 bool copyFile(const QString & source, const QString & destination);
+
+bool hasExePermissions(QFile::Permissions permissions) noexcept;
+
+void setExePermissions(QFile::Permissions & permissions) noexcept;
+
+bool setFileExePermissionsIfRequired(const QString & filePath);
 
 bool runExecutable( const QString & executableFilePath,
                     const QStringList & arguments = QStringList(),

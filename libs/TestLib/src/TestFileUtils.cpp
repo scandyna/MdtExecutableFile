@@ -114,10 +114,44 @@ bool copyFile(const QString & source, const QString & destination)
   return QFile::copy(source, destination);
 }
 
+bool hasExePermissions(QFile::Permissions permissions) noexcept
+{
+  return permissions.testFlag(QFile::ExeOwner);
+}
+
+void setExePermissions(QFile::Permissions & permissions) noexcept
+{
+  permissions.setFlag(QFile::ExeOwner);
+}
+
+bool setFileExePermissionsIfRequired(const QString & filePath)
+{
+  QFile file(filePath);
+
+  auto permissions = file.permissions();
+
+  if( hasExePermissions(permissions) ){
+    return true;
+  }
+
+  qDebug() << "setting exec permissions to " << filePath;
+  setExePermissions(permissions);
+  if( !file.setPermissions(permissions) ){
+    qDebug() << "could not set permissions: " << file.errorString();
+    return false;
+  }
+
+  return true;
+}
+
 bool runExecutable(const QString & executableFilePath,
                    const QStringList & arguments,
                    const QProcessEnvironment & env)
 {
+  if( !setFileExePermissionsIfRequired(executableFilePath) ){
+    return false;
+  }
+
   QProcess process;
 
   process.setProcessEnvironment(env);
