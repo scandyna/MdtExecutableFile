@@ -148,10 +148,6 @@ bool runExecutable(const QString & executableFilePath,
                    const QStringList & arguments,
                    const QProcessEnvironment & env)
 {
-  if( !setFileExePermissionsIfRequired(executableFilePath) ){
-    return false;
-  }
-
   QProcess process;
 
   process.setProcessEnvironment(env);
