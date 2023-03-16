@@ -10,6 +10,7 @@ see [the C++ API documentation](https://scandyna.gitlab.io/mdtexecutablefile/cpp
 
 To build MdtExecutableFile and run the unit tests, see [BUILD](BUILD.md).
 
+See also [TestBinaries README](libs/TestBinaries/README.md).
 
 
 ## Getting started
