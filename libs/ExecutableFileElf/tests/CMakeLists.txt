@@ -1,6 +1,7 @@
 # Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
 # file Copyright.txt or https://cmake.org/licensing for details.
 include(MdtAddTest)
+include(ExternalData)
 
 mdt_add_test(
   NAME ElfAlgorithmTest
@@ -297,3 +298,24 @@ mdt_add_test(
   SOURCE_FILES
     src/ElfFileWriterUnitTest.cpp
 )
+
+if( UNIX AND (NOT APPLE) )
+
+  # Uses some tools, like eu-elflint, that are not available on Windows
+  mdt_add_test(
+    NAME ElfFileWriterTest_Unix
+    TARGET elfFileWriterTest_Unix
+    DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+    SOURCE_FILES
+      src/ElfFileWriterTest_Unix.cpp
+  )
+  target_compile_definitions(elfFileWriterTest_Unix
+    PRIVATE
+      TEST_SIMPLE_EXECUTABLE_DYNAMIC_FILE_PATH="${LINUX_UBUNTU_18_04_GCC_8_LD_BFD_X86_64_RPATH_10_CHARS_DEBUG_BIN_PATH}"
+      TEST_SIMPLE_EXECUTABLE_DYNAMIC_WITH_RUNPATH_FILE_PATH="${LINUX_UBUNTU_18_04_GCC_8_LD_BFD_X86_64_RPATH_10_CHARS_DEBUG_BIN_PATH}"
+      TEST_SIMPLE_EXECUTABLE_DYNAMIC_NO_RUNPATH_FILE_PATH="${LINUX_UBUNTU_18_04_GCC_8_LD_BFD_X86_64_NO_RPATH_DEBUG_BIN_PATH}"
+      TEST_SHARED_LIBRARY_NO_RUNPATH_FILE_PATH="${LIB_LINUX_UBUNTU_18_04_GCC_8_LD_BFD_X86_64_NO_RPATH_DEBUG_SO_BIN_PATH}"
+  )
+  add_dependencies(elfFileWriterTest_Unix TestBinaries)
+
+endif()
