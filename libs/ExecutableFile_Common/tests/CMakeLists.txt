@@ -41,3 +41,11 @@ mdt_add_test(
   SOURCE_FILES
     src/ExecutableFileReaderUtilsErrorTest.cpp
 )
+
+mdt_add_test(
+  NAME RPathTest
+  TARGET rPathTest
+  DEPENDENCIES Mdt::ExecutableFile_Common TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/RPathTest.cpp
+)

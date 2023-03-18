@@ -5,6 +5,7 @@ add_library(TestLib STATIC
   TestUtils.cpp
   TestFileUtils.cpp
   ByteArraySpanTestUtils.cpp
+  RPathTestUtils.cpp
 )
 
 target_include_directories(TestLib

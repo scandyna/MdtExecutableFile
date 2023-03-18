@@ -9,3 +9,11 @@ mdt_add_test(
   SOURCE_FILES
     src/TestFileUtilsTest.cpp
 )
+
+mdt_add_test(
+  NAME RPathTestUtilsTest
+  TARGET rPathTestUtilsTest
+  DEPENDENCIES TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/RPathTestUtilsTest.cpp
+)
