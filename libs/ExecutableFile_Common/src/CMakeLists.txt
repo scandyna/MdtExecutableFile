@@ -5,6 +5,7 @@
 include(MdtInstallLibrary)
 
 add_library(Mdt_ExecutableFile_Common STATIC
+  Mdt/ExecutableFile/Algorithm.cpp
   Mdt/ExecutableFile/QRuntimeError.cpp
   Mdt/ExecutableFile/FileOpenError.cpp
   Mdt/ExecutableFile/ExecutableFileReadError.cpp

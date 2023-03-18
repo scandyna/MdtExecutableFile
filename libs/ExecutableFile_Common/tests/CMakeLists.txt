@@ -3,6 +3,14 @@
 include(MdtAddTest)
 
 mdt_add_test(
+  NAME AlgorithmTest
+  TARGET algorithmTest
+  DEPENDENCIES Mdt::ExecutableFile_Common Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/AlgorithmTest.cpp
+)
+
+mdt_add_test(
   NAME PlatformTest
   TARGET platformTest
   DEPENDENCIES Mdt::ExecutableFile_Common Mdt::Catch2Main Mdt::Catch2Qt
