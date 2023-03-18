@@ -299,6 +299,22 @@ mdt_add_test(
     src/ElfFileWriterUnitTest.cpp
 )
 
+mdt_add_test(
+  NAME RPathElfTest
+  TARGET rPathElfTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/RPathElfTest.cpp
+)
+
+mdt_add_test(
+  NAME RPathElfErrorTest
+  TARGET rPathElfErrorTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/RPathElfErrorTest.cpp
+)
+
 if( UNIX AND (NOT APPLE) )
 
   # Uses some tools, like eu-elflint, that are not available on Windows

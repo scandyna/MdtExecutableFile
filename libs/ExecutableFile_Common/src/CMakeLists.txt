@@ -15,6 +15,7 @@ add_library(Mdt_ExecutableFile_Common STATIC
   Mdt/ExecutableFile/ByteArraySpan.cpp
   Mdt/ExecutableFile/FileMapper.cpp
   Mdt/ExecutableFile/ExecutableFileReaderUtils.cpp
+  Mdt/ExecutableFile/RPathFormatError.cpp
   Mdt/ExecutableFile/RPath.cpp
 )
 
