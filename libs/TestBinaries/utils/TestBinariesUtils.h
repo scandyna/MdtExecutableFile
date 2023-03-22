@@ -43,8 +43,4 @@ bool containsTestSharedLibrary(const QStringList & libraries);
  */
 QString testExecutableFilePath();
 
-// /*! \internal Get the file name of the test executable
-//  */
-// QString testExecutableFileName();
-
 #endif // #ifndef TEST_BINARIES_UTILS_H
