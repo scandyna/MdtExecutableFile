@@ -31,3 +31,9 @@ if(MSVC)
     PRIVATE "/DELAYLOAD:$<TARGET_FILE:testSharedLibrary>"
   )
 endif()
+
+
+add_library(
+  testStaticLibrary STATIC
+  src/TestStaticLibrary.cpp
+)

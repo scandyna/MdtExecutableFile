@@ -35,11 +35,12 @@ target_compile_definitions(TestBinariesUtils
   PRIVATE
     TEST_SHARED_LIBRARY_FILE_PATH="$<TARGET_FILE:testSharedLibrary>"
     QT5_CORE_FILE_PATH="${Qt5_CORE_SHARED_LIB_PATH}"
-#     TEST_STATIC_LIBRARY_FILE_PATH="$<TARGET_FILE:Mdt::ExecutableFile_Common>"
+    TEST_STATIC_LIBRARY_FILE_PATH="$<TARGET_FILE:testStaticLibrary>"
     TEST_DYNAMIC_EXECUTABLE_FILE_PATH="$<TARGET_FILE:testExecutableDynamic>"
 )
 
 add_dependencies(TestBinariesUtils
   testSharedLibrary
   testExecutableDynamic
+  testStaticLibrary
 )

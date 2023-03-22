@@ -4,17 +4,14 @@
  ** MdtExecutableFile
  ** C++ library to help reading and partially editing some binary files like ELF and Pe.
  **
- ** Copyright (C) 2021-2023 Philippe Steinmann.
+ ** Copyright (C) 2023-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#ifndef TEST_SHARED_LIBRARY_H
-#define TEST_SHARED_LIBRARY_H
+#ifndef TEST_STATIC_LIBRARY_H
+#define TEST_STATIC_LIBRARY_H
 
-#include "testsharedlibrary_export.h"
+void sayHelloStatic();
 
-void sayHello();
+int processStatic(const char *str);
 
-TESTSHAREDLIBRARY_EXPORT
-int process(const char *str);
-
-#endif // #ifndef TEST_SHARED_LIBRARY_H
+#endif // #ifndef TEST_STATIC_LIBRARY_H

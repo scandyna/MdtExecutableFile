@@ -43,4 +43,8 @@ bool containsTestSharedLibrary(const QStringList & libraries);
  */
 QString testExecutableFilePath();
 
+/*! \internal Get the absolute path to the test static library
+ */
+QString testStaticLibraryFilePath();
+
 #endif // #ifndef TEST_BINARIES_UTILS_H

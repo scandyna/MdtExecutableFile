@@ -56,3 +56,12 @@ QString testExecutableFilePath()
 
   return path;
 }
+
+
+QString testStaticLibraryFilePath()
+{
+  auto path = QString::fromLocal8Bit(TEST_STATIC_LIBRARY_FILE_PATH);
+  assert( QFileInfo(path).isAbsolute() );
+
+  return path;
+}
