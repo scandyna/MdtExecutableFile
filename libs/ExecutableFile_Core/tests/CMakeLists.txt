@@ -2,6 +2,36 @@
 # file Copyright.txt or https://cmake.org/licensing for details.
 include(MdtAddTest)
 
+
+mdt_add_test(
+  NAME ElfFileIoEngineTest
+  TARGET elfFileIoEngineTest
+  DEPENDENCIES Mdt::ExecutableFileCore TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfFileIoEngineTest.cpp
+)
+
+if( UNIX AND (NOT APPLE) )
+
+  # Uses project compiled test binaries
+  mdt_add_test(
+    NAME ElfFileIoEngineTest_Unix
+    TARGET elfFileIoEngineTest_Unix
+    DEPENDENCIES Mdt::ExecutableFileCore TestBinariesUtils TestLib Mdt::Catch2Main Mdt::Catch2Qt
+    SOURCE_FILES
+      src/ElfFileIoEngineTest_Unix.cpp
+  )
+
+endif()
+
+mdt_add_test(
+  NAME ElfFileIoEngineErrorTest
+  TARGET elfFileIoEngineErrorTest
+  DEPENDENCIES Mdt::ExecutableFileCore Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfFileIoEngineErrorTest.cpp
+)
+
 mdt_add_test(
   NAME ExecutableFileIoEngineTest
   TARGET executableFileIoEngineTest
