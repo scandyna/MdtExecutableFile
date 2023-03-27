@@ -1,10 +1,15 @@
 # Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
 # file Copyright.txt or https://cmake.org/licensing for details.
 
-# include(GenerateExportHeader)
+include(GenerateExportHeader)
 include(MdtInstallLibrary)
 
-add_library(Mdt_ExecutableFile_Common STATIC
+#
+# First attempt was to make this library forced to be STATIC.
+# This was a bad idea, because it exposes stuff to the public API.
+# See https://gitlab.com/scandyna/mdtexecutablefile/-/issues/1
+#
+add_library(Mdt_ExecutableFile_Common
   Mdt/ExecutableFile/Algorithm.cpp
   Mdt/ExecutableFile/QRuntimeError.cpp
   Mdt/ExecutableFile/FileOpenError.cpp
@@ -30,6 +35,7 @@ if(BUILD_USE_IPO_LTO)
   )
 endif()
 
+
 target_include_directories(Mdt_ExecutableFile_Common
   PUBLIC
    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
@@ -43,22 +49,8 @@ target_link_libraries(Mdt_ExecutableFile_Common
 #     Boost::boost
 )
 
-# generate_export_header(Mdt_ExecutableFile_Common)
+generate_export_header(Mdt_ExecutableFile_Common)
 
-#
-# If we build ExecutableFileCore as shared library,
-# this static library will ne be required.
-#
-# But, if ExecutableFileCore is built static,
-# then this library will be required.
-#
-# For all cases, at least public headers must be installed
-# for dev component.
-#
-# Probably other files are also required in the dev package.
-#
-# For now, simply use mdt_install_library()
-#
 mdt_install_library(
   TARGET Mdt_ExecutableFile_Common
   RUNTIME_DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -66,7 +58,7 @@ mdt_install_library(
   ARCHIVE_DESTINATION ${CMAKE_INSTALL_LIBDIR}
   INCLUDES_DIRECTORY .
   INCLUDES_FILE_WITHOUT_EXTENSION
-#   ADDITIONAL_INCLUDES_FILES "${CMAKE_CURRENT_BINARY_DIR}/mdt_executablefilecore_export.h"
+  ADDITIONAL_INCLUDES_FILES "${CMAKE_CURRENT_BINARY_DIR}/mdt_executablefile_common_export.h"
   INCLUDES_DESTINATION ${MDT_INSTALL_INCLUDEDIR}
   EXPORT_NAME ExecutableFileCommon
   EXPORT_NAMESPACE Mdt${PROJECT_VERSION_MAJOR}::

@@ -14,7 +14,7 @@
 #include "Mdt/ExecutableFile/Compiler.h"
 #include "Mdt/ExecutableFile/ProcessorISA.h"
 #include "Mdt/ExecutableFile/ExecutableFileFormat.h"
-// #include "mdt_deployutilscore_export.h"
+#include "mdt_executablefile_common_export.h"
 
 namespace Mdt{ namespace ExecutableFile{
 
@@ -30,7 +30,7 @@ namespace Mdt{ namespace ExecutableFile{
    * Note that the operating system and the executable file format
    * can seem redoundant. But, for example, ELF supports Linux, NetBSD, HP-UX and many others.
    */
-  class Platform
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT Platform
   {
    public:
 

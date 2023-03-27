@@ -20,6 +20,7 @@
 #include <QLatin1String>
 #include <cassert>
 
+
 using namespace Mdt::ExecutableFile;
 
 QString makeFilePath(const QTemporaryDir & dir, const QString & fileName)
@@ -28,7 +29,6 @@ QString makeFilePath(const QTemporaryDir & dir, const QString & fileName)
 
   return QDir::cleanPath( dir.path() + QLatin1Char('/') + fileName );
 }
-
 
 TEST_CASE("stringFromUnsignedCharArray")
 {

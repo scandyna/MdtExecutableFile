@@ -242,15 +242,9 @@ endif()
 
 if(BUILD_TESTS OR BUILD_BENCHMARKS)
   enable_testing()
-  add_subdirectory(libs/Catch2)
-  add_subdirectory(libs/TestLib)
-  add_subdirectory(libs/TestBinaries)
 endif()
 
-add_subdirectory(libs/ExecutableFile_Common)
-add_subdirectory(libs/ExecutableFileElf)
-add_subdirectory(libs/ExecutableFilePe)
-add_subdirectory(libs/ExecutableFile_Core)
+add_subdirectory(libs)
 
 if(BUILD_DOCS)
   add_subdirectory(doc)

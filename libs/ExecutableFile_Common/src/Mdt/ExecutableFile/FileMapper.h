@@ -12,7 +12,7 @@
 
 #include "ByteArraySpan.h"
 #include "Mdt/ExecutableFile/FileOpenError.h"
-// #include "mdt_deployutilscore_export.h"
+#include "mdt_executablefile_common_export.h"
 #include <QFileDevice>
 #include <QString>
 #include <QObject>
@@ -62,7 +62,7 @@ namespace Mdt{ namespace ExecutableFile{
    *
    * In all cases, it is a simple way to obtain a ByteArraySpan from a QFile.
    */
-  class FileMapper : public QObject
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT FileMapper : public QObject
   {
     Q_OBJECT
 

@@ -10,7 +10,7 @@
 #ifndef MDT_EXECUTABLE_FILE_QRUNTIME_ERROR_H
 #define MDT_EXECUTABLE_FILE_QRUNTIME_ERROR_H
 
-// #include "mdt_deployutilscore_export.h"
+#include "mdt_executablefile_common_export.h"
 #include <QString>
 #include <QByteArray>
 #include <stdexcept>
@@ -19,7 +19,7 @@ namespace Mdt{ namespace ExecutableFile{
 
   /*! \brief Base class for runtime exceptions using QString messages
    */
-  class QRuntimeError : public std::runtime_error
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT QRuntimeError : public std::runtime_error
   {
    public:
 

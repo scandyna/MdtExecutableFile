@@ -11,14 +11,14 @@
 #define MDT_EXECUTABLE_FILE_FILE_OPEN_ERROR_H_H
 
 #include "Mdt/ExecutableFile/QRuntimeError.h"
-// #include "mdt_deployutilscore_export.h"
+#include "mdt_executablefile_common_export.h"
 #include <QString>
 
 namespace Mdt{ namespace ExecutableFile{
 
   /*! \brief Error when open a file fails
    */
-  class FileOpenError : public QRuntimeError
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT FileOpenError : public QRuntimeError
   {
    public:
 

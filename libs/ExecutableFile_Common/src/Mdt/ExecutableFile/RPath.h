@@ -10,7 +10,7 @@
 #ifndef MDT_EXECUTABLE_FILE_RPATH_H
 #define MDT_EXECUTABLE_FILE_RPATH_H
 
-// #include "mdt_deployutilscore_export.h"
+#include "mdt_executablefile_common_export.h"
 #include <QString>
 #include <QStringList>
 #include <QChar>
@@ -22,7 +22,7 @@ namespace Mdt{ namespace ExecutableFile{
 
   /*! \brief Represents a single path in a RPath
    */
-  class /*MDT_DEPLOYUTILSCORE_EXPORT*/ RPathEntry
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT RPathEntry
   {
    public:
 
@@ -73,7 +73,7 @@ namespace Mdt{ namespace ExecutableFile{
 
     /*! \brief Check if RPath entry \a is equal to \a b
      */
-//     MDT_DEPLOYUTILSCORE_EXPORT
+    MDT_EXECUTABLEFILE_COMMON_EXPORT
     friend
     bool operator==(const RPathEntry & a, const RPathEntry & b) noexcept;
 
@@ -100,7 +100,7 @@ namespace Mdt{ namespace ExecutableFile{
    * \sa https://man7.org/linux/man-pages/man8/ld.so.8.html
    * \sa https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/RunpathDependentLibraries.html
    */
-  class /*MDT_DEPLOYUTILSCORE_EXPORT*/ RPath
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT RPath
   {
    public:
 
@@ -180,7 +180,7 @@ namespace Mdt{ namespace ExecutableFile{
 
     /*! \brief Check if RPath \a is equal to \a b
      */
-//     MDT_DEPLOYUTILSCORE_EXPORT
+    MDT_EXECUTABLEFILE_COMMON_EXPORT
     friend
     bool operator==(const RPath & a, const RPath & b) noexcept;
 
