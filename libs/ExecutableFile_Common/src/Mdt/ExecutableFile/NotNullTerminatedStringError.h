@@ -11,14 +11,14 @@
 #define MDT_EXECUTABLE_FILE_NOT_NULL_TERMINATED_STRING_ERROR_H
 
 #include "Mdt/ExecutableFile/QRuntimeError.h"
-// #include "mdt_deployutilscore_export.h"
+#include "mdt_executablefile_common_export.h"
 #include <QString>
 
 namespace Mdt{ namespace ExecutableFile{
 
   /*! \internal
    */
-  class /*MDT_DEPLOYUTILSCORE_EXPORT*/ NotNullTerminatedStringError : public QRuntimeError
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT NotNullTerminatedStringError : public QRuntimeError
   {
    public:
 
