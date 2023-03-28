@@ -16,7 +16,6 @@
 #include "Mdt/ExecutableFile/Elf/SectionHeader.h"
 #include "Mdt/ExecutableFile/Elf/Exceptions.h"
 #include "Mdt/ExecutableFile/ByteArraySpan.h"
-// #include "mdt_deployutilscore_export.h"
 #include <QObject>
 #include <QString>
 #include <cstdint>
@@ -40,7 +39,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
   /*! \internal
    */
-  class /*MDT_DEPLOYUTILSCORE_EXPORT*/ GnuHashTableReader : public QObject
+  class GnuHashTableReader : public QObject
   {
     Q_OBJECT
 

@@ -18,8 +18,6 @@
 #include "Mdt/ExecutableFile/ByteArraySpan.h"
 #include "Mdt/ExecutableFile/Elf/FileWriterUtils.h"
 #include "Mdt/ExecutableFile/Elf/Exceptions.h"
-
-// #include "mdt_deployutilscore_export.h"
 #include <QObject>
 #include <cstdint>
 #include <cassert>
@@ -28,7 +26,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
   /*! \internal
    */
-  class /*MDT_DEPLOYUTILSCORE_EXPORT*/ NoteSectionWriter : public QObject
+  class NoteSectionWriter : public QObject
   {
     Q_OBJECT
 

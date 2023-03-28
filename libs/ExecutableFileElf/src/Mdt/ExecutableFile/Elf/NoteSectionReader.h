@@ -20,8 +20,6 @@
 #include "Mdt/ExecutableFile/Elf/FileHeader.h"
 #include "Mdt/ExecutableFile/Elf/Algorithm.h"
 #include "Mdt/ExecutableFile/ByteArraySpan.h"
-
-// #include "mdt_deployutilscore_export.h"
 #include <QObject>
 #include <cstdint>
 #include <cassert>
@@ -30,7 +28,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
   /*! \internal
    */
-  class /*MDT_DEPLOYUTILSCORE_EXPORT*/ NoteSectionReader : public QObject
+  class NoteSectionReader : public QObject
   {
     Q_OBJECT
 
