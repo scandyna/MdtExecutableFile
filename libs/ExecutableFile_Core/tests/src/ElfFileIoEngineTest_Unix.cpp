@@ -9,12 +9,9 @@
  *****************************************************************************************/
 #include "catch2/catch.hpp"
 #include "Catch2QString.h"
-
 #include "TestBinariesUtils.h"
-
 #include "TestUtils.h"
 #include "TestFileUtils.h"
-
 #include "Mdt/ExecutableFile/ElfFileIoEngine.h"
 #include <QString>
 #include <QLatin1String>
