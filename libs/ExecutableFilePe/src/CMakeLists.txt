@@ -2,6 +2,7 @@
 # file Copyright.txt or https://cmake.org/licensing for details.
 
 add_library(Mdt_ExecutableFilePe STATIC
+  Mdt/ExecutableFile/Pe/Exceptions.cpp
   Mdt/ExecutableFile/Pe/FileHeader.cpp
 )
 
