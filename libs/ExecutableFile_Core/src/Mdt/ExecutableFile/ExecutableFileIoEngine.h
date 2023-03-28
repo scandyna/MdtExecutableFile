@@ -39,7 +39,66 @@ namespace Mdt{ namespace ExecutableFile{
      */
     ~ExecutableFileIoEngine() noexcept;
 
+    /*! \brief Open a file
+     *
+     * \pre \a fileInfo must have a file path set
+     * \pre this engine must not allready have a file open
+     * \sa isOpen()
+     * \sa close()
+     * \exception FileOpenError
+     */
+    void openFile(const QFileInfo & fileInfo, ExecutableFileOpenMode mode);
+
+    /*! \brief Open a file for a expected platform
+     *
+     * \pre \a fileInfo must have a file path set
+     * \pre \a platform must be valid
+     * \pre this engine must not allready have a file open
+     * \sa isOpen()
+     * \sa close()
+     * \exception FileOpenError
+     */
+    void openFile(const QFileInfo & fileInfo, ExecutableFileOpenMode mode, const Platform & platform);
+
+    /*! \brief Check if this engine has a open file
+     *
+     * \sa openFile()
+     * \sa close()
+     */
+    bool isOpen() const noexcept;
+
+    /*! \brief Close the file that was maybe open
+     */
+    void close();
+
+    /*! \brief Get the platorm of the file this engine refers to
+     *
+     * \pre this engine must have a file open
+     * \sa isOpen()
+     * \exception ExecutableFileReadError
+     */
+    Platform getFilePlatform();
+
+    /*! \brief Access the engine
+     *
+     * \pre this engine must have a file open
+     * \sa isOpen()
+     */
+    std::unique_ptr<AbstractExecutableFileIoEngine> & engine() noexcept
+    {
+      assert( isOpen() );
+
+      return mIoEngine;
+    }
+
+   signals:
+
+    void message(const QString & message) const;
+    void verboseMessage(const QString & message) const;
+
    private:
+
+    void instanciateEngine(ExecutableFileFormat format) noexcept;
 
     std::unique_ptr<AbstractExecutableFileIoEngine> mIoEngine;
   };

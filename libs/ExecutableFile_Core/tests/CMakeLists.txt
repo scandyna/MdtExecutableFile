@@ -32,16 +32,6 @@ mdt_add_test(
     src/ElfFileIoEngineErrorTest.cpp
 )
 
-mdt_add_test(
-  NAME ExecutableFileIoEngineTest
-  TARGET executableFileIoEngineTest
-  DEPENDENCIES Mdt::ExecutableFileCore Mdt::Catch2Main Mdt::Catch2Qt
-  SOURCE_FILES
-    src/ExecutableFileIoEngineTest.cpp
-)
-# target_compile_definitions(executableFileIoEngineTest PRIVATE TEST_SHARED_LIBRARY_FILE_PATH="$<TARGET_FILE:testSharedLibrary>")
-# target_compile_definitions(executableFileIoEngineTest PRIVATE TEST_DYNAMIC_EXECUTABLE_FILE_PATH="$<TARGET_FILE:testExecutableDynamic>")
-
 
 mdt_add_test(
   NAME PeFileIoEngineTest
@@ -70,4 +60,21 @@ mdt_add_test(
   DEPENDENCIES Mdt::ExecutableFileCore Mdt::Catch2Main Mdt::Catch2Qt
   SOURCE_FILES
     src/PeFileIoEngineErrorTest.cpp
+)
+
+
+mdt_add_test(
+  NAME ExecutableFileIoEngineTest
+  TARGET executableFileIoEngineTest
+  DEPENDENCIES Mdt::ExecutableFileCore TestBinariesUtils Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ExecutableFileIoEngineTest.cpp
+)
+
+mdt_add_test(
+  NAME ExecutableFileIoEngineErrorTest
+  TARGET executableFileIoEngineErrorTest
+  DEPENDENCIES Mdt::ExecutableFileCore TestBinariesUtils TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ExecutableFileIoEngineErrorTest.cpp
 )
