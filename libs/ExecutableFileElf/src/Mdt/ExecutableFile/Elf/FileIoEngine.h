@@ -24,10 +24,7 @@
 #include "Mdt/ExecutableFile/Elf/ProgramInterpreterSectionReader.h"
 #include "Mdt/ExecutableFile/Elf/GnuHashTableReader.h"
 #include "Mdt/ExecutableFile/Elf/NoteSectionReader.h"
-// #include "Mdt/ExecutableFile/Elf/FileW"
 #include "Mdt/ExecutableFile/Elf/FileWriterFile.h"
-// #include "Mdt/ExecutableFile/Ex
-
 #include <QLatin1Char>
 
 // #include "Debug.h"
