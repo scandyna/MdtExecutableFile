@@ -12,6 +12,18 @@
 #include <QDir>
 #include <cassert>
 
+Mdt::ExecutableFile::Platform getNonNativePlatform()
+{
+  using namespace Mdt::ExecutableFile;
+
+  Platform nativePlatform = Platform::nativePlatform();
+
+  if( nativePlatform.executableFileFormat() == ExecutableFileFormat::Elf ){
+    return Platform( OperatingSystem::Windows, ExecutableFileFormat::Pe, nativePlatform.compiler(), nativePlatform.processorISA() );
+  }
+  return Platform( OperatingSystem::Linux, ExecutableFileFormat::Elf, nativePlatform.compiler(), nativePlatform.processorISA() );
+}
+
 QStringList qStringListFromUtf8Strings(const std::vector<std::string> & args)
 {
   QStringList arguments;

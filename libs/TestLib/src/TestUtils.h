@@ -10,6 +10,7 @@
 #ifndef TEST_UTILS_H
 #define TEST_UTILS_H
 
+#include "Mdt/ExecutableFile/Platform.h"
 #include <QString>
 #include <QStringList>
 #include <QFileInfo>
@@ -18,6 +19,7 @@
 #include <string>
 #include <algorithm>
 
+Mdt::ExecutableFile::Platform getNonNativePlatform();
 
 QStringList qStringListFromUtf8Strings(const std::vector<std::string> & args);
 
