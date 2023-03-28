@@ -7,8 +7,8 @@
  ** Copyright (C) 2021-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#ifndef MDT_DEPLOY_UTILS_IMPL_PE_DEBUG_H
-#define MDT_DEPLOY_UTILS_IMPL_PE_DEBUG_H
+#ifndef MDT_EXECUTABLE_FILE_PE_DEBUG_H
+#define MDT_EXECUTABLE_FILE_PE_DEBUG_H
 
 #include "Mdt/ExecutableFile/Pe/FileHeader.h"
 #include "Mdt/ExecutableFile/Pe/SectionHeader.h"
@@ -70,4 +70,4 @@ namespace Mdt{ namespace ExecutableFile{ namespace Pe{
 
 }}} // namespace Mdt{ namespace ExecutableFile{ namespace Pe{
 
-#endif // #ifndef MDT_DEPLOY_UTILS_IMPL_PE_DEBUG_H
+#endif // #ifndef MDT_EXECUTABLE_FILE_PE_DEBUG_H
