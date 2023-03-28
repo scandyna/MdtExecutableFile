@@ -29,7 +29,7 @@
 #include <vector>
 #include <cassert>
 
-// #include "Mdt/DeployUtils/Impl/Elf/Debug.h"
+// #include "Mdt/ExecutableFile/Elf/Debug.h"
 // #include <iostream>
 
 using namespace Mdt::ExecutableFile;
