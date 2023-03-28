@@ -6,6 +6,7 @@ add_library(Mdt_ExecutableFilePe STATIC
   Mdt/ExecutableFile/Pe/FileHeader.cpp
   Mdt/ExecutableFile/Pe/ImportDirectory.cpp
   Mdt/ExecutableFile/Pe/SectionHeader.cpp
+  Mdt/ExecutableFile/Pe/Debug.cpp
 )
 
 add_library(Mdt::ExecutableFilePe ALIAS Mdt_ExecutableFilePe)
