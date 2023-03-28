@@ -2,7 +2,7 @@
 # file Copyright.txt or https://cmake.org/licensing for details.
 
 add_library(Mdt_ExecutableFilePe STATIC
-  
+  Mdt/ExecutableFile/Pe/FileHeader.cpp
 )
 
 add_library(Mdt::ExecutableFilePe ALIAS Mdt_ExecutableFilePe)
