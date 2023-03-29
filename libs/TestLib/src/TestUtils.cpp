@@ -12,6 +12,16 @@
 #include <QDir>
 #include <cassert>
 
+
+bool currentBuildIsWithDebugSymbolsFlag()
+{
+#ifdef NDEBUG
+  return false;
+#else
+  return true;
+#endif
+}
+
 Mdt::ExecutableFile::Platform getNonNativePlatform()
 {
   using namespace Mdt::ExecutableFile;

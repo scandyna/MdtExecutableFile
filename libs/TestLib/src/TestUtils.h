@@ -19,6 +19,9 @@
 #include <string>
 #include <algorithm>
 
+
+bool currentBuildIsWithDebugSymbolsFlag();
+
 Mdt::ExecutableFile::Platform getNonNativePlatform();
 
 QStringList qStringListFromUtf8Strings(const std::vector<std::string> & args);
