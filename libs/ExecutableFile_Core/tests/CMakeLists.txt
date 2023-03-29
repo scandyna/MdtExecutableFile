@@ -78,3 +78,33 @@ mdt_add_test(
   SOURCE_FILES
     src/ExecutableFileIoEngineErrorTest.cpp
 )
+
+
+mdt_add_test(
+  NAME ExecutableFileReaderTest
+  TARGET executableFileReaderTest
+  DEPENDENCIES Mdt::ExecutableFileCore TestBinariesUtils TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ExecutableFileReaderTest.cpp
+)
+if(MSVC)
+  target_compile_definitions(executableFileReaderTest PRIVATE COMPILER_IS_MSVC=1)
+endif()
+
+mdt_add_test(
+  NAME ExecutableFileReaderErrorTest
+  TARGET executableFileReaderErrorTest
+  DEPENDENCIES Mdt::ExecutableFileCore TestBinariesUtils TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ExecutableFileReaderErrorTest.cpp
+)
+
+if(UNIX)
+  mdt_add_test(
+    NAME ExecutableFileReaderTest_Unix
+    TARGET executableFileReaderTest_Unix
+    DEPENDENCIES Mdt::ExecutableFileCore TestBinariesUtils TestLib Mdt::Catch2Main Mdt::Catch2Qt
+    SOURCE_FILES
+      src/ExecutableFileReaderTest_Unix.cpp
+  )
+endif()
