@@ -142,7 +142,7 @@ find_package(Qt5 COMPONENTS Core REQUIRED)
 # DeployUtils_Core uses Boost Graph
 # For header only library,no component is defined.
 # https://cmake.org/pipermail/cmake/2013-September/055941.html
-find_package(Boost REQUIRED)
+# find_package(Boost REQUIRED)
 
 if(BUILD_TESTS)
   find_package(Catch2 REQUIRED)
