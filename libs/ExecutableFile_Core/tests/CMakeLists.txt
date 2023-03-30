@@ -108,3 +108,22 @@ if(UNIX)
       src/ExecutableFileReaderTest_Unix.cpp
   )
 endif()
+
+
+mdt_add_test(
+  NAME ExecutableFileWriterTest
+  TARGET executableFileWriterTest
+  DEPENDENCIES Mdt::ExecutableFileCore TestBinariesUtils TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ExecutableFileWriterTest.cpp
+)
+# target_compile_definitions(executableFileWriterTest PRIVATE TEST_SHARED_LIBRARY_FILE_PATH="$<TARGET_FILE:testSharedLibrary>")
+# target_compile_definitions(executableFileWriterTest PRIVATE TEST_DYNAMIC_EXECUTABLE_FILE_PATH="$<TARGET_FILE:testExecutableDynamic>")
+
+mdt_add_test(
+  NAME ExecutableFileWriterErrorTest
+  TARGET executableFileWriterErrorTest
+  DEPENDENCIES Mdt::ExecutableFileCore Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ExecutableFileWriterErrorTest.cpp
+)
