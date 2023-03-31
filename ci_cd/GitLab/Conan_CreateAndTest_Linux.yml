@@ -19,3 +19,21 @@ conan_createAndTest_linux_gcc8_x86_64:
           - MdtExecutableFileCore
         BUILD_TYPE:
           - Debug
+
+
+########################################
+# Linux Clang 10 x86_64
+########################################
+
+conan_createAndTest_linux_Clang10_x86_64:
+  extends: .conan_createAndTest
+  image: registry.gitlab.com/scandyna/docker-images-ubuntu/ubuntu-18.04-clang-10:latest
+  variables:
+    CONAN_PROFILE_BUILD: linux_clang10_x86_64_libc++
+    CONAN_PROFILE_HOST: linux_ubuntu-18.04_clang10_x86_64_libc++_qt_widgets_modules
+  parallel:
+    matrix:
+      - COMPONENT:
+          - MdtExecutableFileCore
+        BUILD_TYPE:
+          - Debug

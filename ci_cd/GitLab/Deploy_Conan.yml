@@ -28,6 +28,23 @@ Deploy_conan_linux_gcc8_x86_64:
           - Debug
           - Release
 
+########################################
+# Linux libs Clang x86_64
+########################################
+
+Deploy_conan_linux_Clang10_x86_64:
+  extends: .deploy_conan
+  image: registry.gitlab.com/scandyna/docker-images-ubuntu/ubuntu-18.04-clang-10:latest
+  variables:
+    CONAN_PROFILE_BUILD: linux_clang10_x86_64_libc++
+    CONAN_PROFILE_HOST: linux_ubuntu-18.04_clang10_x86_64_libc++_qt_widgets_modules
+  parallel:
+    matrix:
+      - COMPONENT:
+          - MdtExecutableFileCore
+        BUILD_TYPE:
+          - Debug
+          - Release
 
 ########################################
 # Windows libs Gcc x86_64
