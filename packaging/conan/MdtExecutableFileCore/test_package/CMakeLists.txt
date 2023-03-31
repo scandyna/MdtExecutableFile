@@ -13,8 +13,8 @@ include(MdtRuntimeEnvironment)
 enable_testing()
 
 
-find_package(Mdt0 COMPONENTS ExecutableFileCore REQUIRED)
-find_package(Qt5 COMPONENTS Core REQUIRED)
+find_package(Mdt0 REQUIRED COMPONENTS ExecutableFileCore)
+find_package(Qt5 REQUIRED COMPONENTS Core)
 
 add_executable(executableFile_Test main.cpp)
 

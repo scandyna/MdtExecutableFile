@@ -137,7 +137,7 @@ add_qt5_to_cmake_prefix_path("${QT_PREFIX_PATH}")
 #######################
 
 find_package(Threads REQUIRED)
-find_package(Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt5 REQUIRED COMPONENTS Core)
 
 # DeployUtils_Core uses Boost Graph
 # For header only library,no component is defined.
@@ -146,11 +146,11 @@ find_package(Qt5 COMPONENTS Core REQUIRED)
 
 if(BUILD_TESTS)
   find_package(Catch2 REQUIRED)
-  find_package(Qt5 COMPONENTS Test REQUIRED)
+  find_package(Qt5 REQUIRED COMPONENTS Test)
 endif()
 
 if(BUILD_BENCHMARKS)
-  find_package(Qt5 COMPONENTS Test REQUIRED)
+  find_package(Qt5 REQUIRED COMPONENTS Test)
 endif()
 
 if(BUILD_DOCS)
