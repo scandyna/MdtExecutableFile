@@ -5,7 +5,7 @@
 C++ library to help reading and partially editing some binary files like ELF and Pe.
 
 For the available classes, functions, and their usage,
-see [the C++ API documentation](https://scandyna.gitlab.io/mdtexecutablefile/cpp-api)
+see [the C++ API documentation](https://scandyna.gitlab.io/mdtexecutablefile/html/)
 
 
 Here is a basic example:
