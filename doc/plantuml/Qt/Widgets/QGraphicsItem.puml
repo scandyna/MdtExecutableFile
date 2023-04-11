@@ -1,0 +1,6 @@
+@startuml
+class QGraphicsItem {
+  +QGraphicsItem(QGraphicsItem *parent = nullptr)
+  +\~QGraphicsItem()
+}
+@enduml

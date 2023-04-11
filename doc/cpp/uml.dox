@@ -8,7 +8,17 @@
  **
  *****************************************************************************************/
 
-/*! \mainpage Overview
+/*! \page uml_sandbox UML sandbox
  *
- * \ref uml_sandbox
+ * \section ElfLayoutView ELF layout view
+ *
+ * \startuml
+ * !include Mdt/LayoutView.puml
+ * \enduml
+ *
+ * \section Qt_Graphics_View Qt Graphics View
+ *
+ * \startuml
+ * !include Qt/Overviews/Graphics_View/Graphics_View.puml
+ * \enduml
  */

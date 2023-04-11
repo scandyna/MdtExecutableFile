@@ -1,0 +1,22 @@
+@startuml
+!include ../Qt/Widgets/QGraphicsItemGroup.puml
+
+class LayoutGraphicsItem {
+  +LayoutGraphicsItem()
+}
+
+QGraphicsItemGroup <|-- LayoutGraphicsItem
+
+
+class SectionGraphicsItem {
+}
+
+LayoutGraphicsItem <|-- SectionGraphicsItem
+
+
+class SegmentGraphicsItem {
+}
+
+LayoutGraphicsItem <|-- SegmentGraphicsItem
+
+@enduml
