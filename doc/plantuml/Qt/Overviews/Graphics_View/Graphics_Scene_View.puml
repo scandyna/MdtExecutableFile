@@ -1,0 +1,11 @@
+@startuml
+!define QtWidgets ../../Widgets
+!include QtWidgets/QGraphicsScene.puml
+!include QtWidgets/QGraphicsView.puml
+
+hide members
+hide methods
+
+skinparam groupInheritance 4
+
+@enduml

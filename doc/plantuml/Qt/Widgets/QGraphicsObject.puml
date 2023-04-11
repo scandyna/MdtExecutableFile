@@ -1,0 +1,11 @@
+@startuml
+!include ../Core/QObject.puml
+!include QGraphicsItem.puml
+
+class QGraphicsObject {
+  +QGraphicsObject(QGraphicsItem *parent = nullptr)
+}
+
+QObject <|-- QGraphicsObject
+QGraphicsItem <|-- QGraphicsObject
+@enduml

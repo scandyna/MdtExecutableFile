@@ -1,0 +1,9 @@
+@startuml
+!include QGraphicsItem.puml
+
+class QGraphicsLineItem {
+  +QGraphicsLineItem(QGraphicsItem *parent = nullptr)
+}
+
+QGraphicsItem <|-- QGraphicsLineItem
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+!include QFrame.puml
+
+class QAbstractScrollArea {
+  +QAbstractScrollArea(QWidget *parent = nullptr)
+  +\~QAbstractScrollArea()
+}
+
+QFrame <|-- QAbstractScrollArea
+@enduml

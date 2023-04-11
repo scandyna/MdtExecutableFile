@@ -1,0 +1,9 @@
+@startuml
+!include QAbstractGraphicsShapeItem.puml
+
+class QGraphicsEllipseItem {
+  +QGraphicsEllipseItem(QGraphicsItem *parent = nullptr)
+}
+
+QAbstractGraphicsShapeItem <|-- QGraphicsEllipseItem
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+!define QtCore ../Core
+!define QtGui ../Gui
+!include QtCore/QObject.puml
+!include QtGui/QPaintDevice.puml
+
+class QWidget {
+  +QWidget(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags())
+  +\~QWidget()
+}
+
+QObject <|-- QWidget
+QPaintDevice <|-- QWidget
+@enduml

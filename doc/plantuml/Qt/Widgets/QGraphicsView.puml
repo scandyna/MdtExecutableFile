@@ -1,0 +1,12 @@
+@startuml
+!include QAbstractScrollArea.puml
+!include QGraphicsScene.puml
+
+class QGraphicsView {
+  +QGraphicsView(QWidget *parent = nullptr)
+  +\~QGraphicsView()
+}
+
+QAbstractScrollArea <|-- QGraphicsView
+QGraphicsView "*" --> "1" QGraphicsScene
+@enduml

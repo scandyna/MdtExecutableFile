@@ -1,0 +1,9 @@
+@startuml
+!include QAbstractGraphicsShapeItem.puml
+
+class QGraphicsPathItem {
+  +QGraphicsPathItem(QGraphicsItem *parent = nullptr)
+}
+
+QAbstractGraphicsShapeItem <|-- QGraphicsPathItem
+@enduml

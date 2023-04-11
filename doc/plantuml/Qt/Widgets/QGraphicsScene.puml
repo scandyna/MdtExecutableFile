@@ -1,0 +1,11 @@
+@startuml
+!define QtCore ../Core
+!include QtCore/QObject.puml
+
+class QGraphicsScene {
+  +QGraphicsScene(QObject *parent = nullptr)
+  +\~QGraphicsScene()
+}
+
+QObject <|-- QGraphicsScene
+@enduml

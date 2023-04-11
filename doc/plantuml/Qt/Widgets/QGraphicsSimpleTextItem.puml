@@ -1,0 +1,9 @@
+@startuml
+!include QAbstractGraphicsShapeItem.puml
+
+class QGraphicsSimpleTextItem {
+  +QGraphicsSimpleTextItem(QGraphicsItem *parent = nullptr)
+}
+
+QAbstractGraphicsShapeItem <|-- QGraphicsSimpleTextItem
+@enduml

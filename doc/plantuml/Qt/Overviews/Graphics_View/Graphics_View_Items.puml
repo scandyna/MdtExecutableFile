@@ -1,0 +1,19 @@
+@startuml
+!define QtWidgets ../../Widgets
+!include QtWidgets/QAbstractGraphicsShapeItem.puml
+!include QtWidgets/QGraphicsItemGroup.puml
+!include QtWidgets/QGraphicsLineItem.puml
+!include QtWidgets/QGraphicsEllipseItem.puml
+!include QtWidgets/QGraphicsSimpleTextItem.puml
+!include QtWidgets/QGraphicsRectItem.puml
+!include QtWidgets/QGraphicsPathItem.puml
+!include QtWidgets/QGraphicsPolygonItem.puml
+!include QtWidgets/QGraphicsObject.puml
+!include QtWidgets/QGraphicsTextItem.puml
+
+hide members
+hide methods
+
+skinparam groupInheritance 4
+
+@enduml

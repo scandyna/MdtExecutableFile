@@ -1,0 +1,10 @@
+@startuml
+!include QWidget.puml
+
+class QFrame {
+  +QFrame(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags())
+  +\~QFrame()
+}
+
+QWidget <|-- QFrame
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+!include QAbstractGraphicsShapeItem.puml
+
+class QGraphicsPolygonItem {
+  +QGraphicsPolygonItem(QGraphicsItem *parent = nullptr)
+}
+
+QAbstractGraphicsShapeItem <|-- QGraphicsPolygonItem
+@enduml
