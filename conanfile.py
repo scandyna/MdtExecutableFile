@@ -3,7 +3,7 @@ import os
 
 # NOTE: this recipe is only to install dependnecies.
 #       to create packages, see packaging subfolder
-class MdtDeployUtilsConan(ConanFile):
+class MdtExecutableFileConan(ConanFile):
   name = "MdtExecutableFile"
   #version = "0.1"
   license = "BSD 3-Clause"
