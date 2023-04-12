@@ -7,18 +7,15 @@
  ** Copyright (C) 2023-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
+#include "MainWindow.h"
+#include <QApplication>
 
-/*! \page uml_sandbox UML sandbox
- *
- * \section ElfLayoutView ELF layout view
- *
- * \startuml
- * !include Mdt/LayoutView.puml
- * \enduml
- *
- * \section Qt_Graphics_View Qt Graphics View
- *
- * \startuml
- * !include Qt/Overviews/Graphics_View/Graphics_View.puml
- * \enduml
- */
+int main(int argc, char **argv)
+{
+  QApplication app(argc, argv);
+  MainWindow window;
+
+  window.show();
+
+  return app.exec();
+}

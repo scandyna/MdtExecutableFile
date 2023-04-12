@@ -29,6 +29,7 @@ include:
     # See https://gitlab.kitware.com/cmake/cmake/-/issues/23109
     - cmake "-DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake"
       "-DCMAKE_BUILD_TYPE=$BUILD_TYPE"
+      -DBUILD_APPS=ON
       -DBUILD_TESTS=ON -DBUILD_BENCHMARKS=ON
       "-DBUILD_USE_IPO_LTO_IF_AVAILABLE=$BUILD_USE_IPO_LTO_IF_AVAILABLE"
       -DWARNING_AS_ERROR=ON

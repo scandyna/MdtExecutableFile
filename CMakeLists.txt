@@ -40,6 +40,7 @@ include(MdtSanitizers)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 
+option(BUILD_APPS "Build the applications (tools)" OFF)
 option(BUILD_TESTS "Build the tests" OFF)
 option(BUILD_BENCHMARKS "Build the benchmarks" OFF)
 option(BUILD_DOCS "Build the documentations" OFF)
@@ -139,6 +140,10 @@ add_qt5_to_cmake_prefix_path("${QT_PREFIX_PATH}")
 find_package(Threads REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Core)
 
+if(BUILD_APPS)
+  find_package(Qt5 REQUIRED COMPONENTS Widgets)
+endif()
+
 # DeployUtils_Core uses Boost Graph
 # For header only library,no component is defined.
 # https://cmake.org/pipermail/cmake/2013-September/055941.html
@@ -154,7 +159,7 @@ if(BUILD_BENCHMARKS)
 endif()
 
 if(BUILD_DOCS)
-  find_package(Sphinx REQUIRED)
+#   find_package(Sphinx REQUIRED)
 
   include(FindDoxygen)
   find_package(Doxygen REQUIRED dot)
@@ -245,6 +250,10 @@ if(BUILD_TESTS OR BUILD_BENCHMARKS)
 endif()
 
 add_subdirectory(libs)
+
+if(BUILD_APPS)
+  add_subdirectory(apps)
+endif()
 
 if(BUILD_DOCS)
   add_subdirectory(doc)

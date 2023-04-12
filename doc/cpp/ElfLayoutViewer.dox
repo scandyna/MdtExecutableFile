@@ -8,7 +8,14 @@
  **
  *****************************************************************************************/
 
-/*! \mainpage Overview
+/*! \page ElfLayoutViewer_dox ELF Layout Viewer
  *
- * \ref ElfLayoutViewer_dox
+ * \section ElfLayoutView ELF layout view
+ *
+ * UML overview of the items used in the grahics view.
+ *
+ * \startuml
+ * !include apps/ElfLayoutViewer/LayoutView.puml
+ * \enduml
+ *
  */

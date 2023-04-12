@@ -1,5 +1,6 @@
 @startuml
-!include ../Qt/Widgets/QGraphicsItemGroup.puml
+!define QtWidgets ../../Qt/Widgets
+!include QtWidgets/QGraphicsItemGroup.puml
 
 class LayoutGraphicsItem {
   +LayoutGraphicsItem()
@@ -8,15 +9,24 @@ class LayoutGraphicsItem {
 QGraphicsItemGroup <|-- LayoutGraphicsItem
 
 
+class SectionGraphicsItemData {
+}
+
+
 class SectionGraphicsItem {
 }
 
 LayoutGraphicsItem <|-- SectionGraphicsItem
+SectionGraphicsItem ..> SectionGraphicsItemData
 
 
 class SegmentGraphicsItem {
 }
 
 LayoutGraphicsItem <|-- SegmentGraphicsItem
+
+
+hide methods
+hide attributes
 
 @enduml

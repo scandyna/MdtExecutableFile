@@ -7,8 +7,7 @@
  ** Copyright (C) 2023-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
+#ifndef SEGMENT_GRAPHICS_ITEM_H
+#define SEGMENT_GRAPHICS_ITEM_H
 
-/*! \mainpage Overview
- *
- * \ref ElfLayoutViewer_dox
- */
+#endif // #ifndef SEGMENT_GRAPHICS_ITEM_H

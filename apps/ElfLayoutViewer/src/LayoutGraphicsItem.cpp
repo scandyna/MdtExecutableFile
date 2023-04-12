@@ -7,8 +7,9 @@
  ** Copyright (C) 2023-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
+#include "LayoutGraphicsItem.h"
 
-/*! \mainpage Overview
- *
- * \ref ElfLayoutViewer_dox
- */
+LayoutGraphicsItem::LayoutGraphicsItem(QGraphicsItem *parent)
+ : QGraphicsItemGroup(parent)
+{
+}
