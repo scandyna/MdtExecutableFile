@@ -1,6 +1,8 @@
 @startuml
-!define QtWidgets ../../Qt/Widgets
+!define QtWidgets ../../../Qt/Widgets
+!define MdtElf ../../../Mdt/ExecutableFile/Elf
 !include QtWidgets/QGraphicsItemGroup.puml
+!include MdtElf/SectionHeader.puml
 
 class LayoutGraphicsItem {
   +LayoutGraphicsItem()
@@ -12,19 +14,20 @@ QGraphicsItemGroup <|-- LayoutGraphicsItem
 class SectionGraphicsItemData {
 }
 
+SectionGraphicsItemData ..> Mdt.ExecutableFile.Elf.SectionHeader
+
 
 class SectionGraphicsItem {
 }
 
 LayoutGraphicsItem <|-- SectionGraphicsItem
-SectionGraphicsItem ..> SectionGraphicsItemData
+SectionGraphicsItem *--> SectionGraphicsItemData
 
 
 class SegmentGraphicsItem {
 }
 
 LayoutGraphicsItem <|-- SegmentGraphicsItem
-
 
 hide methods
 hide attributes

@@ -10,8 +10,11 @@
 #ifndef SECTION_GRAPHICS_ITEM_H
 #define SECTION_GRAPHICS_ITEM_H
 
-#include <QGraphicsItemGroup>
+#include "LayoutGraphicsItem.h"
+// #include <QGraphicsItemGroup>
 #include <QString>
+
+#include <QtGlobal>
 
 #include <cstdint>
 #include <string>
@@ -20,12 +23,12 @@
  *
  * \todo give a correct name, make correct API !!
  */
-struct SecSegGraphicsItemData
-{
-  uint64_t offset = 0;
-  uint64_t size = 100;
-  std::string name;
-};
+// struct SecSegGraphicsItemData
+// {
+//   uint64_t offset = 0;
+//   uint64_t size = 100;
+//   std::string name;
+// };
 
 /*! \brief
  */
@@ -33,29 +36,81 @@ class SectionGraphicsItemData
 {
  public:
 
-  void setOffset();
+  void setOffset(uint64_t offset) noexcept
+  {
+    mOffset = offset;
+  }
 
-  void setSize();
+  qulonglong offset() const noexcept
+  {
+    return mOffset;
+  }
+
+  qreal offsetF() const noexcept
+  {
+    return mOffset;
+  }
+
+  void setSize(uint64_t size) noexcept
+  {
+    mSize = size;
+  }
+
+  qulonglong size() const noexcept
+  {
+    return mSize;
+  }
+
+  qreal sizeF() const noexcept
+  {
+    return mSize;
+  }
+
+  qulonglong end() const noexcept
+  {
+    return mOffset + mSize;
+  }
+
+  void setName(const std::string & name) noexcept
+  {
+    mName = QString::fromStdString(name);
+  }
+
+  const QString & name() const noexcept
+  {
+    return mName;
+  }
+
+  /// \todo check, think a section can have offset and size 0 ?
+  bool isNull() const noexcept
+  {
+  }
 
   static
-  SectionGraphicsItemData fromSectionHeader();
+  SectionGraphicsItemData fromSectionHeader() noexcept;
+
+ private:
+
+  qulonglong mOffset = 0;
+  qulonglong mSize = 0;
+  QString mName;
 };
 
 /*! \brief Represents a ELF section as a Qt graphics item
  */
-class SectionGraphicsItem : public QGraphicsItemGroup
+class SectionGraphicsItem : public LayoutGraphicsItem
 {
  public:
 
   /*! \brief Constructor
    */
-  explicit SectionGraphicsItem(SecSegGraphicsItemData data, QGraphicsItem *parent = nullptr);
+  explicit SectionGraphicsItem(const SectionGraphicsItemData & data, QGraphicsItem *parent = nullptr);
 
  private:
 
-  void createLeftLabel(const QString & text) noexcept;
-  void createCenterLabel(const QString & text) noexcept;
-  void createRightLabel(const QString & text) noexcept;
+//   void createLeftLabel(const QString & text) noexcept;
+//   void createCenterLabel(const QString & text) noexcept;
+//   void createRightLabel(const QString & text) noexcept;
 };
 
 

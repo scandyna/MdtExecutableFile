@@ -1,0 +1,10 @@
+@startuml
+
+namespace Mdt.ExecutableFile.Elf {
+
+  class SectionHeader {
+  }
+
+}
+
+@enduml

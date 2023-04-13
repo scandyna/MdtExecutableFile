@@ -25,6 +25,13 @@ class MainWindow : public QMainWindow
 
   explicit MainWindow(QWidget *parent = nullptr);
 
+ private slots:
+
+  void layoutViewZoomIn();
+  void layoutViewZoomOut();
+  void layoutViewZoomOriginal();
+  void layoutViewZoomFitBest();
+
  private:
 
   QGraphicsScene mScene;

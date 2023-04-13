@@ -1,0 +1,17 @@
+@startuml
+
+!include LayoutViewItems.puml
+
+class CreateLayoutViewScene {
+}
+
+CreateLayoutViewScene ..> SectionGraphicsItem
+CreateLayoutViewScene ..> SegmentGraphicsItem
+
+' note left of CreateLayoutViewScene : This is a use case\nor interactor.
+
+hide QGraphicsItem
+hide QGraphicsItemGroup
+hide LayoutGraphicsItem
+
+@enduml

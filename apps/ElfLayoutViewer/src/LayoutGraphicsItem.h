@@ -11,6 +11,8 @@
 #define LAYOUT_GRAPHICS_ITEM_H
 
 #include <QGraphicsItemGroup>
+#include <QSizeF>
+#include <QString>
 
 /*! \brief Common base for SectionGraphicsItem and SegmentGraphicsItem
  */
@@ -21,6 +23,15 @@ class LayoutGraphicsItem : public QGraphicsItemGroup
   /*! \brief Constructor
    */
   explicit LayoutGraphicsItem(QGraphicsItem *parent = nullptr);
+
+ protected:
+
+  void createRectangle(const QSizeF & size) noexcept;
+  void createLabel(const QString & text) noexcept;
+
+  void createStartAddressLabel(const QString & text) noexcept;
+  void createNameAndSizeLabel(const QString & text) noexcept;
+  void createEndAddressLabel(const QString & text) noexcept;
 };
 
 #endif // #ifndef LAYOUT_GRAPHICS_ITEM_H

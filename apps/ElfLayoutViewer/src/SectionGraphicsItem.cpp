@@ -23,20 +23,24 @@
 
 #include <QDebug>
 
-SectionGraphicsItem::SectionGraphicsItem(SecSegGraphicsItemData data, QGraphicsItem *parent)
- : QGraphicsItemGroup(parent)
+SectionGraphicsItem::SectionGraphicsItem(const SectionGraphicsItemData & data, QGraphicsItem *parent)
+ : LayoutGraphicsItem(parent)
 {
-  uint64_t sectionOffset = data.offset;
-  uint64_t sectionSize = data.size;
+  const qulonglong sectionOffset = data.offset();
+  const qulonglong sectionEnd = data.end();
+//   uint64_t sectionSize = data.size;
 //   uint64_t sectionEnd = sectionOffset + sectionSize;
-  uint64_t sectionEnd = data.offset + data.size;
+//   uint64_t sectionEnd = data.offset + data.size;
   
 //   QPointF rectTopLeft(sectionOffset, 0.0);
-  QPointF rectTopLeft(0.0, 0.0);
-  QSizeF rectSize(sectionSize, 30.0);
-  QRectF rect(rectTopLeft, rectSize);
-  auto rectItem = new QGraphicsRectItem(rect);
-  addToGroup(rectItem);
+
+//   QPointF rectTopLeft(0.0, 0.0);
+  QSizeF rectSize(data.sizeF(), 30.0);
+//   QRectF rect(rectTopLeft, rectSize);
+//   auto rectItem = new QGraphicsRectItem(rect);
+//   addToGroup(rectItem);
+
+  createRectangle(rectSize);
 
   qDebug() << "item shape: " << shape();
   qDebug() << "item shape boundingRect: " << shape().boundingRect();
@@ -44,33 +48,43 @@ SectionGraphicsItem::SectionGraphicsItem(SecSegGraphicsItemData data, QGraphicsI
   
   
   /// \todo should we inherit also QObject to use tr() ?
-
-  const auto startAddrText = QString( QLatin1String("start: 0x%1 (%2)") )
-                             .arg( sectionOffset, 0, 16, QLatin1Char('0') )
-                             .arg(sectionOffset);
-  createLeftLabel(startAddrText);
-//   QPointF startAddrLabelPos(sectionOffset, 0.0);
-//   auto startAddrLabel = new QGraphicsSimpleTextItem(startAddrText);
-//   startAddrLabel->setPos(startAddrLabelPos);
-//   addToGroup(startAddrLabel);
-
-  const auto centerText = QString( QLatin1String("%1\nsize: %2 (0x%3)") )
-                          .arg( QString::fromStdString(data.name) )
-                          .arg( data.size )
-                          .arg( data.size, 0, 16 );
-  createCenterLabel(centerText);
   
-  const auto endAddrText = QString( QLatin1String("end: 0x%1 (%2)") )
-                           .arg( sectionEnd, 0, 16, QLatin1Char('0') )
-                           .arg(sectionEnd);
-  createRightLabel(endAddrText);
+  const auto text = QString( QLatin1String("%1\nstart: 0x%2 (%3)\nsize: %4 (0x%5)\nend: 0x%6 (%7)") )
+                    .arg( data.name() )
+                    .arg(sectionOffset, 0, 16)
+                    .arg(sectionOffset)
+                    .arg( data.size() )
+                    .arg( data.size(), 0, 16)
+                    .arg(sectionEnd, 0, 16)
+                    .arg(sectionEnd);
+  createLabel(text);
+
+//   const auto startAddrText = QString( QLatin1String("start: 0x%1 (%2)") )
+//                              .arg( sectionOffset, 0, 16, QLatin1Char('0') )
+//                              .arg(sectionOffset);
+//   createStartAddressLabel(startAddrText);
+// //   QPointF startAddrLabelPos(sectionOffset, 0.0);
+// //   auto startAddrLabel = new QGraphicsSimpleTextItem(startAddrText);
+// //   startAddrLabel->setPos(startAddrLabelPos);
+// //   addToGroup(startAddrLabel);
+//
+//   const auto centerText = QString( QLatin1String("%1\nsize: %2 (0x%3)") )
+//                           .arg( data.name() )
+//                           .arg( data.size() )
+//                           .arg( data.size(), 0, 16 );
+//   createNameAndSizeLabel(centerText);
+//
+//   const auto endAddrText = QString( QLatin1String("end: 0x%1 (%2)") )
+//                            .arg( sectionEnd, 0, 16, QLatin1Char('0') )
+//                            .arg(sectionEnd);
+//   createEndAddressLabel(endAddrText);
 
   /** \todo Should not position itself !
    *
    * Why, sections will be aligned one after the other,
    * segments one after but also below
    */
-  QPointF itemPos(sectionOffset, 0.0);
+  QPointF itemPos(data.offsetF(), 0.0);
   setPos(itemPos);
 //   auto endAddrLabel = new QGraphicsSimpleTextItem(endAddrText);
 //   
@@ -91,32 +105,31 @@ SectionGraphicsItem::SectionGraphicsItem(SecSegGraphicsItemData data, QGraphicsI
 //   addToGroup(endAddrLabel);
 }
 
-/// \todo we should only use boundingRect() on text labels, for others, we know the width
-/// \todo also abstract getting width of label
+/// \todo should rename start/end Address and name labels
 
-void SectionGraphicsItem::createLeftLabel(const QString & text) noexcept
-{
-  auto label = new QGraphicsSimpleTextItem(text);
-  QPointF pos(0.0, 0.0);
-  label->setPos(pos);
-  addToGroup(label);
-}
+// void SectionGraphicsItem::createLeftLabel(const QString & text) noexcept
+// {
+//   auto label = new QGraphicsSimpleTextItem(text);
+//   QPointF pos(0.0, 0.0);
+//   label->setPos(pos);
+//   addToGroup(label);
+// }
 
-void SectionGraphicsItem::createCenterLabel(const QString & text) noexcept
-{
-  auto label = new QGraphicsSimpleTextItem(text);
-  const qreal itemCenter = boundingRect().width() / 2.0;
-  const qreal x = itemCenter - label->boundingRect().width() / 2.0;
-  QPointF pos(x, 0.0);
-  label->setPos(pos);
-  addToGroup(label);
-}
+// void SectionGraphicsItem::createCenterLabel(const QString & text) noexcept
+// {
+//   auto label = new QGraphicsSimpleTextItem(text);
+//   const qreal itemCenter = boundingRect().width() / 2.0;
+//   const qreal x = itemCenter - label->boundingRect().width() / 2.0;
+//   QPointF pos(x, 0.0);
+//   label->setPos(pos);
+//   addToGroup(label);
+// }
 
-void SectionGraphicsItem::createRightLabel(const QString & text) noexcept
-{
-  auto label = new QGraphicsSimpleTextItem(text);
-  const qreal x = boundingRect().width() - label->boundingRect().width();
-  QPointF pos(x, 0.0);
-  label->setPos(pos);
-  addToGroup(label);
-}
+// void SectionGraphicsItem::createRightLabel(const QString & text) noexcept
+// {
+//   auto label = new QGraphicsSimpleTextItem(text);
+//   const qreal x = boundingRect().width() - label->boundingRect().width();
+//   QPointF pos(x, 0.0);
+//   label->setPos(pos);
+//   addToGroup(label);
+// }

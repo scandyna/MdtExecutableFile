@@ -1,0 +1,16 @@
+@startuml
+
+class MainWindow {
+}
+
+
+class MainWindowController {
+}
+
+MainWindowController --> MainWindow
+MainWindowController --> CreateLayoutViewScene
+
+hide methods
+hide attributes
+
+@enduml

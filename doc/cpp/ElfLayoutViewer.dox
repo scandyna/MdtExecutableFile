@@ -14,8 +14,23 @@
  *
  * UML overview of the items used in the grahics view.
  *
- * \startuml
- * !include apps/ElfLayoutViewer/LayoutView.puml
+ * \startuml "Graphics view items"
+ * !include apps/ElfLayoutViewer/diagrams/LayoutViewItems.puml
  * \enduml
  *
+ *
+ * UML overview of the graphics scene
+ *
+ * \startuml "Graphics view scene"
+ * !include apps/ElfLayoutViewer/diagrams/LayoutViewScene.puml
+ * \enduml
+ *
+ *
+ * \section ElfMainWindow Main window
+ *
+ * UML overview of the main window
+ *
+ * \startuml "Main window"
+ * !include apps/ElfLayoutViewer/diagrams/MainWindow.puml
+ * \enduml
  */
