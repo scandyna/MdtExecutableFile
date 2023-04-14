@@ -1,0 +1,19 @@
+@startuml
+
+class AbstractTableModel {
+  #bool indexIsValidAndInDataRange(const QModelIndex & index) const noexcept;
+}
+
+
+class SectionHeaderTableModel {
+}
+
+AbstractTableModel <|--SectionHeaderTableModel
+
+
+class ProgramHeaderTableModel {
+}
+
+AbstractTableModel <|--ProgramHeaderTableModel
+
+@enduml

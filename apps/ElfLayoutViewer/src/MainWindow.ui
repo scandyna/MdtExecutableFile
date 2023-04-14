@@ -6,17 +6,55 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>963</width>
+    <height>703</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ELF layout viewer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <widget class="QGraphicsView" name="layoutView"/>
+     <widget class="QSplitter" name="splitter_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="sectionHeaderTableLabel">
+           <property name="text">
+            <string>Section header table</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableView" name="sectionHeaderTableView"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="programHeaderTableLabel">
+           <property name="text">
+            <string>Program header table</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableView" name="programHeaderTableView"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGraphicsView" name="layoutView"/>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -25,18 +63,19 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>963</width>
      <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>View</string>
+     <string>&amp;View</string>
     </property>
     <addaction name="actionZoom_in"/>
     <addaction name="actionZoom_out"/>
     <addaction name="actionZoom_original"/>
     <addaction name="actionZoom_best"/>
+    <addaction name="actionTrack_selected_item"/>
    </widget>
    <addaction name="menuView"/>
   </widget>
@@ -55,37 +94,50 @@
    <addaction name="actionZoom_out"/>
    <addaction name="actionZoom_original"/>
    <addaction name="actionZoom_best"/>
+   <addaction name="actionTrack_selected_item"/>
   </widget>
   <action name="actionZoom_in">
    <property name="icon">
-    <iconset theme="zoom-in"/>
+    <iconset theme="zoom-in">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>Zoom in</string>
+    <string>&amp;Zoom in</string>
    </property>
   </action>
   <action name="actionZoom_out">
    <property name="icon">
-    <iconset theme="zoom-out"/>
+    <iconset theme="zoom-out">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>Zoom out</string>
+    <string>Zoom &amp;out</string>
    </property>
   </action>
   <action name="actionZoom_original">
    <property name="icon">
-    <iconset theme="zoom-original"/>
+    <iconset theme="zoom-original">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>Zoom 100%</string>
+    <string>Zoom &amp;100%</string>
    </property>
   </action>
   <action name="actionZoom_best">
    <property name="icon">
-    <iconset theme="zoom-fit-best"/>
+    <iconset theme="zoom-fit-best">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
-    <string>Zoom best</string>
+    <string>Zoom &amp;best</string>
+   </property>
+  </action>
+  <action name="actionTrack_selected_item">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Track selected item</string>
    </property>
   </action>
  </widget>

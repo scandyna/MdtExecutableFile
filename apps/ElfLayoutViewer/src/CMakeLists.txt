@@ -5,6 +5,8 @@ add_executable(mdtelflayoutview
   LayoutGraphicsItem.cpp
   SectionGraphicsItem.cpp
   SegmentGraphicsItem.cpp
+  SectionHeaderTableModel.cpp
+  ProgramHeaderTableModel.cpp
   MainWindow.cpp
   main.cpp
 )
@@ -24,4 +26,5 @@ target_include_directories(mdtelflayoutview
 target_link_libraries(mdtelflayoutview
   PRIVATE
     Qt5::Widgets
+    Mdt::ExecutableFileElf
 )

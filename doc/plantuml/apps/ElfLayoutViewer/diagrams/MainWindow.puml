@@ -1,14 +1,28 @@
 @startuml
+!include HeaderTable_LayoutView_Map.puml
 
 class MainWindow {
 }
 
+class CreateLayoutViewScene {
+}
+
+
+class CreateSectionHeaderTableModel {
+}
+
+class SomeCreate {
+}
+
+SomeCreate --> CreateLayoutViewScene
+SomeCreate --> CreateSectionHeaderTableModel
+SomeCreate --> SectionHeaderTableGraphicsItemMap
 
 class MainWindowController {
 }
 
 MainWindowController --> MainWindow
-MainWindowController --> CreateLayoutViewScene
+MainWindowController --> SomeCreate
 
 hide methods
 hide attributes

@@ -9,23 +9,51 @@
  *****************************************************************************************/
 #include "LayoutGraphicsItem.h"
 #include <QGraphicsSimpleTextItem>
+
 #include <QGraphicsRectItem>
+
+#include <QPainterPath>
 #include <QPointF>
+#include <QBrush>
+#include <QColor>
+#include <cassert>
 
 LayoutGraphicsItem::LayoutGraphicsItem(QGraphicsItem *parent)
  : QGraphicsItemGroup(parent)
 {
 }
 
+void LayoutGraphicsItem::setHighlighted(bool highlight) noexcept
+{
+  mIsHighlighted = highlight;
+  updateRectangleBrush();
+}
+
 void LayoutGraphicsItem::createRectangle(const QSizeF & size) noexcept
 {
   QPointF rectTopLeft(0.0, 0.0);
   QRectF rect(rectTopLeft, size);
-  auto rectItem = new QGraphicsRectItem(rect);
-  addToGroup(rectItem);
+  mRectangle = new QGraphicsRectItem(rect);
+  addToGroup(mRectangle);
+  updateRectangleBrush();
 }
 
 /// \todo assert rect was created before !
+
+void LayoutGraphicsItem::updateRectangleBrush() noexcept
+{
+  assert(mRectangle != nullptr);
+
+  QBrush brush(Qt::SolidPattern);
+
+  if(mIsHighlighted){
+    brush.setColor(Qt::red);
+  }else{
+    brush.setColor(Qt::blue);
+  }
+
+  mRectangle->setBrush(brush);
+}
 
 void LayoutGraphicsItem::createLabel(const QString & text) noexcept
 {

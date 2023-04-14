@@ -26,6 +26,32 @@
  * \enduml
  *
  *
+ * \section ElfTableViews ELF table views
+ *
+ * UML overview of the section and segment table models
+ *
+ * \startuml "section and segment table models"
+ * !include apps/ElfLayoutViewer/diagrams/TableViews.puml
+ * \enduml
+ *
+ * \section Elf_HeaderTables_LayoutView_Map Mapping items between header tables and layout items
+ *
+ * When the user selects a section in the section header table
+ * or a segment in the program header table,
+ * we want to highlight it in the layout view.
+ *
+ * To achieve this, we have to find the graphics item in the layout view
+ * that corresponds to the selected item in the header table view.
+ *
+ * \startuml "header tables and layout items mapping"
+ * !include apps/ElfLayoutViewer/diagrams/HeaderTable_LayoutView_Map.puml
+ * \enduml
+ *
+ * \sa HeaderTableGraphicsItemMap
+ * \sa SectionHeaderTableGraphicsItemMap
+ * \sa ProgramHeaderTableGraphicsItemMap
+ *
+ *
  * \section ElfMainWindow Main window
  *
  * UML overview of the main window

@@ -10,8 +10,8 @@
 #ifndef SECTION_GRAPHICS_ITEM_H
 #define SECTION_GRAPHICS_ITEM_H
 
+#include "Mdt/ExecutableFile/Elf/SectionHeader.h"
 #include "LayoutGraphicsItem.h"
-// #include <QGraphicsItemGroup>
 #include <QString>
 
 #include <QtGlobal>
@@ -19,18 +19,10 @@
 #include <cstdint>
 #include <string>
 
-/*! \brief
- *
- * \todo give a correct name, make correct API !!
- */
-// struct SecSegGraphicsItemData
-// {
-//   uint64_t offset = 0;
-//   uint64_t size = 100;
-//   std::string name;
-// };
 
 /*! \brief
+ *
+ * \todo give a correct name, make correct API !
  */
 class SectionGraphicsItemData
 {
@@ -66,6 +58,14 @@ class SectionGraphicsItemData
     return mSize;
   }
 
+  /*! \brief
+   *
+   * \todo rename to something like last address.
+   * Then, offset + size - 1
+   * Also handle the 0 size case
+   *
+   * Also document the choice of not using end, because its confusing with STL terminology (pas last element)
+   */
   qulonglong end() const noexcept
   {
     return mOffset + mSize;
@@ -87,7 +87,16 @@ class SectionGraphicsItemData
   }
 
   static
-  SectionGraphicsItemData fromSectionHeader() noexcept;
+  SectionGraphicsItemData fromSectionHeader(const Mdt::ExecutableFile::Elf::SectionHeader & header) noexcept
+  {
+    SectionGraphicsItemData data;
+
+    data.setOffset(header.offset);
+    data.setSize(header.size);
+    data.setName(header.name);
+
+    return data;
+  }
 
  private:
 
@@ -105,12 +114,6 @@ class SectionGraphicsItem : public LayoutGraphicsItem
   /*! \brief Constructor
    */
   explicit SectionGraphicsItem(const SectionGraphicsItemData & data, QGraphicsItem *parent = nullptr);
-
- private:
-
-//   void createLeftLabel(const QString & text) noexcept;
-//   void createCenterLabel(const QString & text) noexcept;
-//   void createRightLabel(const QString & text) noexcept;
 };
 
 
