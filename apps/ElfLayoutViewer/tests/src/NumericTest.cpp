@@ -49,3 +49,21 @@ TEST_CASE("qreal_from_uint64")
     REQUIRE_THAT( qreal_from_uint64(1'000'000'000), WithinRel(1'000'000'000.0) );
   }
 }
+
+TEST_CASE("qreal_from_qulonglong")
+{
+  SECTION("0")
+  {
+    REQUIRE_THAT( qreal_from_qulonglong(0), WithinRel(0.0) );
+  }
+
+  SECTION("1")
+  {
+    REQUIRE_THAT( qreal_from_qulonglong(1), WithinRel(1.0) );
+  }
+
+  SECTION("1'000'000'000")
+  {
+    REQUIRE_THAT( qreal_from_qulonglong(1'000'000'000), WithinRel(1'000'000'000.0) );
+  }
+}

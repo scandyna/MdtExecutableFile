@@ -35,4 +35,16 @@ qreal qreal_from_uint64(uint64_t u) noexcept
   return static_cast<qreal>(u);
 }
 
+/*! \brief Get a qreal out from a uint64_t
+ *
+ * \sa https://doc.qt.io/qt-6/qttypes.html#qreal-typedef
+ * \sa https://doc.qt.io/qt-6/qttypes.html#qulonglong-typedef
+ */
+inline
+constexpr
+qreal qreal_from_qulonglong(qulonglong u) noexcept
+{
+  return static_cast<qreal>(u);
+}
+
 #endif // #ifndef NUMERIC_H
