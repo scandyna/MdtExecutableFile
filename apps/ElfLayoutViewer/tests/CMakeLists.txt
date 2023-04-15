@@ -3,3 +3,18 @@
 
 include(MdtAddTest)
 
+mdt_add_test(
+  NAME ELV_NumericTest
+  TARGET elv_NumericTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/NumericTest.cpp
+)
+
+mdt_add_test(
+  NAME ELV_SectionGraphicsItemDataTest
+  TARGET elv_SectionGraphicsItemDataTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/SectionGraphicsItemDataTest.cpp
+)
