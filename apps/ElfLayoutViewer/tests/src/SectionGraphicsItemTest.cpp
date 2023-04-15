@@ -7,22 +7,22 @@
  ** Copyright (C) 2023-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#ifndef SECTION_GRAPHICS_ITEM_H
-#define SECTION_GRAPHICS_ITEM_H
-
+#include "SectionGraphicsItemTest.h"
+#include "SectionGraphicsItem.h"
 #include "SectionGraphicsItemData.h"
-#include "LayoutGraphicsItem.h"
+#include <QLatin1String>
 
 
-/*! \brief Represents a ELF section as a Qt graphics item
- */
-class SectionGraphicsItem : public LayoutGraphicsItem
+void SectionGraphicsItemTest::construct()
 {
- public:
+  SectionGraphicsItemData data;
+  data.setOffset(100);
+  data.setSize(50);
+  data.setName(".dynstr");
 
-  /*! \brief Constructor
-   */
-  explicit SectionGraphicsItem(const SectionGraphicsItemData & data, QGraphicsItem *parent = nullptr);
-};
+  SectionGraphicsItem item(data);
 
-#endif // #ifndef SECTION_GRAPHICS_ITEM_H
+  QCOMPARE( item.x(), 100.0 );
+}
+
+QTEST_MAIN(SectionGraphicsItemTest)

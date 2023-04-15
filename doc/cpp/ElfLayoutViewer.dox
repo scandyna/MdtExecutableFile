@@ -18,6 +18,8 @@
  * !include apps/ElfLayoutViewer/diagrams/LayoutViewItems.puml
  * \enduml
  *
+ * \sa SectionGraphicsItem
+ *
  *
  * UML overview of the graphics scene
  *

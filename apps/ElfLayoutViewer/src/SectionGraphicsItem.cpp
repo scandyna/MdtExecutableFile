@@ -15,21 +15,16 @@
 #include <QLatin1Char>
 #include <QLatin1String>
 
-#include <QDebug>
 
 SectionGraphicsItem::SectionGraphicsItem(const SectionGraphicsItemData & data, QGraphicsItem *parent)
  : LayoutGraphicsItem(parent)
 {
   const qulonglong sectionOffset = data.offset();
-  const qulonglong sectionEnd = data.end();
+  const qulonglong sectionEnd = data.lastAddress();
 
   QSizeF rectSize(data.sizeF(), 20.0);
 
   createRectangle(rectSize);
-
-  qDebug() << "item shape: " << shape();
-  qDebug() << "item shape boundingRect: " << shape().boundingRect();
-  qDebug() << "item boundingRect: " << boundingRect();
 
   /// \todo should we inherit also QObject to use tr() ?
 
