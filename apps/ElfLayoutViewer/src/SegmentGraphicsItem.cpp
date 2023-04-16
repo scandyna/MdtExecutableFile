@@ -15,7 +15,7 @@ SegmentGraphicsItem::SegmentGraphicsItem(const SegmentGraphicsItemData & data, Q
  : LayoutGraphicsItem(parent)
 {
   const qulonglong sectionOffset = data.offset();
-  const qulonglong sectionEnd = data.end();
+  const qulonglong sectionEnd = data.lastAddress();
 
   QSizeF rectSize(data.sizeF(), 20.0);
 

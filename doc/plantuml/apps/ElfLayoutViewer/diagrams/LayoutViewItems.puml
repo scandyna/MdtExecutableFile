@@ -11,6 +11,8 @@ class LayoutGraphicsItem {
 QGraphicsItemGroup <|-- LayoutGraphicsItem
 
 
+' Sections
+
 class SectionGraphicsItemData {
 }
 
@@ -21,13 +23,22 @@ class SectionGraphicsItem {
 }
 
 LayoutGraphicsItem <|-- SectionGraphicsItem
-SectionGraphicsItem *--> SectionGraphicsItemData
+SectionGraphicsItem --> SectionGraphicsItemData
+
+
+' Segments
+
+class SegmentGraphicsItemData {
+}
+
+SegmentGraphicsItemData ..> Mdt.ExecutableFile.Elf.ProgramHeader
 
 
 class SegmentGraphicsItem {
 }
 
 LayoutGraphicsItem <|-- SegmentGraphicsItem
+SegmentGraphicsItem --> SegmentGraphicsItemData
 
 hide methods
 hide attributes

@@ -12,6 +12,14 @@ mdt_add_test(
 )
 
 mdt_add_test(
+  NAME ELV_SegmentTypeStringTest
+  TARGET elv_SegmentTypeStringTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/SegmentTypeStringTest.cpp
+)
+
+mdt_add_test(
   NAME ELV_SectionGraphicsItemDataTest
   TARGET elv_SectionGraphicsItemDataTest
   DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
@@ -25,4 +33,12 @@ mdt_add_test(
   DEPENDENCIES Mdt::ElfLayoutViewer Qt5::Test
   SOURCE_FILES
     src/SectionGraphicsItemTest.cpp
+)
+
+mdt_add_test(
+  NAME ELV_SegmentGraphicsItemDataTest
+  TARGET elv_SegmentGraphicsItemDataTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/SegmentGraphicsItemDataTest.cpp
 )

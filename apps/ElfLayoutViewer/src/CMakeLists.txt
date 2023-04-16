@@ -3,9 +3,11 @@
 
 add_library(ElfLayoutViewer STATIC
   Numeric.cpp
+  SegmentTypeString.cpp
   LayoutGraphicsItem.cpp
   SectionGraphicsItemData.cpp
   SectionGraphicsItem.cpp
+  SegmentGraphicsItemData.cpp
   SegmentGraphicsItem.cpp
   SectionHeaderTableModel.cpp
   ProgramHeaderTableModel.cpp

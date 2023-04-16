@@ -7,23 +7,17 @@
  ** Copyright (C) 2023-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#ifndef SEGMENT_GRAPHICS_ITEM_H
-#define SEGMENT_GRAPHICS_ITEM_H
-
 #include "SegmentGraphicsItemData.h"
-#include "LayoutGraphicsItem.h"
-#include <QString>
+#include "SegmentTypeString.h"
 
-
-/*! \brief Represents a ELF segment as a Qt graphics item
- */
-class SegmentGraphicsItem : public LayoutGraphicsItem
+SegmentGraphicsItemData
+SegmentGraphicsItemData::fromProgramHeader(const Mdt::ExecutableFile::Elf::ProgramHeader & header) noexcept
 {
- public:
+  SegmentGraphicsItemData data;
 
-  /*! \brief Constructor
-   */
-  explicit SegmentGraphicsItem(const SegmentGraphicsItemData & data, QGraphicsItem *parent = nullptr);
-};
+  data.setOffset(header.offset);
+  data.setSize(header.filesz);
+  data.mName = segmentTypeShortName( header.segmentType() );
 
-#endif // #ifndef SEGMENT_GRAPHICS_ITEM_H
+  return data;
+}
