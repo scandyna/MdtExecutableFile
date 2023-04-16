@@ -23,7 +23,7 @@
 
 #include <vector>
 
-/*! \brief
+/*! \brief Mapping between header tables and layout view items
  *
  * When the user selects a section in the section header table
  * or a segment in the program header table,
@@ -41,18 +41,19 @@
  *
  * \section Rationale Rationale
  *
- * Index by name ?
- * -> does not work for segments (many ones called LOAD)
- * (maybe slow lookup)
+ * Here are some ideas  explored to solve the problem.
  *
- * Index by model index ?
- * -> what about proxy models (sort, maybe others) ?
+ * Should we index by name ?
+ * This will not work for segments, because they don't have names,
+ * but types. It is common, as example, to have many LOAD segments.
+ * (Also, this could maybe be a bit slow).
  *
- * Index by offset ?
- * -> does not work for segments (many ones could start from the same offset)
- * -> we want to ba able to display corrupted files (having f.ex. 2 section starting from same offset
+ * Should we use model indexes ?
+ * This seems complex and confusing when using sort proxy models.
  *
- * Index by some ID ?
+ * Should we index by offset ?
+ * - does not work for segments (many ones could start from the same offset)
+ * - we want to be able to display corrupted files (having f.ex. 2 sections starting from same offset
  */
 class HeaderTableGraphicsItemMap
 {

@@ -36,6 +36,10 @@
  * !include apps/ElfLayoutViewer/diagrams/TableViews.puml
  * \enduml
  *
+ * \sa SectionHeaderTableModel
+ * \sa ProgramHeaderTableModel
+ *
+ *
  * \section Elf_HeaderTables_LayoutView_Map Mapping items between header tables and layout items
  *
  * When the user selects a section in the section header table

@@ -25,15 +25,6 @@ struct SectionHeaderTableModelData
 };
 
 /*! \brief Qt item model to represent a section header table
- *
- * \todo Should we store pointers to SectionGraphicsItem ?
- * pro:
- *  - could be simple and efficient to select in the layout view
- * cons:
- *  - dependency
- *  - dangling pointers (no QPointer possible)
- *
- * -> should create a class that maps this..
  */
 class SectionHeaderTableModel : public QAbstractTableModel
 {

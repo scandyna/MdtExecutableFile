@@ -9,9 +9,9 @@
  *****************************************************************************************/
 #include "SectionHeaderTableModel.h"
 
+
 // #include <QLatin1String>
 
-/// \todo for tests, see also https://doc.qt.io/qt-5/qabstractitemmodeltester.html
 
 SectionHeaderTableModel::SectionHeaderTableModel(QObject *parent)
  : QAbstractTableModel(parent)
