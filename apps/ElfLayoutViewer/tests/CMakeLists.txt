@@ -42,3 +42,11 @@ mdt_add_test(
   SOURCE_FILES
     src/SegmentGraphicsItemDataTest.cpp
 )
+
+mdt_add_test(
+  NAME ELV_SegmentGraphicsItemTest
+  TARGET elv_SegmentGraphicsItemTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Qt5::Test
+  SOURCE_FILES
+    src/SegmentGraphicsItemTest.cpp
+)
