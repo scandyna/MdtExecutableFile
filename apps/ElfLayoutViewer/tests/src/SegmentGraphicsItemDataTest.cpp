@@ -95,8 +95,6 @@ TEST_CASE("name")
   REQUIRE( data.name() == QLatin1String("LOAD") );
 }
 
-/// \todo make SegmentType to string that is common for layout view and program header table model -> SegmentTypeString.h ?
-
 TEST_CASE("fromProgramHeader")
 {
   ProgramHeader header;
