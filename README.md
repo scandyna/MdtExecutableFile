@@ -1,6 +1,7 @@
 # MdtExecutableFile
 
 [![pipeline status](https://gitlab.com/scandyna/mdtexecutablefile/badges/experimental/pipeline.svg)](https://gitlab.com/scandyna/mdtexecutablefile/-/pipelines/latest)
+[![CodeScene Code Health](https://codescene.io/projects/38146/status-badges/code-health)](https://codescene.io/projects/38146)
 
 C++ library to help reading and partially editing some binary files like ELF and Pe.
 
