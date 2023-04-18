@@ -170,7 +170,9 @@ void MainWindow::selectItemInLayoutView(const QModelIndex & current, const QMode
   /// \todo Important: map to the model index !
   qDebug() << "current: " << current << " , previous" << previous;
 
-  auto item = mSectionHeaderTableGraphicsItemMap.itemForId( mSectionHeaderTableModel.data(current, Qt::UserRole).toInt() );
+  /// \todo maybe check returned variant
+  auto id = HeaderTableGraphicsItemMapId::fromQVariant( mSectionHeaderTableModel.data(current, Qt::UserRole) );
+  auto item = mSectionHeaderTableGraphicsItemMap.itemForId(id);
 
   item->setHighlighted(true);
   if(mTrackSelectedItem){
@@ -178,7 +180,9 @@ void MainWindow::selectItemInLayoutView(const QModelIndex & current, const QMode
   }
 
   if( previous.isValid() ){
-    item = mSectionHeaderTableGraphicsItemMap.itemForId( mSectionHeaderTableModel.data(previous, Qt::UserRole).toInt() );
+    /// \todo maybe check returned variant
+    id = HeaderTableGraphicsItemMapId::fromQVariant( mSectionHeaderTableModel.data(previous, Qt::UserRole) );
+    item = mSectionHeaderTableGraphicsItemMap.itemForId(id);
     item->setHighlighted(false);
   }
 
