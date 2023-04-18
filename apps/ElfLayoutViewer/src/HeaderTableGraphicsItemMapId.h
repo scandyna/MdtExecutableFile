@@ -28,14 +28,6 @@ class HeaderTableGraphicsItemMapId
     return mValue;
   }
 
-  /*! \brief Get the value of this ID as a Qt friendly type
-   */
-//   [[deprecated]]
-//   constexpr
-//   qulonglong valueAsQulonglong() const noexcept
-//   {
-//   }
-
   /*! \brief Get the value of this ID as a QVariant
    */
   QVariant toQVariant() const noexcept;
