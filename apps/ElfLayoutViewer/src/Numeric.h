@@ -12,6 +12,7 @@
 
 #include <QtGlobal>
 #include <cstdint>
+#include <cstddef>
 
 /*! \brief Get a qulonglong out from a uint64_t
  *
@@ -20,6 +21,28 @@
 inline
 constexpr
 qulonglong qulonglong_from_uint64(uint64_t u) noexcept
+{
+  return u;
+}
+
+/*! \brief Get a qulonglong out from a std::size_t
+ *
+ * \sa https://doc.qt.io/qt-6/qttypes.html#qulonglong-typedef
+ */
+inline
+constexpr
+qulonglong qulonglong_from_size_t(std::size_t s) noexcept
+{
+  return s;
+}
+
+/*! \brief Get a std::size_t out from a qulonglong
+ *
+ * \sa https://doc.qt.io/qt-6/qttypes.html#qulonglong-typedef
+ */
+inline
+constexpr
+std::size_t size_t_from_qulonglong(qulonglong u) noexcept
 {
   return u;
 }

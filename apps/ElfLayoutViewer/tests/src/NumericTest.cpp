@@ -32,6 +32,42 @@ TEST_CASE("qulonglong_from_uint64")
   }
 }
 
+TEST_CASE("qulonglong_from_size_t")
+{
+  SECTION("0")
+  {
+    REQUIRE( qulonglong_from_size_t(0) == 0 );
+  }
+
+  SECTION("1")
+  {
+    REQUIRE( qulonglong_from_size_t(1) == 1 );
+  }
+
+  SECTION("max")
+  {
+    REQUIRE( qulonglong_from_size_t(0xffffffffffffffff) == 0xffffffffffffffff );
+  }
+}
+
+TEST_CASE("size_t_from_qulonglong")
+{
+  SECTION("0")
+  {
+    REQUIRE( size_t_from_qulonglong(0) == 0 );
+  }
+
+  SECTION("1")
+  {
+    REQUIRE( size_t_from_qulonglong(1) == 1 );
+  }
+
+  SECTION("max")
+  {
+    REQUIRE( size_t_from_qulonglong(0xffffffffffffffff) == 0xffffffffffffffff );
+  }
+}
+
 TEST_CASE("qreal_from_uint64")
 {
   SECTION("0")
