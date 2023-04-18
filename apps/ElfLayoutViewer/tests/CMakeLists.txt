@@ -50,3 +50,39 @@ mdt_add_test(
   SOURCE_FILES
     src/SegmentGraphicsItemTest.cpp
 )
+
+mdt_add_test(
+  NAME ELV_HeaderTableGraphicsItemMapIdTest
+  TARGET elv_HeaderTableGraphicsItemMapIdTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/HeaderTableGraphicsItemMapIdTest.cpp
+)
+
+mdt_add_test(
+  NAME ELV_HeaderTableGraphicsItemMapTest
+  TARGET elv_HeaderTableGraphicsItemMapTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/HeaderTableGraphicsItemMapTest.cpp
+)
+
+
+mdt_add_test(
+  NAME ELV_SectionHeaderTableModelTest
+  TARGET elv_SectionHeaderTableModelTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/SectionHeaderTableModelTest.cpp
+)
+
+# Some tests that depends on Qt TestLib,
+# like QAbstractItemModelTester
+# (available in the public API since Qt 5.11)
+mdt_add_test(
+  NAME ELV_SectionHeaderTableModelQTLTest
+  TARGET elv_SectionHeaderTableModelQTLTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Qt5::Test
+  SOURCE_FILES
+    src/SectionHeaderTableModelQTLTest.cpp
+)
