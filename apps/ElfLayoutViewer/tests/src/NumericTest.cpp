@@ -10,9 +10,37 @@
 #include "catch2/catch.hpp"
 #include "Catch2QString.h"
 #include "Numeric.h"
+#include <limits>
 
 using Catch::Matchers::WithinRel;
 
+
+TEST_CASE("int_canHoldValueOf_size_t")
+{
+  SECTION("0")
+  {
+    REQUIRE( int_canHoldValueOf_size_t(0) );
+  }
+
+  SECTION("1")
+  {
+    REQUIRE( int_canHoldValueOf_size_t(1) );
+  }
+
+  SECTION("int max")
+  {
+    constexpr std::size_t intMax = std::numeric_limits<int>::max();
+
+    REQUIRE( int_canHoldValueOf_size_t(intMax) );
+  }
+
+  SECTION("int max + 1")
+  {
+    constexpr std::size_t value = std::numeric_limits<int>::max() + static_cast<std::size_t>(1);
+
+    REQUIRE( !int_canHoldValueOf_size_t(value) );
+  }
+}
 
 TEST_CASE("qulonglong_from_uint64")
 {

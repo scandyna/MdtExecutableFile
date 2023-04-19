@@ -13,6 +13,16 @@
 #include <QtGlobal>
 #include <cstdint>
 #include <cstddef>
+#include <limits>
+
+/*! \brief Check if an int can represent given value of type std::size_t
+ */
+inline
+constexpr
+bool int_canHoldValueOf_size_t(std::size_t s) noexcept
+{
+  return s <= std::numeric_limits<int>::max();
+}
 
 /*! \brief Get a qulonglong out from a uint64_t
  *
