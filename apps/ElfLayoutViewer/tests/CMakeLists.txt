@@ -86,3 +86,22 @@ mdt_add_test(
   SOURCE_FILES
     src/SectionHeaderTableModelQTLTest.cpp
 )
+
+mdt_add_test(
+  NAME ELV_ProgramHeaderTableModelTest
+  TARGET elv_ProgramHeaderTableModelTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ProgramHeaderTableModelTest.cpp
+)
+
+# Some tests that depends on Qt TestLib,
+# like QAbstractItemModelTester
+# (available in the public API since Qt 5.11)
+mdt_add_test(
+  NAME ELV_ProgramHeaderTableModelQTLTest
+  TARGET elv_ProgramHeaderTableModelQTLTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Qt5::Test
+  SOURCE_FILES
+    src/ProgramHeaderTableModelQTLTest.cpp
+)
