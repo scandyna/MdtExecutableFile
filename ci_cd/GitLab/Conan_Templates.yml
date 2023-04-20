@@ -17,6 +17,7 @@ include:
       - ci_cd/GitLab/*
       - CMakeLists.txt
       - conanfile.py
+      - apps/**/*
       - libs/**/*
       - packaging/conan/**/*
       when: on_success

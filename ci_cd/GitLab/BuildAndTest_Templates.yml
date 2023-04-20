@@ -9,6 +9,7 @@ include:
     - changes:
       - CMakeLists.txt
       - conanfile.py
+      - apps/**/*
       - libs/**/*
       - .gitlab-ci.yml
       - ci_cd/GitLab/*
