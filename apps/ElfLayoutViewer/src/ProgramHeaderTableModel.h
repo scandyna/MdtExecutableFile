@@ -56,7 +56,7 @@ class ProgramHeaderTableModel : public AbstractTableModel
 
   /*! \brief Add a segment from given header to this table
    */
-  void addSection(const Mdt::ExecutableFile::Elf::ProgramHeader & header, HeaderTableGraphicsItemMapId id) noexcept;
+  void addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header, HeaderTableGraphicsItemMapId id) noexcept;
 
   /*! \brief Returns the row count
    */

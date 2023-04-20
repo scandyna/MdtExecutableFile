@@ -17,7 +17,7 @@ ProgramHeaderTableModel::ProgramHeaderTableModel(QObject *parent)
 {
 }
 
-void ProgramHeaderTableModel::addSection(const Mdt::ExecutableFile::Elf::ProgramHeader & header, HeaderTableGraphicsItemMapId id) noexcept
+void ProgramHeaderTableModel::addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header, HeaderTableGraphicsItemMapId id) noexcept
 {
   mTable.emplace_back(header, id);
 }
