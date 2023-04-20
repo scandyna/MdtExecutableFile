@@ -17,6 +17,7 @@
 #include <QGraphicsScene>
 
 #include "SectionHeaderTableModel.h"
+#include "ProgramHeaderTableModel.h"
 
 #include <QModelIndex>
 
@@ -61,19 +62,22 @@ class MainWindow : public QMainWindow
   void layoutViewZoomFitBest();
 
   void setTrackSelectedItem(bool enable);
-  void selectItemInLayoutView(const QModelIndex & current, const QModelIndex & previous);
+  void selectSectionItemInLayoutView(const QModelIndex & current, const QModelIndex & previous);
+  void selectSegmentItemInLayoutView(const QModelIndex & current, const QModelIndex & previous);
 
 
  private:
 
   QGraphicsScene mScene;
   SectionHeaderTableModel mSectionHeaderTableModel;
+  ProgramHeaderTableModel mProgramHeaderTableModel;
   Ui::MainWindow mUi;
 
 //   SectionGraphicsItem *mFakeCurrentSectionItem;
   bool mTrackSelectedItem = false;
 
   HeaderTableGraphicsItemMap mSectionHeaderTableGraphicsItemMap;
+  HeaderTableGraphicsItemMap mProgramHeaderTableGraphicsItemMap;
 };
 
 #endif // #ifndef MAIN_WINDOW_H
