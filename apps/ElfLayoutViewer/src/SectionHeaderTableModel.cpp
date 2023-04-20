@@ -14,7 +14,7 @@
 
 
 SectionHeaderTableModel::SectionHeaderTableModel(QObject *parent)
- : QAbstractTableModel(parent)
+ : AbstractTableModel(parent)
 {
 }
 
@@ -41,39 +41,6 @@ int SectionHeaderTableModel::columnCount(const QModelIndex & parent) const
   return 3;
 }
 
-QVariant SectionHeaderTableModel::data(const QModelIndex & index, int role) const
-{
-  if( !indexIsValidAndInRange(index) ){
-    return QVariant();
-  }
-
-  if(role == Qt::DisplayRole){
-    return displayRoleData(index);
-  }
-
-  assert( index.row() >= 0 );
-  const size_t row = static_cast<size_t>( index.row() );
-
-  if(role == Qt::UserRole){
-    return mTable[row].mId.toQVariant();
-  }
-
-  return QVariant();
-}
-
-QVariant SectionHeaderTableModel::headerData(int section, Qt::Orientation orientation, int role) const
-{
-  if(orientation != Qt::Horizontal){
-    return QAbstractTableModel::headerData(section, orientation, role);
-  }
-
-  if(role == Qt::DisplayRole){
-    return horizontalDisplayRoleHeaderData(section);
-  }
-
-  return QAbstractTableModel::headerData(section, orientation, role);
-}
-
 int SectionHeaderTableModel::rowCountFromTableSize() const noexcept
 {
   const std::size_t row = mTable.size();
@@ -83,31 +50,6 @@ int SectionHeaderTableModel::rowCountFromTableSize() const noexcept
   }
 
   return 0;
-}
-
-bool SectionHeaderTableModel::indexIsValidAndInRange(const QModelIndex & index) const noexcept
-{
-  if( !index.isValid() ){
-    return false;
-  }
-
-  const int row = index.row();
-  if(row < 0){
-    return false;
-  }
-  if( row >= rowCountFromTableSize() ){
-    return false;
-  }
-
-  const int column = index.column();
-  if(column < 0){
-    return false;
-  }
-  if( column >= columnCount() ){
-    return false;
-  }
-
-  return true;
 }
 
 QString SectionHeaderTableModel::offsetToString(uint64_t offset) const noexcept
@@ -146,6 +88,16 @@ QVariant SectionHeaderTableModel::displayRoleData(const QModelIndex & index) con
   }
 
   return QVariant();
+}
+
+QVariant SectionHeaderTableModel::userRoleData(const QModelIndex & index) const noexcept
+{
+  assert( indexIsValidAndInRange(index) );
+
+  assert( index.row() >= 0 );
+  const size_t row = static_cast<size_t>( index.row() );
+
+  return mTable[row].mId.toQVariant();
 }
 
 QVariant SectionHeaderTableModel::horizontalDisplayRoleHeaderData(int columnNumber) const noexcept

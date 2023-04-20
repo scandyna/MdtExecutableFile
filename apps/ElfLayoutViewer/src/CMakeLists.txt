@@ -11,6 +11,7 @@ add_library(ElfLayoutViewer STATIC
   SegmentGraphicsItem.cpp
   HeaderTableGraphicsItemMapId.cpp
   HeaderTableGraphicsItemMap.cpp
+  AbstractTableModel.cpp
   SectionHeaderTableModel.cpp
   ProgramHeaderTableModel.cpp
 )

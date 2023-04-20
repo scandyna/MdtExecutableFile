@@ -10,9 +10,9 @@
 #ifndef SECTION_HEADER_TABLE_MODEL_H
 #define SECTION_HEADER_TABLE_MODEL_H
 
+#include "AbstractTableModel.h"
 #include "HeaderTableGraphicsItemMapId.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeader.h"
-#include <QAbstractTableModel>
 #include <QModelIndex>
 #include <QVariant>
 #include <QString>
@@ -37,7 +37,7 @@ struct SectionHeaderTableModelData
 
 /*! \brief Qt item model to represent a section header table
  */
-class SectionHeaderTableModel : public QAbstractTableModel
+class SectionHeaderTableModel : public AbstractTableModel
 {
   Q_OBJECT
 
@@ -68,22 +68,14 @@ class SectionHeaderTableModel : public QAbstractTableModel
    */
   int columnCount( const QModelIndex & parent = QModelIndex() ) const override;
 
-  /*! \brief Returns data
-   */
-  QVariant data(const QModelIndex & index, int role) const override;
-
-  /*! \brief Get the header data
-   */
-  QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
-
  private:
 
   int rowCountFromTableSize() const noexcept;
-  bool indexIsValidAndInRange(const QModelIndex & index) const noexcept;
   QString offsetToString(uint64_t offset) const noexcept;
   QString sizeToString(uint64_t size) const noexcept;
-  QVariant displayRoleData(const QModelIndex & index) const noexcept;
-  QVariant horizontalDisplayRoleHeaderData(int columnNumber) const noexcept;
+  QVariant displayRoleData(const QModelIndex & index) const noexcept override;
+  QVariant userRoleData(const QModelIndex & index) const noexcept override;
+  QVariant horizontalDisplayRoleHeaderData(int columnNumber) const noexcept override;
 
   std::vector<SectionHeaderTableModelData> mTable;
 };

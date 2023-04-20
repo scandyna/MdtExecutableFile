@@ -16,4 +16,7 @@ class ProgramHeaderTableModel {
 
 AbstractTableModel <|--ProgramHeaderTableModel
 
+hide methods
+hide attributes
+
 @enduml
