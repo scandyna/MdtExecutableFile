@@ -26,6 +26,7 @@ build_Windows_gcc8_x86_64_Debug:
 test_Windows_gcc8_x86_64_Debug:
   variables:
     BUILD_TYPE: Debug
+    QT_DEBUG_PLUGINS: 1
   extends:
     - .buildAndTest_Windows_gcc8_x86_64
     - .test_windows
