@@ -97,9 +97,6 @@ class LayoutViewSegmentLayoutItem
  * This is a helper to position items to a scene.
  * Also, moving items has not to be supported
  * because we do not support editing a ELF file.
- * 
- * \todo To find a position in the row,
- * we should use integer offsets and sizes
  */
 class LayoutViewSegmentLayout
 {
