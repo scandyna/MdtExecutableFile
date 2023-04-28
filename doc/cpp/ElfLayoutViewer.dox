@@ -62,8 +62,6 @@
  * \enduml
  *
  * \sa HeaderTableGraphicsItemMap
- * \sa SectionHeaderTableGraphicsItemMap
- * \sa ProgramHeaderTableGraphicsItemMap
  *
  *
  * \section ElfMainWindow Main window

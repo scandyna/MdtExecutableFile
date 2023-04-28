@@ -6,17 +6,6 @@ class HeaderTableGraphicsItemMap {
 HeaderTableGraphicsItemMap --> "*" LayoutGraphicsItem
 
 
-class SectionHeaderTableGraphicsItemMap {
-}
-
-SectionHeaderTableGraphicsItemMap *--> HeaderTableGraphicsItemMap
-
-
-class ProgramHeaderTableGraphicsItemMap {
-}
-
-ProgramHeaderTableGraphicsItemMap *--> HeaderTableGraphicsItemMap
-
 
 hide methods
 hide attributes

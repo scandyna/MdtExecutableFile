@@ -31,24 +31,6 @@
 #include <vector>
 
 
-/*! \brief
- */
-class SectionHeaderTableGraphicsItemMap
-{
- private:
-
-  HeaderTableGraphicsItemMap mMap;
-};
-
-/*! \brief
- */
-class ProgramHeaderTableGraphicsItemMap
-{
- private:
-
-  HeaderTableGraphicsItemMap mMap;
-};
-
 
 /*! \internal
  */

@@ -17,7 +17,7 @@ class SomeCreate {
 
 ' SomeCreate --> CreateLayoutViewScene
 SomeCreate --> CreateSectionHeaderTableModel
-SomeCreate --> SectionHeaderTableGraphicsItemMap
+SomeCreate --> "2" HeaderTableGraphicsItemMap
 
 class MainWindowController {
 }
