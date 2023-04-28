@@ -11,6 +11,9 @@
 #define MAIN_WINDOW_H
 
 #include "HeaderTableGraphicsItemMap.h"
+#include "LayoutViewGraphicsScene.h"
+#include "Mdt/ExecutableFile/Elf/SectionHeader.h"
+#include "Mdt/ExecutableFile/Elf/ProgramHeader.h"
 #include "ui_MainWindow.h"
 #include <QMainWindow>
 
@@ -18,10 +21,12 @@
 
 #include "SectionHeaderTableModel.h"
 #include "ProgramHeaderTableModel.h"
+#include <QSortFilterProxyModel>
 
 #include <QModelIndex>
 
 #include "SectionGraphicsItem.h"
+#include "SegmentGraphicsItem.h"
 
 #include <vector>
 
@@ -44,6 +49,7 @@ class ProgramHeaderTableGraphicsItemMap
   HeaderTableGraphicsItemMap mMap;
 };
 
+
 /*! \internal
  */
 class MainWindow : public QMainWindow
@@ -62,18 +68,22 @@ class MainWindow : public QMainWindow
   void layoutViewZoomFitBest();
 
   void setTrackSelectedItem(bool enable);
-  void selectSectionItemInLayoutView(const QModelIndex & current, const QModelIndex & previous);
-  void selectSegmentItemInLayoutView(const QModelIndex & current, const QModelIndex & previous);
+  void selectSectionItemInLayoutView(const QModelIndex & viewCurrent, const QModelIndex & viewPrevious);
+  void selectSegmentItemInLayoutView(const QModelIndex & viewCurrent, const QModelIndex & viewPrevious);
 
 
  private:
 
-  QGraphicsScene mScene;
+  void addSection(const Mdt::ExecutableFile::Elf::SectionHeader & header) noexcept;
+  void addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header) noexcept;
+
+  LayoutViewGraphicsScene mScene;
+  QSortFilterProxyModel mSectionHeaderTableSortFilterModel;
   SectionHeaderTableModel mSectionHeaderTableModel;
+  QSortFilterProxyModel mProgramHeaderTableSortFilterModel;
   ProgramHeaderTableModel mProgramHeaderTableModel;
   Ui::MainWindow mUi;
 
-//   SectionGraphicsItem *mFakeCurrentSectionItem;
   bool mTrackSelectedItem = false;
 
   HeaderTableGraphicsItemMap mSectionHeaderTableGraphicsItemMap;

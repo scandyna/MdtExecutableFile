@@ -34,7 +34,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QTableView" name="sectionHeaderTableView"/>
+          <widget class="QTableView" name="sectionHeaderTableView">
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -48,7 +52,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QTableView" name="programHeaderTableView"/>
+          <widget class="QTableView" name="programHeaderTableView">
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>

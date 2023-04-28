@@ -43,15 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
   interpSection.size = 0x1c;
   interpSection.name = ".interp";
 
-
-//   mFakeCurrentSectionItem = new SectionGraphicsItem(interpSection);
-  auto item = new SectionGraphicsItem( SectionGraphicsItemData::fromSectionHeader(interpSection) );
-
-  mScene.addItem( item );
-
-  auto id = mSectionHeaderTableGraphicsItemMap.registerItem(item);
-
-  mSectionHeaderTableModel.addSection(interpSection, id);
+  addSection(interpSection);
 
 
   SectionHeader dynstrSection;
@@ -59,28 +51,15 @@ MainWindow::MainWindow(QWidget *parent)
   dynstrSection.size = 0x2a0b;
   dynstrSection.name = ".dynstr";
 
-  item = new SectionGraphicsItem( SectionGraphicsItemData::fromSectionHeader(dynstrSection) );
-  mScene.addItem(item);
+  addSection(dynstrSection);
 
-  id = mSectionHeaderTableGraphicsItemMap.registerItem(item);
-
-  mSectionHeaderTableModel.addSection(dynstrSection, id);
-
-
-  const qreal firstSegmentY = 100.0;
-  qreal segmentY = firstSegmentY;
 
   ProgramHeader phdrHeader;
   phdrHeader.setSegmentType(SegmentType::ProgramHeaderTable);
   phdrHeader.offset = 0x40;
   phdrHeader.filesz = 0x1f8;
 
-  auto phdrSegItem = new SegmentGraphicsItem( SegmentGraphicsItemData::fromProgramHeader(phdrHeader) );
-  phdrSegItem->moveBy(0.0, segmentY);
-  mScene.addItem(phdrSegItem);
-
-  id = mProgramHeaderTableGraphicsItemMap.registerItem(phdrSegItem);
-  mProgramHeaderTableModel.addSegment(phdrHeader, id);
+  addSegment(phdrHeader);
 
 
   ProgramHeader interpHeader;
@@ -88,13 +67,7 @@ MainWindow::MainWindow(QWidget *parent)
   interpHeader.offset = 0x238;
   interpHeader.filesz = 0x1c;
 
-
-  auto interpSegItem = new SegmentGraphicsItem( SegmentGraphicsItemData::fromProgramHeader(interpHeader) );
-  interpSegItem->moveBy(0.0, segmentY);
-  mScene.addItem(interpSegItem);
-
-  id = mProgramHeaderTableGraphicsItemMap.registerItem(interpSegItem);
-  mProgramHeaderTableModel.addSegment(interpHeader, id);
+  addSegment(interpHeader);
 
 
   ProgramHeader load1Header;
@@ -102,16 +75,31 @@ MainWindow::MainWindow(QWidget *parent)
   load1Header.offset = 0;
   load1Header.filesz = 0x6eceb;
 
-  auto load1SegItem = new SegmentGraphicsItem( SegmentGraphicsItemData::fromProgramHeader(load1Header) );
-  segmentY += load1SegItem->boundingRect().height();
-  load1SegItem->moveBy(0.0, segmentY);
-  mScene.addItem(load1SegItem);
+  addSegment(load1Header);
 
-  id = mProgramHeaderTableGraphicsItemMap.registerItem(load1SegItem);
-  mProgramHeaderTableModel.addSegment(load1Header, id);
+  ProgramHeader load2Header;
+  load2Header.setSegmentType(SegmentType::Load);
+  load2Header.offset = 0x150;
+  load2Header.filesz = 0x230;
+
+  addSegment(load2Header);
+
+  ProgramHeader load3Header;
+  load3Header.setSegmentType(SegmentType::Load);
+  load3Header.offset = 0x150;
+  load3Header.filesz = 0x230;
+
+  addSegment(load3Header);
+
+  ProgramHeader dynamicHeader;
+  dynamicHeader.setSegmentType(SegmentType::Dynamic);
+  dynamicHeader.offset = 0x254;
+  dynamicHeader.filesz = 0x200;
+
+  addSegment(dynamicHeader);
 
 
-  mUi.layoutView->setScene(&mScene);
+  mUi.layoutView->setScene( mScene.scene() );
   mUi.layoutView->centerOn(0.0, 0.0);
   mUi.layoutView->show();
 
@@ -123,11 +111,13 @@ MainWindow::MainWindow(QWidget *parent)
   mUi.actionZoom_best->setEnabled(false);
 
 
-  mUi.sectionHeaderTableView->setModel(&mSectionHeaderTableModel);
+  mSectionHeaderTableSortFilterModel.setSourceModel(&mSectionHeaderTableModel);
+  mUi.sectionHeaderTableView->setModel(&mSectionHeaderTableSortFilterModel);
   mUi.sectionHeaderTableView->resizeColumnsToContents();
   mUi.sectionHeaderTableView->resizeRowsToContents();
 
-  mUi.programHeaderTableView->setModel(&mProgramHeaderTableModel);
+  mProgramHeaderTableSortFilterModel.setSourceModel(&mProgramHeaderTableModel);
+  mUi.programHeaderTableView->setModel(&mProgramHeaderTableSortFilterModel);
   mUi.programHeaderTableView->resizeColumnsToContents();
   mUi.programHeaderTableView->resizeRowsToContents();
 
@@ -175,9 +165,16 @@ void MainWindow::setTrackSelectedItem(bool enable)
   qDebug() << "Track selected item: " << mTrackSelectedItem;
 }
 
-void MainWindow::selectSectionItemInLayoutView(const QModelIndex & current, const QModelIndex & previous)
+void MainWindow::selectSectionItemInLayoutView(const QModelIndex & viewCurrent, const QModelIndex & viewPrevious)
 {
-  /// \todo Important: map to the model index !
+  /*
+   * Given indexes comes from the view
+   * (or its selection model).
+   * We have to map them to the model.
+   */
+  const QModelIndex current = mSectionHeaderTableSortFilterModel.mapToSource(viewCurrent);
+  const QModelIndex previous = mSectionHeaderTableSortFilterModel.mapToSource(viewPrevious);
+
   qDebug() << "current: " << current << " , previous" << previous;
 
   /// \todo maybe check returned variant
@@ -195,20 +192,18 @@ void MainWindow::selectSectionItemInLayoutView(const QModelIndex & current, cons
     item = mSectionHeaderTableGraphicsItemMap.itemForId(id);
     item->setHighlighted(false);
   }
-
-
-//   if( index.row() == 2 ){
-//     mFakeCurrentSectionItem->setHighlighted(true);
-//     if(mTrackSelectedItem){
-//       mUi.layoutView->centerOn(mFakeCurrentSectionItem);
-//     }
-//   }else{
-//     mFakeCurrentSectionItem->setHighlighted(false);
-//   }
 }
 
-void MainWindow::selectSegmentItemInLayoutView(const QModelIndex & current, const QModelIndex & previous)
+void MainWindow::selectSegmentItemInLayoutView(const QModelIndex & viewCurrent, const QModelIndex & viewPrevious)
 {
+  /*
+   * Given indexes comes from the view
+   * (or its selection model).
+   * We have to map them to the model.
+   */
+  const QModelIndex current = mProgramHeaderTableSortFilterModel.mapToSource(viewCurrent);
+  const QModelIndex previous = mProgramHeaderTableSortFilterModel.mapToSource(viewPrevious);
+
   /// \todo maybe check returned variant
   auto id = HeaderTableGraphicsItemMapId::fromQVariant( mProgramHeaderTableModel.data(current, Qt::UserRole) );
   auto item = mProgramHeaderTableGraphicsItemMap.itemForId(id);
@@ -224,4 +219,22 @@ void MainWindow::selectSegmentItemInLayoutView(const QModelIndex & current, cons
     item = mProgramHeaderTableGraphicsItemMap.itemForId(id);
     item->setHighlighted(false);
   }
+}
+
+void MainWindow::addSection(const Mdt::ExecutableFile::Elf::SectionHeader & header) noexcept
+{
+  auto item = mScene.addSection(header);
+
+  const auto id = mSectionHeaderTableGraphicsItemMap.registerItem(item);
+
+  mSectionHeaderTableModel.addSection(header, id);
+}
+
+void MainWindow::addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header) noexcept
+{
+  auto item = mScene.addSegment(header);
+
+  auto id = mProgramHeaderTableGraphicsItemMap.registerItem(item);
+
+  mProgramHeaderTableModel.addSegment(header, id);
 }
