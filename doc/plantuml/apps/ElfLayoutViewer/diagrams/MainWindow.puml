@@ -1,10 +1,11 @@
 @startuml
 !include HeaderTable_LayoutView_Map.puml
+!include TableViews.puml
 
 class MainWindow {
 }
 
-class CreateLayoutViewScene {
+class LayoutViewGraphicsScene {
 }
 
 
@@ -14,15 +15,20 @@ class CreateSectionHeaderTableModel {
 class SomeCreate {
 }
 
-SomeCreate --> CreateLayoutViewScene
+' SomeCreate --> CreateLayoutViewScene
 SomeCreate --> CreateSectionHeaderTableModel
 SomeCreate --> SectionHeaderTableGraphicsItemMap
 
 class MainWindowController {
 }
 
+MainWindowController *--> LayoutViewGraphicsScene
+MainWindowController *--> SectionHeaderTableModel
+MainWindowController *--> ProgramHeaderTableModel
+MainWindowController *--> "2" HeaderTableGraphicsItemMap
 MainWindowController --> MainWindow
-MainWindowController --> SomeCreate
+
+' MainWindowController --> SomeCreate
 
 hide methods
 hide attributes

@@ -21,6 +21,14 @@
  * \sa SectionGraphicsItem
  * \sa SegmentGraphicsItem
  *
+ * \subsection ELV_LayoutViewSegmentLayout ELF layout view's segment layout
+ *
+ *
+ * \sa LayoutViewSegmentLayout
+ *
+ *
+ * \subsection ELV_LayoutViewGraphicsScene ELF layout view's graphics scene
+ *
  * UML overview of the graphics scene
  *
  * \startuml "Graphics view scene"
