@@ -14,6 +14,8 @@ add_library(ElfLayoutViewer STATIC
   AbstractTableModel.cpp
   SectionHeaderTableModel.cpp
   ProgramHeaderTableModel.cpp
+  LayoutViewSegmentLayout.cpp
+  LayoutViewGraphicsScene.cpp
 )
 add_library(Mdt::ElfLayoutViewer ALIAS ElfLayoutViewer)
 

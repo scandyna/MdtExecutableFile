@@ -105,3 +105,27 @@ mdt_add_test(
   SOURCE_FILES
     src/ProgramHeaderTableModelQTLTest.cpp
 )
+
+mdt_add_test(
+  NAME ELV_LayoutViewSegmentLayoutItemTest
+  TARGET elv_LayoutViewSegmentLayoutItemTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/LayoutViewSegmentLayoutItemTest.cpp
+)
+
+mdt_add_test(
+  NAME ELV_LayoutViewSegmentLayoutTest
+  TARGET elv_LayoutViewSegmentLayoutTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/LayoutViewSegmentLayoutTest.cpp
+)
+
+mdt_add_test(
+  NAME ELV_LayoutViewGraphicsSceneTest
+  TARGET elv_LayoutViewGraphicsSceneTest
+  DEPENDENCIES Mdt::ElfLayoutViewer Qt5::Test
+  SOURCE_FILES
+    src/LayoutViewGraphicsSceneTest.cpp
+)
