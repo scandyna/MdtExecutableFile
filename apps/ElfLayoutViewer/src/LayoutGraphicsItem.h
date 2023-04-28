@@ -13,6 +13,7 @@
 #include <QGraphicsItemGroup>
 #include <QGraphicsRectItem>
 #include <QSizeF>
+#include <QRectF>
 #include <QString>
 
 
@@ -26,9 +27,16 @@ class LayoutGraphicsItem : public QGraphicsItemGroup
    */
   explicit LayoutGraphicsItem(QGraphicsItem *parent = nullptr);
 
-  /*! \brief
+  /*! \brief Set this item as highlighted
    */
   void setHighlighted(bool highlight) noexcept;
+
+  /*! \brief Get the height of this item
+   */
+  qreal height() const noexcept
+  {
+    return boundingRect().height();
+  }
 
  protected:
 

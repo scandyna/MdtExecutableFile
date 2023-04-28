@@ -33,8 +33,7 @@ SegmentGraphicsItem *LayoutViewGraphicsScene::addSegment(const Mdt::ExecutableFi
 
   auto item = new SegmentGraphicsItem( SegmentGraphicsItemData::fromProgramHeader(header) );
 
-  /// \todo should use a helper from LayoutGraphicsItem to get the height
-  const auto layoutItem = LayoutViewSegmentLayoutItem::fromHeaderAndHeight( header, item->boundingRect().height() );
+  const auto layoutItem = LayoutViewSegmentLayoutItem::fromHeaderAndHeight( header, item->height() );
   const QPointF itemPos = mSegmentLayout.findPositionAndAddItem(layoutItem);
 
   item->setPos(itemPos);
@@ -46,8 +45,7 @@ SegmentGraphicsItem *LayoutViewGraphicsScene::addSegment(const Mdt::ExecutableFi
 
 void LayoutViewGraphicsScene::updateSectionsAreaHeight(const SectionGraphicsItem & item) noexcept
 {
-  /// \todo should use a helper from LayoutGraphicsItem to get the height
-  const qreal itemHeight = item.boundingRect().height();
+  const qreal itemHeight = item.height();
 
   mSectionsAreaHeight = std::max(mSectionsAreaHeight, itemHeight);
 }
