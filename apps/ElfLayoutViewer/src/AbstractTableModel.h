@@ -26,6 +26,13 @@ class AbstractTableModel : public QAbstractTableModel
    */
   explicit AbstractTableModel(QObject *parent = nullptr);
 
+  /*! \brief Get the value for the sort role
+   */
+  int sortRole() const noexcept
+  {
+    return Qt::UserRole + 1;
+  }
+
   /*! \brief Returns data
    */
   QVariant data(const QModelIndex & index, int role) const override;
@@ -43,6 +50,9 @@ class AbstractTableModel : public QAbstractTableModel
 
   virtual
   QVariant userRoleData(const QModelIndex & index) const noexcept = 0;
+
+  virtual
+  QVariant sortRoleData(const QModelIndex & index) const noexcept = 0;
 
   virtual
   QVariant horizontalDisplayRoleHeaderData(int columnNumber) const noexcept = 0;

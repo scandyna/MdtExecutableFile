@@ -28,6 +28,10 @@ QVariant AbstractTableModel::data(const QModelIndex & index, int role) const
     return userRoleData(index);
   }
 
+  if( role == sortRole() ){
+    return sortRoleData(index);
+  }
+
   return QVariant();
 }
 

@@ -112,11 +112,13 @@ MainWindow::MainWindow(QWidget *parent)
 
 
   mSectionHeaderTableSortFilterModel.setSourceModel(&mSectionHeaderTableModel);
+  mSectionHeaderTableSortFilterModel.setSortRole( mSectionHeaderTableModel.sortRole() );
   mUi.sectionHeaderTableView->setModel(&mSectionHeaderTableSortFilterModel);
   mUi.sectionHeaderTableView->resizeColumnsToContents();
   mUi.sectionHeaderTableView->resizeRowsToContents();
 
   mProgramHeaderTableSortFilterModel.setSourceModel(&mProgramHeaderTableModel);
+  mProgramHeaderTableSortFilterModel.setSortRole( mProgramHeaderTableModel.sortRole() );
   mUi.programHeaderTableView->setModel(&mProgramHeaderTableSortFilterModel);
   mUi.programHeaderTableView->resizeColumnsToContents();
   mUi.programHeaderTableView->resizeRowsToContents();

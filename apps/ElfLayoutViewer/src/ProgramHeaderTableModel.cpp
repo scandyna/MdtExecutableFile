@@ -99,6 +99,26 @@ QVariant ProgramHeaderTableModel::userRoleData(const QModelIndex & index) const 
   return mTable[row].mId.toQVariant();
 }
 
+QVariant ProgramHeaderTableModel::sortRoleData(const QModelIndex & index) const noexcept
+{
+  assert( indexIsValidAndInRange(index) );
+
+  assert( index.row() >= 0 );
+  const size_t row = static_cast<size_t>( index.row() );
+
+  const auto column = static_cast<Column>( index.column() );
+  switch(column){
+    case Column::Type:
+      return typeToString( mTable[row].mHeader.segmentType() );
+    case Column::Offset:
+      return qulonglong_from_uint64(mTable[row].mHeader.offset);
+    case Column::Size:
+      return qulonglong_from_uint64(mTable[row].mHeader.filesz);
+  }
+
+  return QVariant();
+}
+
 QVariant ProgramHeaderTableModel::horizontalDisplayRoleHeaderData(int columnNumber) const noexcept
 {
   const auto column = static_cast<Column>(columnNumber);

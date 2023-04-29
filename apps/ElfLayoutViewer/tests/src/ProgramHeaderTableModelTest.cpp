@@ -46,6 +46,7 @@ TEST_CASE("dimensions")
 TEST_CASE("data")
 {
   ProgramHeaderTableModel model;
+  const int sortRole = model.sortRole();
 
   SECTION("1 header")
   {
@@ -60,14 +61,17 @@ TEST_CASE("data")
     QModelIndex index = model.index(0, typeColumn);
     REQUIRE( model.data(index, Qt::DisplayRole).toString() == QLatin1String("LOAD") );
     REQUIRE( model.data(index, Qt::UserRole).toULongLong() == 1 );
+    REQUIRE( model.data(index, sortRole).toString() == QLatin1String("LOAD") );
 
     index = model.index(0, offsetColumn);
     REQUIRE( !model.data(index, Qt::DisplayRole).toString().isEmpty() );
     REQUIRE( model.data(index, Qt::UserRole).toULongLong() == 1 );
+    REQUIRE( model.data(index, sortRole).toULongLong() == 10 );
 
     index = model.index(0, sizeColumn);
     REQUIRE( !model.data(index, Qt::DisplayRole).toString().isEmpty() );
     REQUIRE( model.data(index, Qt::UserRole).toULongLong() == 1 );
+    REQUIRE( model.data(index, sortRole).toULongLong() == 25 );
   }
 }
 

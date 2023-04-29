@@ -73,6 +73,7 @@ class ProgramHeaderTableModel : public AbstractTableModel
   QString sizeToString(uint64_t size) const noexcept;
   QVariant displayRoleData(const QModelIndex & index) const noexcept override;
   QVariant userRoleData(const QModelIndex & index) const noexcept override;
+  QVariant sortRoleData(const QModelIndex & index) const noexcept override;
   QVariant horizontalDisplayRoleHeaderData(int columnNumber) const noexcept override;
 
   std::vector<ProgramHeaderTableModelData> mTable;
