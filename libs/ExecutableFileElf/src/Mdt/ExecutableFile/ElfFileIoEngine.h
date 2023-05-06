@@ -14,7 +14,6 @@
 #include "Mdt/ExecutableFile/FileOpenError.h"
 #include "Mdt/ExecutableFile/ExecutableFileReadError.h"
 #include "Mdt/ExecutableFile/RPath.h"
-#include "mdt_executablefilecore_export.h"
 #include <QObject>
 #include <QString>
 #include <QStringList>
@@ -39,7 +38,7 @@ namespace Mdt{ namespace ExecutableFile{
    * \sa ExecutableFileReader
    * \sa ExecutableFileWriter
    */
-  class MDT_EXECUTABLEFILECORE_EXPORT ElfFileIoEngine : public AbstractExecutableFileIoEngine
+  class ElfFileIoEngine : public AbstractExecutableFileIoEngine
   {
     Q_OBJECT
 

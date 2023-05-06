@@ -335,3 +335,32 @@ if( UNIX AND (NOT APPLE) )
   add_dependencies(elfFileWriterTest_Unix TestBinaries)
 
 endif()
+
+mdt_add_test(
+  NAME ElfFileIoEngineTest
+  TARGET elfFileIoEngineTest
+  DEPENDENCIES Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfFileIoEngineTest.cpp
+)
+
+if( UNIX AND (NOT APPLE) )
+
+  # Uses project compiled test binaries
+  mdt_add_test(
+    NAME ElfFileIoEngineTest_Unix
+    TARGET elfFileIoEngineTest_Unix
+    DEPENDENCIES Mdt::ExecutableFileElf TestBinariesUtils TestLib Mdt::Catch2Main Mdt::Catch2Qt
+    SOURCE_FILES
+      src/ElfFileIoEngineTest_Unix.cpp
+  )
+
+endif()
+
+mdt_add_test(
+  NAME ElfFileIoEngineErrorTest
+  TARGET elfFileIoEngineErrorTest
+  DEPENDENCIES Mdt::ExecutableFileElf Mdt::ExecutableFileElf TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/ElfFileIoEngineErrorTest.cpp
+)
