@@ -14,18 +14,13 @@
 #include "Mdt/ExecutableFile/FileOpenError.h"
 #include "Mdt/ExecutableFile/ExecutableFileReadError.h"
 #include "Mdt/ExecutableFile/RPath.h"
+#include "Mdt/ExecutableFile/Elf/FileIoEngine.h"
 #include <QObject>
 #include <QString>
 #include <QStringList>
-#include <memory>
+
 
 namespace Mdt{ namespace ExecutableFile{
-
-  namespace Elf{
-
-    class FileIoEngine;
-
-  } // namespace Elf{
 
   /*! \brief Minimal ELF file I/O engine
    *
@@ -47,8 +42,6 @@ namespace Mdt{ namespace ExecutableFile{
     /*! \brief Construct a file I/O engine
      */
     explicit ElfFileIoEngine(QObject *parent = nullptr);
-
-    ~ElfFileIoEngine() noexcept;
 
     /*! \brief Get the shared object name (SONAME) of the file this engine refers to
      *
@@ -72,7 +65,7 @@ namespace Mdt{ namespace ExecutableFile{
     RPath doGetRunPath() override;
     void doSetRunPath(const RPath & rPath) override;
 
-    std::unique_ptr<Elf::FileIoEngine> mImpl;
+    Elf::FileIoEngine mImpl;
   };
 
 }} // namespace Mdt{ namespace ExecutableFile{

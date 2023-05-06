@@ -9,7 +9,6 @@
  *****************************************************************************************/
 #include "ElfFileIoEngine.h"
 #include "Mdt/ExecutableFile/RPathElf.h"
-#include "Mdt/ExecutableFile/Elf/FileIoEngine.h"
 #include "Mdt/ExecutableFile/Elf/FileWriterFile.h"
 #include "Mdt/ExecutableFile/ByteArraySpan.h"
 #include <cassert>
@@ -17,12 +16,7 @@
 namespace Mdt{ namespace ExecutableFile{
 
 ElfFileIoEngine::ElfFileIoEngine(QObject *parent)
-  : AbstractExecutableFileIoEngine(parent),
-    mImpl( std::make_unique<Elf::FileIoEngine>() )
-{
-}
-
-ElfFileIoEngine::~ElfFileIoEngine() noexcept
+  : AbstractExecutableFileIoEngine(parent)
 {
 }
 
@@ -35,17 +29,17 @@ QString ElfFileIoEngine::getSoName()
 
   const ByteArraySpan map = mapIfRequired(0, size);
 
-  return mImpl->getSoName(map);
+  return mImpl.getSoName(map);
 }
 
 void ElfFileIoEngine::newFileOpen(const QString & fileName)
 {
-  mImpl->setFileName(fileName);
+  mImpl.setFileName(fileName);
 }
 
 void ElfFileIoEngine::fileClosed()
 {
-  mImpl->clear();
+  mImpl.clear();
 }
 
 bool ElfFileIoEngine::doSupportsPlatform(const Platform & platform) const noexcept
@@ -77,7 +71,7 @@ Platform ElfFileIoEngine::doGetFilePlatform()
   using Elf::OsAbiType;
   using Elf::Machine;
 
-  const int64_t size = mImpl->minimumSizeToReadFileHeader();
+  const int64_t size = mImpl.minimumSizeToReadFileHeader();
 
   if( fileSize() < size ){
     const QString message = tr("file '%1' is to small to read the file header")
@@ -87,7 +81,7 @@ Platform ElfFileIoEngine::doGetFilePlatform()
 
   const ByteArraySpan map = mapIfRequired(0, size);
 
-  const FileHeader fileHeader = mImpl->getFileHeader(map);
+  const FileHeader fileHeader = mImpl.getFileHeader(map);
   assert( fileHeader.seemsValid() );
 
   const auto fileFormat = ExecutableFileFormat::Elf;
@@ -125,7 +119,7 @@ bool ElfFileIoEngine::doIsExecutableOrSharedLibrary()
   using Elf::ObjectFileType;
   using Elf::extractFileHeader;
 
-  const int64_t size = mImpl->minimumSizeToReadFileHeader();
+  const int64_t size = mImpl.minimumSizeToReadFileHeader();
 
   if( fileSize() < size ){
     return false;
@@ -155,7 +149,7 @@ bool ElfFileIoEngine::doContainsDebugSymbols()
 
   const ByteArraySpan map = mapIfRequired(0, size);
 
-  return mImpl->containsDebugSymbols(map);
+  return mImpl.containsDebugSymbols(map);
 }
 
 QStringList ElfFileIoEngine::doGetNeededSharedLibraries()
@@ -164,7 +158,7 @@ QStringList ElfFileIoEngine::doGetNeededSharedLibraries()
 
   const ByteArraySpan map = mapIfRequired(0, size);
 
-  return mImpl->getNeededSharedLibraries(map);
+  return mImpl.getNeededSharedLibraries(map);
 }
 
 RPath ElfFileIoEngine::doGetRunPath()
@@ -173,7 +167,7 @@ RPath ElfFileIoEngine::doGetRunPath()
 
   const ByteArraySpan map = mapIfRequired(0, size);
 
-  return mImpl->getRunPath(map);
+  return mImpl.getRunPath(map);
 }
 
 void ElfFileIoEngine::doSetRunPath(const RPath & rPath)
@@ -188,7 +182,7 @@ void ElfFileIoEngine::doSetRunPath(const RPath & rPath)
   connect(&file, &FileWriterFile::message, this, &ElfFileIoEngine::message);
   connect(&file, &FileWriterFile::verboseMessage, this, &ElfFileIoEngine::verboseMessage);
 
-  mImpl->readToFileWriterFile(file, map);
+  mImpl.readToFileWriterFile(file, map);
 
   file.setRunPath( RPathElf::rPathToString(rPath) );
 
@@ -198,7 +192,7 @@ void ElfFileIoEngine::doSetRunPath(const RPath & rPath)
     map = mapIfRequired(0, newSize);
   }
 
-  mImpl->setFileWriterToMap(map, file);
+  mImpl.setFileWriterToMap(map, file);
 }
 
 }} // namespace Mdt{ namespace ExecutableFile{
