@@ -10,5 +10,7 @@
 
 /*! \mainpage Overview
  *
+ * \ref libs_dox
+ *
  * \ref ElfLayoutViewer_dox
  */

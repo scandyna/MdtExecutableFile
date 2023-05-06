@@ -1,0 +1,16 @@
+@startuml
+!define QtCore ../../Qt/Core
+!include ExecutableFileIoEngine.puml
+!include QtCore/QObject.puml
+
+namespace Mdt.ExecutableFile {
+
+  class ExecutableFileReader {
+  }
+
+  ExecutableFileReader *--> ExecutableFileIoEngine
+}
+
+QObject <|-- Mdt.ExecutableFile.ExecutableFileReader
+
+@enduml

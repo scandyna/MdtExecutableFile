@@ -1,0 +1,16 @@
+@startuml
+!define QtCore ../../Qt/Core
+!include ExecutableFileIoEngine.puml
+!include QtCore/QObject.puml
+
+namespace Mdt.ExecutableFile {
+
+  class ExecutableFileWriter {
+  }
+
+  ExecutableFileWriter *--> ExecutableFileIoEngine
+}
+
+QObject <|-- Mdt.ExecutableFile.ExecutableFileWriter
+
+@enduml

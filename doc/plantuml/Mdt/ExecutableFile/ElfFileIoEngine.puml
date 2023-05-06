@@ -1,0 +1,15 @@
+@startuml
+!include AbstractExecutableFileIoEngine.puml
+!include Elf/FileIoEngine.puml
+
+namespace Mdt.ExecutableFile {
+
+  class ElfFileIoEngine {
+  }
+
+  AbstractExecutableFileIoEngine <|-- ElfFileIoEngine
+}
+
+Mdt.ExecutableFile.ElfFileIoEngine *--> Mdt.ExecutableFile.Elf.FileIoEngine
+
+@enduml

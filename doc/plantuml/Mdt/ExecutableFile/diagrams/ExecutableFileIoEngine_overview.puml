@@ -1,0 +1,13 @@
+@startuml
+!include ../AbstractExecutableFileIoEngine.puml
+!include ../ExecutableFileIoEngine.puml
+!include ../ElfFileIoEngine.puml
+!include ../PeFileIoEngine.puml
+!include ../ExecutableFileReader.puml
+!include ../ExecutableFileWriter.puml
+
+hide methods
+hide attributes
+hide QObject
+
+@enduml

@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: LGPL-3.0-or-later
+/****************************************************************************************
+ **
+ ** MdtExecutableFile
+ ** C++ library to help reading and partially editing some binary files like ELF and Pe.
+ **
+ ** Copyright (C) 2023-2023 Philippe Steinmann.
+ **
+ *****************************************************************************************/
+
+/** \page libs_dox Libraries
+ *
+ * \section libs_ExecutableFile_Core ExecutableFile Core (public API)
+ *
+ * \sa Mdt::ExecutableFile::ExecutableFileReader
+ * \sa Mdt::ExecutableFile::ExecutableFileWriter
+ *
+ * \section ExecutableFileIoEngine_overview Executable file I/O engine overview
+ *
+ * \startuml "Executable file I/O engine overview"
+ * !include Mdt/ExecutableFile/diagrams/ExecutableFileIoEngine_overview.puml
+ * 
+ * \enduml
+ */

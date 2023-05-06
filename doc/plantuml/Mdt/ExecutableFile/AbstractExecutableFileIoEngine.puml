@@ -1,0 +1,14 @@
+@startuml
+!define QtCore ../../Qt/Core
+!include QtCore/QObject.puml
+
+namespace Mdt.ExecutableFile {
+
+  class AbstractExecutableFileIoEngine {
+  }
+
+}
+
+QObject <|-- Mdt.ExecutableFile.AbstractExecutableFileIoEngine
+
+@enduml
