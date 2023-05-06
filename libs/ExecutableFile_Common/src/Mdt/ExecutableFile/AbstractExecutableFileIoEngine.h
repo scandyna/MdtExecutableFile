@@ -18,7 +18,7 @@
 #include "Mdt/ExecutableFile/RPath.h"
 #include "Mdt/ExecutableFile/FileMapper.h"
 #include "Mdt/ExecutableFile/ByteArraySpan.h"
-#include "mdt_executablefilecore_export.h"
+#include "mdt_executablefile_common_export.h"
 #include <QObject>
 #include <QFile>
 #include <QFileInfo>
@@ -30,7 +30,7 @@ namespace Mdt{ namespace ExecutableFile{
 
   /*! \brief Interface to a minimal executable file I/O engine
    */
-  class MDT_EXECUTABLEFILECORE_EXPORT AbstractExecutableFileIoEngine : public QObject
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT AbstractExecutableFileIoEngine : public QObject
   {
     Q_OBJECT
 

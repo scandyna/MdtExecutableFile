@@ -23,6 +23,7 @@ add_library(Mdt_ExecutableFile_Common
   Mdt/ExecutableFile/ExecutableFileReaderUtils.cpp
   Mdt/ExecutableFile/RPathFormatError.cpp
   Mdt/ExecutableFile/RPath.cpp
+  Mdt/ExecutableFile/AbstractExecutableFileIoEngine.cpp
 )
 
 add_library(Mdt::ExecutableFile_Common ALIAS Mdt_ExecutableFile_Common)
