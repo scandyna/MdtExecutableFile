@@ -11,7 +11,6 @@
 #define MDT_EXECUTABLE_FILE_CORE_PE_FILE_IO_ENGINE_H
 
 #include "Mdt/ExecutableFile/AbstractExecutableFileIoEngine.h"
-#include "mdt_executablefilecore_export.h"
 #include <memory>
 
 namespace Mdt{ namespace ExecutableFile{
@@ -33,7 +32,7 @@ namespace Mdt{ namespace ExecutableFile{
    * \sa ExecutableFileReader
    * \sa ExecutableFileWriter
    */
-  class MDT_EXECUTABLEFILECORE_EXPORT PeFileIoEngine : public AbstractExecutableFileIoEngine
+  class PeFileIoEngine : public AbstractExecutableFileIoEngine
   {
     Q_OBJECT
 

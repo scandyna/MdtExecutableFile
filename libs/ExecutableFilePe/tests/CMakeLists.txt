@@ -11,3 +11,32 @@ mdt_add_test(
   SOURCE_FILES
     src/PeFileReaderTest.cpp
 )
+
+mdt_add_test(
+  NAME PeFileIoEngineTest
+  TARGET peFileIoEngineTest
+  DEPENDENCIES Mdt::ExecutableFilePe TestLib Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/PeFileIoEngineTest.cpp
+)
+
+if(WIN32)
+
+  # Uses project compiled test binaries
+  mdt_add_test(
+    NAME PeFileIoEngineTest_Windows
+    TARGET peFileIoEngineTest_Windows
+    DEPENDENCIES Mdt::ExecutableFilePe TestBinariesUtils TestLib Mdt::Catch2Main Mdt::Catch2Qt
+    SOURCE_FILES
+      src/PeFileIoEngineTest_Windows.cpp
+  )
+
+endif()
+
+mdt_add_test(
+  NAME PeFileIoEngineErrorTest
+  TARGET peFileIoEngineErrorTest
+  DEPENDENCIES Mdt::ExecutableFilePe Mdt::Catch2Main Mdt::Catch2Qt
+  SOURCE_FILES
+    src/PeFileIoEngineErrorTest.cpp
+)

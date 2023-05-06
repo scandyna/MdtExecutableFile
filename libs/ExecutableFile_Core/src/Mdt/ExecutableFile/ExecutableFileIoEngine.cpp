@@ -11,7 +11,7 @@
 #include "Mdt/ExecutableFile/AbstractExecutableFileIoEngine.h"
 #include "Mdt/ExecutableFile/ExecutableFileFormat.h"
 #include "Mdt/ExecutableFile/ElfFileIoEngine.h"
-#include "PeFileIoEngine.h"
+#include "Mdt/ExecutableFile/PeFileIoEngine.h"
 #include <cassert>
 
 

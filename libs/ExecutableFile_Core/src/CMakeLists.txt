@@ -5,7 +5,6 @@ include(MdtInstallLibrary)
 
 
 add_library(Mdt_ExecutableFileCore
-  Mdt/ExecutableFile/PeFileIoEngine.cpp
   Mdt/ExecutableFile/ExecutableFileIoEngine.cpp
   Mdt/ExecutableFile/ExecutableFileReader.cpp
   Mdt/ExecutableFile/ExecutableFileWriter.cpp
