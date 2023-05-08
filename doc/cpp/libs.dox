@@ -19,6 +19,11 @@
  *
  * \startuml "Executable file I/O engine overview"
  * !include Mdt/ExecutableFile/diagrams/ExecutableFileIoEngine_overview.puml
- * 
+ * \enduml
+ *
+ * \section libs_ExecutableFileElf_SectionHeader ELF section header
+ *
+ * \startuml "Elf section header overview"
+ * !include Mdt/ExecutableFile/diagrams/ExecutableFileElf_SectionHeader.puml
  * \enduml
  */

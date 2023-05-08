@@ -1,0 +1,12 @@
+@startuml
+!include SectionHeader.puml
+
+namespace Mdt.ExecutableFile.Elf {
+
+  class SectionHeaderTable {
+  }
+
+  SectionHeaderTable *--> "*" SectionHeader
+}
+
+@enduml

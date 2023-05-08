@@ -1,0 +1,8 @@
+@startuml
+!include ../Elf/SectionHeader.puml
+!include ../Elf/SectionHeaderTable.puml
+
+hide methods
+hide attributes
+
+@enduml
