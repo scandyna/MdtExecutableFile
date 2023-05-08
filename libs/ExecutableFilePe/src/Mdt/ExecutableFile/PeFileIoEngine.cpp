@@ -15,7 +15,7 @@
 namespace Mdt{ namespace ExecutableFile{
 
 PeFileIoEngine::PeFileIoEngine(QObject *parent)
-  : AbstractExecutableFileIoEngine(parent),
+  : ExecutableFileIoEngineImplementationInterface(parent),
     mImpl( std::make_unique<Pe::FileReader>() )
 {
 }

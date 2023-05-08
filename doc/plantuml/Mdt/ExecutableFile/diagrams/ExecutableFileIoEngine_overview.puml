@@ -1,5 +1,5 @@
 @startuml
-!include ../AbstractExecutableFileIoEngine.puml
+!include ../ExecutableFileIoEngineImplementationInterface.puml
 !include ../ExecutableFileIoEngine.puml
 !include ../ElfFileIoEngine.puml
 !include ../PeFileIoEngine.puml

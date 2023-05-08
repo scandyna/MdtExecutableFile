@@ -21,7 +21,7 @@
 
 namespace Mdt{ namespace ExecutableFile{
 
-  class AbstractExecutableFileIoEngine;
+  class ExecutableFileIoEngineImplementationInterface;
 
   /*! \internal Helper class to instanciate a executable file I/O engine
    */
@@ -84,7 +84,7 @@ namespace Mdt{ namespace ExecutableFile{
      * \pre this engine must have a file open
      * \sa isOpen()
      */
-    std::unique_ptr<AbstractExecutableFileIoEngine> & engine() noexcept
+    std::unique_ptr<ExecutableFileIoEngineImplementationInterface> & engine() noexcept
     {
       assert( isOpen() );
 
@@ -100,7 +100,7 @@ namespace Mdt{ namespace ExecutableFile{
 
     void instanciateEngine(ExecutableFileFormat format) noexcept;
 
-    std::unique_ptr<AbstractExecutableFileIoEngine> mIoEngine;
+    std::unique_ptr<ExecutableFileIoEngineImplementationInterface> mIoEngine;
   };
 
 }} // namespace Mdt{ namespace ExecutableFile{

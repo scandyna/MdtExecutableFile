@@ -7,8 +7,8 @@
  ** Copyright (C) 2021-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#ifndef MDT_EXECUTABLE_FILE_ABSTRACT_EXECUTABLE_FILE_IO_ENGINE_H
-#define MDT_EXECUTABLE_FILE_ABSTRACT_EXECUTABLE_FILE_IO_ENGINE_H
+#ifndef MDT_EXECUTABLE_FILE_EXECUTABLE_FILE_IO_ENGINE_IMPLEMENTATION_INTERFACE_H
+#define MDT_EXECUTABLE_FILE_EXECUTABLE_FILE_IO_ENGINE_IMPLEMENTATION_INTERFACE_H
 
 #include "Mdt/ExecutableFile/FileOpenError.h"
 #include "Mdt/ExecutableFile/ExecutableFileReadError.h"
@@ -30,7 +30,7 @@ namespace Mdt{ namespace ExecutableFile{
 
   /*! \brief Interface to a minimal executable file I/O engine
    */
-  class MDT_EXECUTABLEFILE_COMMON_EXPORT AbstractExecutableFileIoEngine : public QObject
+  class MDT_EXECUTABLEFILE_COMMON_EXPORT ExecutableFileIoEngineImplementationInterface : public QObject
   {
     Q_OBJECT
 
@@ -38,7 +38,7 @@ namespace Mdt{ namespace ExecutableFile{
 
     /*! \brief Construct a file I/O engine
      */
-    explicit AbstractExecutableFileIoEngine(QObject *parent = nullptr);
+    explicit ExecutableFileIoEngineImplementationInterface(QObject *parent = nullptr);
 
     /*! \brief Check if this I/O engine supports given platform
      */
@@ -52,7 +52,7 @@ namespace Mdt{ namespace ExecutableFile{
      * This method does not check if \a fileInfo refers to a executable file of any format.
      *
      * \pre \a fileInfo must have a file path set
-     * \pre this engine must not allready have a file open
+     * \pre this engine must not already have a file open
      * \sa isOpen()
      * \sa close()
      * \exception FileOpenError
@@ -227,4 +227,4 @@ namespace Mdt{ namespace ExecutableFile{
 
 }} // namespace Mdt{ namespace ExecutableFile{
 
-#endif // #ifndef MDT_EXECUTABLE_FILE_ABSTRACT_EXECUTABLE_FILE_IO_ENGINE_H
+#endif // #ifndef MDT_EXECUTABLE_FILE_EXECUTABLE_FILE_IO_ENGINE_IMPLEMENTATION_INTERFACE_H

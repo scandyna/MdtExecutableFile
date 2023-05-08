@@ -16,7 +16,7 @@
 namespace Mdt{ namespace ExecutableFile{
 
 ElfFileIoEngine::ElfFileIoEngine(QObject *parent)
-  : AbstractExecutableFileIoEngine(parent)
+  : ExecutableFileIoEngineImplementationInterface(parent)
 {
 }
 

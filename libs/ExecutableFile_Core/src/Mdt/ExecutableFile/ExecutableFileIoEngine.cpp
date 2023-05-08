@@ -8,7 +8,7 @@
  **
  *****************************************************************************************/
 #include "ExecutableFileIoEngine.h"
-#include "Mdt/ExecutableFile/AbstractExecutableFileIoEngine.h"
+#include "Mdt/ExecutableFile/ExecutableFileIoEngineImplementationInterface.h"
 #include "Mdt/ExecutableFile/ExecutableFileFormat.h"
 #include "Mdt/ExecutableFile/ElfFileIoEngine.h"
 #include "Mdt/ExecutableFile/PeFileIoEngine.h"
@@ -131,8 +131,8 @@ void ExecutableFileIoEngine::instanciateEngine(ExecutableFileFormat format) noex
   }
 
   if( mIoEngine.get() != nullptr ){
-    connect(mIoEngine.get(), &AbstractExecutableFileIoEngine::message, this, &ExecutableFileIoEngine::message);
-    connect(mIoEngine.get(), &AbstractExecutableFileIoEngine::verboseMessage, this, &ExecutableFileIoEngine::verboseMessage);
+    connect(mIoEngine.get(), &ExecutableFileIoEngineImplementationInterface::message, this, &ExecutableFileIoEngine::message);
+    connect(mIoEngine.get(), &ExecutableFileIoEngineImplementationInterface::verboseMessage, this, &ExecutableFileIoEngine::verboseMessage);
   }
 }
 

@@ -1,5 +1,5 @@
 @startuml
-!include AbstractExecutableFileIoEngine.puml
+!include ExecutableFileIoEngineImplementationInterface.puml
 !include Pe/FileReader.puml
 
 namespace Mdt.ExecutableFile {
@@ -7,7 +7,7 @@ namespace Mdt.ExecutableFile {
   class PeFileIoEngine {
   }
 
-  AbstractExecutableFileIoEngine <|-- PeFileIoEngine
+  ExecutableFileIoEngineImplementationInterface <|-- PeFileIoEngine
 }
 
 Mdt.ExecutableFile.PeFileIoEngine *--> Mdt.ExecutableFile.Pe.FileReader

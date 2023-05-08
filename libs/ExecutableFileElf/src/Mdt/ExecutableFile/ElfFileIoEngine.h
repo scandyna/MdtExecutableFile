@@ -10,7 +10,7 @@
 #ifndef MDT_EXECUTABLE_FILE_CORE_ELF_FILE_IO_ENGINE_H
 #define MDT_EXECUTABLE_FILE_CORE_ELF_FILE_IO_ENGINE_H
 
-#include "Mdt/ExecutableFile/AbstractExecutableFileIoEngine.h"
+#include "Mdt/ExecutableFile/ExecutableFileIoEngineImplementationInterface.h"
 #include "Mdt/ExecutableFile/FileOpenError.h"
 #include "Mdt/ExecutableFile/ExecutableFileReadError.h"
 #include "Mdt/ExecutableFile/RPath.h"
@@ -33,7 +33,7 @@ namespace Mdt{ namespace ExecutableFile{
    * \sa ExecutableFileReader
    * \sa ExecutableFileWriter
    */
-  class ElfFileIoEngine : public AbstractExecutableFileIoEngine
+  class ElfFileIoEngine : public ExecutableFileIoEngineImplementationInterface
   {
     Q_OBJECT
 

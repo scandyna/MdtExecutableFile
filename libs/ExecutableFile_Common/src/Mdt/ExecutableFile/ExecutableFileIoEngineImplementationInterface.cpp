@@ -7,16 +7,16 @@
  ** Copyright (C) 2021-2023 Philippe Steinmann.
  **
  *****************************************************************************************/
-#include "AbstractExecutableFileIoEngine.h"
+#include "ExecutableFileIoEngineImplementationInterface.h"
 
 namespace Mdt{ namespace ExecutableFile{
 
-AbstractExecutableFileIoEngine::AbstractExecutableFileIoEngine(QObject* parent)
+ExecutableFileIoEngineImplementationInterface::ExecutableFileIoEngineImplementationInterface(QObject* parent)
  : QObject(parent)
 {
 }
 
-void AbstractExecutableFileIoEngine::openFile(const QFileInfo & fileInfo, ExecutableFileOpenMode mode)
+void ExecutableFileIoEngineImplementationInterface::openFile(const QFileInfo & fileInfo, ExecutableFileOpenMode mode)
 {
   assert( !fileInfo.filePath().isEmpty() );
   assert( !isOpen() );
@@ -38,42 +38,42 @@ void AbstractExecutableFileIoEngine::openFile(const QFileInfo & fileInfo, Execut
   newFileOpen( mFile.fileName() );
 }
 
-void AbstractExecutableFileIoEngine::close()
+void ExecutableFileIoEngineImplementationInterface::close()
 {
   mFileMapper.unmap(mFile);
   mFile.close();
   fileClosed();
 }
 
-bool AbstractExecutableFileIoEngine::isElfFile()
+bool ExecutableFileIoEngineImplementationInterface::isElfFile()
 {
   assert( isOpen() );
 
   return doIsElfFile();
 }
 
-bool AbstractExecutableFileIoEngine::isPeImageFile()
+bool ExecutableFileIoEngineImplementationInterface::isPeImageFile()
 {
   assert( isOpen() );
 
   return doIsPeImageFile();
 }
 
-Platform AbstractExecutableFileIoEngine::getFilePlatform()
+Platform ExecutableFileIoEngineImplementationInterface::getFilePlatform()
 {
   assert( isOpen() );
 
   return doGetFilePlatform();
 }
 
-bool AbstractExecutableFileIoEngine::isExecutableOrSharedLibrary()
+bool ExecutableFileIoEngineImplementationInterface::isExecutableOrSharedLibrary()
 {
   assert( isOpen() );
 
   return doIsExecutableOrSharedLibrary();
 }
 
-bool AbstractExecutableFileIoEngine::containsDebugSymbols()
+bool ExecutableFileIoEngineImplementationInterface::containsDebugSymbols()
 {
   assert( isOpen() );
   assert( isExecutableOrSharedLibrary() );
@@ -81,7 +81,7 @@ bool AbstractExecutableFileIoEngine::containsDebugSymbols()
   return doContainsDebugSymbols();
 }
 
-QStringList AbstractExecutableFileIoEngine::getNeededSharedLibraries()
+QStringList ExecutableFileIoEngineImplementationInterface::getNeededSharedLibraries()
 {
   assert( isOpen() );
   assert( isExecutableOrSharedLibrary() );
@@ -89,7 +89,7 @@ QStringList AbstractExecutableFileIoEngine::getNeededSharedLibraries()
   return doGetNeededSharedLibraries();
 }
 
-RPath AbstractExecutableFileIoEngine::getRunPath()
+RPath ExecutableFileIoEngineImplementationInterface::getRunPath()
 {
   assert( isOpen() );
   assert( isExecutableOrSharedLibrary() );
@@ -97,7 +97,7 @@ RPath AbstractExecutableFileIoEngine::getRunPath()
   return doGetRunPath();
 }
 
-void AbstractExecutableFileIoEngine::setRunPath(const RPath & rPath)
+void ExecutableFileIoEngineImplementationInterface::setRunPath(const RPath & rPath)
 {
   assert( isOpen() );
   assert( isExecutableOrSharedLibrary() );
@@ -105,14 +105,14 @@ void AbstractExecutableFileIoEngine::setRunPath(const RPath & rPath)
   doSetRunPath(rPath);
 }
 
-qint64 AbstractExecutableFileIoEngine::fileSize() const noexcept
+qint64 ExecutableFileIoEngineImplementationInterface::fileSize() const noexcept
 {
   assert( isOpen() );
 
   return mFile.size();
 }
 
-void AbstractExecutableFileIoEngine::resizeFile(qint64 size)
+void ExecutableFileIoEngineImplementationInterface::resizeFile(qint64 size)
 {
   assert( isOpen() );
   assert( size > 0 );
@@ -126,25 +126,25 @@ void AbstractExecutableFileIoEngine::resizeFile(qint64 size)
 
 
 
-QString AbstractExecutableFileIoEngine::fileName() const noexcept
+QString ExecutableFileIoEngineImplementationInterface::fileName() const noexcept
 {
   assert( isOpen() );
 
   return mFile.fileName();
 }
 
-ByteArraySpan AbstractExecutableFileIoEngine::mapIfRequired(qint64 offset, qint64 size)
+ByteArraySpan ExecutableFileIoEngineImplementationInterface::mapIfRequired(qint64 offset, qint64 size)
 {
   assert( isOpen() );
 
   return mFileMapper.mapIfRequired(mFile, offset, size);
 }
 
-void AbstractExecutableFileIoEngine::doSetRunPath(const RPath &)
+void ExecutableFileIoEngineImplementationInterface::doSetRunPath(const RPath &)
 {
 }
 
-QIODevice::OpenMode AbstractExecutableFileIoEngine::qIoDeviceOpenModeFromOpenMode(ExecutableFileOpenMode mode) noexcept
+QIODevice::OpenMode ExecutableFileIoEngineImplementationInterface::qIoDeviceOpenModeFromOpenMode(ExecutableFileOpenMode mode) noexcept
 {
   switch(mode){
     case ExecutableFileOpenMode::ReadOnly:

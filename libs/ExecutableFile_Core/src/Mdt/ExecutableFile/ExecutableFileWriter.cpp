@@ -8,7 +8,7 @@
  **
  *****************************************************************************************/
 #include "ExecutableFileWriter.h"
-#include "Mdt/ExecutableFile/AbstractExecutableFileIoEngine.h"
+#include "Mdt/ExecutableFile/ExecutableFileIoEngineImplementationInterface.h"
 #include <cassert>
 
 namespace Mdt{ namespace ExecutableFile{

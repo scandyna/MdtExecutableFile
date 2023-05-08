@@ -1,5 +1,5 @@
 @startuml
-!include AbstractExecutableFileIoEngine.puml
+!include ExecutableFileIoEngineImplementationInterface.puml
 !include Elf/FileIoEngine.puml
 
 namespace Mdt.ExecutableFile {
@@ -7,7 +7,7 @@ namespace Mdt.ExecutableFile {
   class ElfFileIoEngine {
   }
 
-  AbstractExecutableFileIoEngine <|-- ElfFileIoEngine
+  ExecutableFileIoEngineImplementationInterface <|-- ElfFileIoEngine
 }
 
 Mdt.ExecutableFile.ElfFileIoEngine *--> Mdt.ExecutableFile.Elf.FileIoEngine
