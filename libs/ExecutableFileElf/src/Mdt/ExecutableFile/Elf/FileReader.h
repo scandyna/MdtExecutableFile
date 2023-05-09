@@ -641,6 +641,8 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
    * \pre \a map must not be null
    * \pre \a map must be big enough to read all section headers
    * \exception NotNullTerminatedStringError
+   * \todo define also preconditions to access the string table related to the section headers
+   *   (https://gitlab.com/scandyna/mdtexecutablefile/-/issues/19)
    */
   inline
   std::vector<SectionHeader> extractAllSectionHeaders(const ByteArraySpan & map, const FileHeader & fileHeader)
