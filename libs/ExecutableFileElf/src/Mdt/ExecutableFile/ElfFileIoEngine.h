@@ -15,6 +15,7 @@
 #include "Mdt/ExecutableFile/ExecutableFileReadError.h"
 #include "Mdt/ExecutableFile/RPath.h"
 #include "Mdt/ExecutableFile/Elf/FileIoEngine.h"
+#include "Mdt/ExecutableFile/Elf/SectionHeaderTable.h"
 #include <QObject>
 #include <QString>
 #include <QStringList>
@@ -42,6 +43,15 @@ namespace Mdt{ namespace ExecutableFile{
     /*! \brief Construct a file I/O engine
      */
     explicit ElfFileIoEngine(QObject *parent = nullptr);
+
+    /*! \brief Get the section header table of the file this engine refers to
+     *
+     * \pre this engine must have a open file which is a executable or a shared library
+     * \sa isOpen()
+     * \sa isExecutableOrSharedLibrary()
+     * \exception ExecutableFileReadError
+     */
+    Elf::SectionHeaderTable getSectionHeaderTable();
 
     /*! \brief Get the shared object name (SONAME) of the file this engine refers to
      *

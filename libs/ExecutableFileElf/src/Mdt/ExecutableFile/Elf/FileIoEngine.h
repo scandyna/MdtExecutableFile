@@ -15,6 +15,7 @@
 #include "Mdt/ExecutableFile/RPath.h"
 #include "Mdt/ExecutableFile/RPathElf.h"
 #include "Mdt/ExecutableFile/Elf/FileWriter.h"
+#include "Mdt/ExecutableFile/Elf/SectionHeaderTable.h"
 #include "Mdt/ExecutableFile/Elf/FileAllHeaders.h"
 #include "Mdt/ExecutableFile/Elf/DynamicSection.h"
 #include "Mdt/ExecutableFile/Elf/FileReader.h"
@@ -100,6 +101,24 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
       return header.sectionType() != SectionType::Null;
     }
 
+    /*! \brief Get the section header table
+     *
+     * \pre \a map must not be null
+     * \exception ExecutableFileReadError
+     */
+    SectionHeaderTable getSectionHeaderTable(const ByteArraySpan & map)
+    {
+      assert( !map.isNull() );
+
+      SectionHeaderTable table;
+
+      checkFileSizeToReadFileHeader(map);
+      readFileHeaderIfNull(map);
+      checkFileSizeToReadSectionHeaders(map);
+
+      return extractAllSectionHeaders(map, mFileHeader);
+    }
+
     /*! \brief
      *
      * \pre \a map must not be null
@@ -109,6 +128,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
     {
       assert( !map.isNull() );
 
+      checkFileSizeToReadFileHeader(map);
       readFileHeaderIfNull(map);
       checkFileSizeToReadSectionHeaders(map);
       readSectionNameStringTableHeaderIfNull(map);
@@ -209,6 +229,22 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
     }
 
    private:
+
+    /*! \brief Check if given map size is enought to read the file header
+     *
+     * \pre \a map must not be null
+     * \exception ExecutableFileReadError
+     */
+    void checkFileSizeToReadFileHeader(const ByteArraySpan & map)
+    {
+      assert( !map.isNull() );
+
+      if( map.size < minimumSizeToReadFileHeader() ){
+        const QString message = tr("file '%1' is to small to read the file header")
+                                .arg(mFileName);
+        throw ExecutableFileReadError(message);
+      }
+    }
 
     void readFileHeaderIfNull(const ByteArraySpan & map)
     {

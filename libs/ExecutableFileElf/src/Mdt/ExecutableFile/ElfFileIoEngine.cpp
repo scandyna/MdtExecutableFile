@@ -20,6 +20,18 @@ ElfFileIoEngine::ElfFileIoEngine(QObject *parent)
 {
 }
 
+Elf::SectionHeaderTable ElfFileIoEngine::getSectionHeaderTable()
+{
+  assert( isOpen() );
+  assert( isExecutableOrSharedLibrary() );
+
+  const qint64 size = fileSize();
+
+  const ByteArraySpan map = mapIfRequired(0, size);
+
+  return mImpl.getSectionHeaderTable(map);
+}
+
 QString ElfFileIoEngine::getSoName()
 {
   assert( isOpen() );

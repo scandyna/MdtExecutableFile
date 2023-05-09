@@ -17,6 +17,8 @@
 #include <QLatin1String>
 
 using namespace Mdt::ExecutableFile;
+using Mdt::ExecutableFile::Elf::SectionHeaderTable;
+
 
 TEST_CASE("isElfFile")
 {
@@ -112,6 +114,23 @@ TEST_CASE("getRunPath")
     REQUIRE( !engine.getRunPath().isEmpty() );
     engine.close();
   }
+}
+
+TEST_CASE("getSectionHeaderTable")
+{
+  ElfFileIoEngine engine;
+  SectionHeaderTable table;
+
+  engine.openFile( testSharedLibraryFilePath(), ExecutableFileOpenMode::ReadOnly );
+  table = engine.getSectionHeaderTable();
+  engine.close();
+
+  /** \todo Here we simply check that the table contains some entries
+   *
+   * If we later support reading the file header,
+   * we should compare the table size with e_shnum from the file header
+   */
+  REQUIRE( table.size() > 2 );
 }
 
 TEST_CASE("getSoName")
