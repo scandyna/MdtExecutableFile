@@ -188,7 +188,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
     /*! \brief Update the virtual addresses in this symbol table regarding given section headers indexes referring \a sectionHeaderTable
      */
-    void updateVirtualAddresses(const std::vector<uint16_t> sectionHeadersIndexes, const std::vector<SectionHeader> & sectionHeaderTable) noexcept
+    void updateVirtualAddresses(const std::vector<uint16_t> sectionHeadersIndexes, const SectionHeaderTable & sectionHeaderTable) noexcept
     {
       for(PartialSymbolTableEntry & entry : mTable){
         if( entry.entry.isRelatedToASection() ){
@@ -205,7 +205,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
      *
      * \todo rename: indexKnownSymbols()
      */
-    void indexAssociationsKnownSections(const std::vector<SectionHeader> & sectionHeaderTable) noexcept
+    void indexAssociationsKnownSections(const SectionHeaderTable & sectionHeaderTable) noexcept
     {
       constexpr uint16_t uint16Max = std::numeric_limits<uint16_t>::max();
 

@@ -105,7 +105,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
      * in the section header table, so that the section headers in this table
      * are up to date.
      */
-    void updateSectionHeaders(const std::vector<SectionHeader> & sectionHeaderTable) noexcept
+    void updateSectionHeaders(const SectionHeaderTable & sectionHeaderTable) noexcept
     {
       for(const SectionHeader & shtHeader : sectionHeaderTable){
         if( isNoteSectionHeader(shtHeader) ){

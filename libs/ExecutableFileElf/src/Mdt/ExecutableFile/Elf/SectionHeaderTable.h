@@ -25,11 +25,15 @@
 
 namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
+  /*! \brief ELF section header table
+   */
+  using SectionHeaderTable = std::vector<SectionHeader>;
+
   /*! \internal Find the first section header matching \a type and \a name
    */
   inline
-  std::vector<SectionHeader>::const_iterator
-  findFirstSectionHeader(const std::vector<SectionHeader> & sectionHeaderTable, SectionType type, const std::string & name) noexcept
+  SectionHeaderTable::const_iterator
+  findFirstSectionHeader(const SectionHeaderTable & sectionHeaderTable, SectionType type, const std::string & name) noexcept
   {
     const auto pred = [type, &name](const SectionHeader & header) -> bool{
       return (header.sectionType() == type)&&(header.name == name);
@@ -44,7 +48,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
    * 0 is returned (which the corresponds to a null section header)
    */
   inline
-  uint16_t findIndexOfFirstSectionHeader(const std::vector<SectionHeader> & sectionHeaderTable, SectionType type, const std::string & name) noexcept
+  uint16_t findIndexOfFirstSectionHeader(const SectionHeaderTable & sectionHeaderTable, SectionType type, const std::string & name) noexcept
   {
     const auto it = findFirstSectionHeader(sectionHeaderTable, type, name);
     if( it == sectionHeaderTable.cend() ){
@@ -60,7 +64,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
    * 0 is returned (which the corresponds to a null section header)
    */
   inline
-  uint16_t findIndexOfSectionHeaderAtOffset(const std::vector<SectionHeader> & sectionHeaderTable, uint64_t offset) noexcept
+  uint16_t findIndexOfSectionHeaderAtOffset(const SectionHeaderTable & sectionHeaderTable, uint64_t offset) noexcept
   {
     const auto pred = [offset](const SectionHeader & header) -> bool{
       return header.offset == offset;
@@ -80,7 +84,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
    * 0 is returned (which the corresponds to a null section header)
    */
   inline
-  uint16_t findIndexOfFirstSectionHeader(const std::vector<SectionHeader> & sectionHeaderTable, const std::string & name) noexcept
+  uint16_t findIndexOfFirstSectionHeader(const SectionHeaderTable & sectionHeaderTable, const std::string & name) noexcept
   {
     const auto pred = [&name](const SectionHeader & header) -> bool{
       return header.name == name;
@@ -97,7 +101,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
   /*! \internal
    */
   inline
-  SectionIndexChangeMap makeSectionIndexChangeMap(const std::vector<SectionHeader> & headers) noexcept
+  SectionIndexChangeMap makeSectionIndexChangeMap(const SectionHeaderTable & headers) noexcept
   {
     return SectionIndexChangeMap( static_cast<uint16_t>( headers.size() ) );
   }
@@ -105,7 +109,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
   /*! \internal Check if \a headers are sorted by file offset
    */
   inline
-  bool sectionHeadersAreSortedByFileOffset(const std::vector<SectionHeader> & headers) noexcept
+  bool sectionHeadersAreSortedByFileOffset(const SectionHeaderTable & headers) noexcept
   {
     const auto cmp = [](const SectionHeader & a, const SectionHeader & b){
       return a.offset < b.offset;
@@ -117,7 +121,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
   /*! \internal Sort a collection of section headers by file offset
    */
   inline
-  SectionIndexChangeMap sortSectionHeadersByFileOffset(std::vector<SectionHeader> & headers) noexcept
+  SectionIndexChangeMap sortSectionHeadersByFileOffset(SectionHeaderTable & headers) noexcept
   {
     SectionIndexChangeMap indexChangeMap = makeSectionIndexChangeMap(headers);
 
@@ -176,7 +180,7 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
    * \sa sectionHeadersAreSortedByFileOffset()
    */
   inline
-  uint16_t findCountOfSectionsToMoveToFreeSize(const std::vector<SectionHeader> & headers, uint16_t size) noexcept
+  uint16_t findCountOfSectionsToMoveToFreeSize(const SectionHeaderTable & headers, uint16_t size) noexcept
   {
     assert(size > 0);
     assert( sectionHeadersAreSortedByFileOffset(headers) );
