@@ -32,6 +32,18 @@ Elf::SectionHeaderTable ElfFileIoEngine::getSectionHeaderTable()
   return mImpl.getSectionHeaderTable(map);
 }
 
+Elf::ProgramHeaderTable ElfFileIoEngine::getProgramHeaderTable()
+{
+  assert( isOpen() );
+  assert( isExecutableOrSharedLibrary() );
+
+  const qint64 size = fileSize();
+
+  const ByteArraySpan map = mapIfRequired(0, size);
+
+  return mImpl.getProgramHeaderTable(map);
+}
+
 QString ElfFileIoEngine::getSoName()
 {
   assert( isOpen() );

@@ -16,6 +16,7 @@
 #include "Mdt/ExecutableFile/RPathElf.h"
 #include "Mdt/ExecutableFile/Elf/FileWriter.h"
 #include "Mdt/ExecutableFile/Elf/SectionHeaderTable.h"
+#include "Mdt/ExecutableFile/Elf/ProgramHeaderTable.h"
 #include "Mdt/ExecutableFile/Elf/FileAllHeaders.h"
 #include "Mdt/ExecutableFile/Elf/DynamicSection.h"
 #include "Mdt/ExecutableFile/Elf/FileReader.h"
@@ -110,13 +111,27 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
     {
       assert( !map.isNull() );
 
-      SectionHeaderTable table;
-
       checkFileSizeToReadFileHeader(map);
       readFileHeaderIfNull(map);
       checkFileSizeToReadSectionHeaders(map);
 
       return extractAllSectionHeaders(map, mFileHeader);
+    }
+
+    /*! \brief Get the program header table
+     *
+     * \pre \a map must not be null
+     * \exception ExecutableFileReadError
+     */
+    ProgramHeaderTable getProgramHeaderTable(const ByteArraySpan & map)
+    {
+      assert( !map.isNull() );
+
+      checkFileSizeToReadFileHeader(map);
+      readFileHeaderIfNull(map);
+      checkFileSizeToReadProgramHeaderTable(map);
+
+      return extractAllProgramHeaders(map, mFileHeader);
     }
 
     /*! \brief
@@ -274,6 +289,22 @@ namespace Mdt{ namespace ExecutableFile{ namespace Elf{
 
       if( map.size < mFileHeader.minimumSizeToReadAllSectionHeaders() ){
         const QString message = tr("file '%1' is to small to read section headers")
+                                .arg(mFileName);
+        throw ExecutableFileReadError(message);
+      }
+    }
+
+    /*! \brief Check if given map size is enought to read the program header table
+     *
+     * \pre mFileHeader must be valid
+     */
+    void checkFileSizeToReadProgramHeaderTable(const ByteArraySpan & map)
+    {
+      assert( !map.isNull() );
+      assert( mFileHeader.seemsValid() );
+
+      if( map.size < mFileHeader.minimumSizeToReadAllProgramHeaders() ){
+        const QString message = tr("file '%1' is to small to read the program header table")
                                 .arg(mFileName);
         throw ExecutableFileReadError(message);
       }
