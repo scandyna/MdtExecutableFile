@@ -56,6 +56,7 @@ class MainWindow : public QMainWindow
 
  private:
 
+  void readFile();
   void addSection(const Mdt::ExecutableFile::Elf::SectionHeader & header) noexcept;
   void addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header) noexcept;
 

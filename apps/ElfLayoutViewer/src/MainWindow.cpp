@@ -13,6 +13,9 @@
 #include "SegmentGraphicsItem.h"
 
 #include "Mdt/ExecutableFile/Elf/SectionHeader.h"
+#include "Mdt/ExecutableFile/Elf/SectionHeaderTable.h"
+#include "Mdt/ExecutableFile/Elf/ProgramHeaderTable.h"
+#include "Mdt/ExecutableFile/ElfFileIoEngine.h"
 #include <vector>
 
 #include <QString>
@@ -26,6 +29,8 @@
 #include <QMatrix>
 #include <QDebug>
 
+#include <QCoreApplication>
+
 
 MainWindow::MainWindow(QWidget *parent)
  : QMainWindow(parent)
@@ -38,66 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
   using Mdt::ExecutableFile::Elf::ProgramHeader;
   using Mdt::ExecutableFile::Elf::SegmentType;
 
-  SectionHeader interpSection;
-  interpSection.offset = 0x238;
-  interpSection.size = 0x1c;
-  interpSection.name = ".interp";
-
-  addSection(interpSection);
-
-
-  SectionHeader dynstrSection;
-  dynstrSection.offset = 0x2200;
-  dynstrSection.size = 0x2a0b;
-  dynstrSection.name = ".dynstr";
-
-  addSection(dynstrSection);
-
-
-  ProgramHeader phdrHeader;
-  phdrHeader.setSegmentType(SegmentType::ProgramHeaderTable);
-  phdrHeader.offset = 0x40;
-  phdrHeader.filesz = 0x1f8;
-
-  addSegment(phdrHeader);
-
-
-  ProgramHeader interpHeader;
-  interpHeader.setSegmentType(SegmentType::Interpreter);
-  interpHeader.offset = 0x238;
-  interpHeader.filesz = 0x1c;
-
-  addSegment(interpHeader);
-
-
-  ProgramHeader load1Header;
-  load1Header.setSegmentType(SegmentType::Load);
-  load1Header.offset = 0;
-  load1Header.filesz = 0x6eceb;
-
-  addSegment(load1Header);
-
-  ProgramHeader load2Header;
-  load2Header.setSegmentType(SegmentType::Load);
-  load2Header.offset = 0x150;
-  load2Header.filesz = 0x230;
-
-  addSegment(load2Header);
-
-  ProgramHeader load3Header;
-  load3Header.setSegmentType(SegmentType::Load);
-  load3Header.offset = 0x150;
-  load3Header.filesz = 0x230;
-
-  addSegment(load3Header);
-
-  ProgramHeader dynamicHeader;
-  dynamicHeader.setSegmentType(SegmentType::Dynamic);
-  dynamicHeader.offset = 0x254;
-  dynamicHeader.filesz = 0x200;
-
-  addSegment(dynamicHeader);
-
+  readFile();
 
   mUi.layoutView->setScene( mScene.scene() );
   mUi.layoutView->centerOn(0.0, 0.0);
@@ -220,6 +166,31 @@ void MainWindow::selectSegmentItemInLayoutView(const QModelIndex & viewCurrent, 
     id = HeaderTableGraphicsItemMapId::fromQVariant( mProgramHeaderTableModel.data(previous, Qt::UserRole) );
     item = mProgramHeaderTableGraphicsItemMap.itemForId(id);
     item->setHighlighted(false);
+  }
+}
+
+/// \todo just a sandbox
+void MainWindow::readFile()
+{
+  using Mdt::ExecutableFile::ElfFileIoEngine;
+  using Mdt::ExecutableFile::ExecutableFileOpenMode;
+  using Mdt::ExecutableFile::Elf::SectionHeaderTable;
+  using Mdt::ExecutableFile::Elf::ProgramHeaderTable;
+
+  const QString filePath = QCoreApplication::applicationFilePath();
+
+  ElfFileIoEngine reader;
+  reader.openFile(filePath, ExecutableFileOpenMode::ReadOnly);
+  const SectionHeaderTable sectionHeaderTable = reader.getSectionHeaderTable();
+  const ProgramHeaderTable programHeaderTable = reader.getProgramHeaderTable();
+  reader.close();
+
+  for(const auto & header : sectionHeaderTable){
+    addSection(header);
+  }
+
+  for(const auto & header : programHeaderTable){
+    addSegment(header);
   }
 }
 
