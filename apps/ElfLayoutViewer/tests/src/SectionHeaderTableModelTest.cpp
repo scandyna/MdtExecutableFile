@@ -20,6 +20,37 @@ const int offsetColumn = static_cast<int>(SectionHeaderTableModel::Column::Offse
 const int sizeColumn = static_cast<int>(SectionHeaderTableModel::Column::Size);
 
 
+TEST_CASE("AddRowState")
+{
+  SectionHeaderTableModel model;
+
+  REQUIRE( !model.isReadyToAddRows() );
+
+  model.prepareToAddRows();
+  REQUIRE( model.isReadyToAddRows() );
+
+  model.commitAddedRows();
+  REQUIRE( !model.isReadyToAddRows() );
+}
+
+TEST_CASE("clear")
+{
+  SectionHeaderTableModel model;
+
+  SectionHeader header;
+  const auto id = HeaderTableGraphicsItemMapId::fromValue(1);
+
+  model.prepareToAddRows();
+  model.addSection(header, id);
+  model.commitAddedRows();
+
+  REQUIRE( model.rowCount() == 1 );
+
+  model.clear();
+
+  REQUIRE( model.rowCount() == 0 );
+}
+
 TEST_CASE("dimensions")
 {
   SectionHeaderTableModel model;
@@ -35,7 +66,9 @@ TEST_CASE("dimensions")
     SectionHeader header;
     const auto id = HeaderTableGraphicsItemMapId::fromValue(1);
 
+    model.prepareToAddRows();
     model.addSection(header, id);
+    model.commitAddedRows();
 
     REQUIRE( model.columnCount() == 3 );
     REQUIRE( model.rowCount() == 1 );
@@ -62,7 +95,9 @@ TEST_CASE("data")
     header.size = 25;
     const auto id = HeaderTableGraphicsItemMapId::fromValue(1);
 
+    model.prepareToAddRows();
     model.addSection(header, id);
+    model.commitAddedRows();
 
     QModelIndex index = model.index(0, nameColumn);
     REQUIRE( model.data(index, Qt::DisplayRole).toString() == QLatin1String(".dynstr") );

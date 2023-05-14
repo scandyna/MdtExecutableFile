@@ -1,15 +1,22 @@
 @startuml
-
+!define QtWidgets ../../../Qt/Widgets
 !include LayoutViewItems.puml
+!include QtWidgets/QGraphicsScene.puml
 
-class CreateLayoutViewScene {
+class LayoutViewSegmentLayout {
 }
 
-CreateLayoutViewScene ..> SectionGraphicsItem
-CreateLayoutViewScene ..> SegmentGraphicsItem
+class CreateLayoutViewGraphicsScene {
+}
+
+CreateLayoutViewGraphicsScene ..> SectionGraphicsItem
+CreateLayoutViewGraphicsScene ..> SegmentGraphicsItem
+CreateLayoutViewGraphicsScene --> QGraphicsScene
+CreateLayoutViewGraphicsScene *--> LayoutViewSegmentLayout
 
 ' note left of CreateLayoutViewScene : This is a use case\nor interactor.
 
+hide QObject
 hide QGraphicsItem
 hide QGraphicsItemGroup
 hide LayoutGraphicsItem

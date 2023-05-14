@@ -124,6 +124,10 @@ class LayoutViewSegmentLayout
     return mMatrix.empty();
   }
 
+  /*! \brief Clear this layout
+   */
+  void clear() noexcept;
+
   /*! \brief Find a position for given item in this layout and add it
    *
    * \todo Algorithm complexity is bad (see implementation)

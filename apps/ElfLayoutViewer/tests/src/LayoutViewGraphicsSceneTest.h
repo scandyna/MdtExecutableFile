@@ -20,8 +20,8 @@ class LayoutViewGraphicsSceneTest : public QObject
  private slots:
 
   void construct();
-
   void sectionsAreaHeight();
+  void clearTest();
 };
 
 #endif // #ifndef LAYOUT_VIEW_GRAPHICS_SCENE_TEST_H

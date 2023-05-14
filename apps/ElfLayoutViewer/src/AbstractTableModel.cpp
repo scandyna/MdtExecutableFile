@@ -8,6 +8,7 @@
  **
  *****************************************************************************************/
 #include "AbstractTableModel.h"
+#include <cassert>
 
 AbstractTableModel::AbstractTableModel(QObject *parent)
  : QAbstractTableModel(parent)
@@ -46,6 +47,22 @@ QVariant AbstractTableModel::headerData(int section, Qt::Orientation orientation
   }
 
   return QAbstractTableModel::headerData(section, orientation, role);
+}
+
+void AbstractTableModel::prepareToAddRows() noexcept
+{
+  beginResetModel();
+
+  mIsReadeyToAddRows = true;
+}
+
+void AbstractTableModel::commitAddedRows() noexcept
+{
+  assert( isReadyToAddRows() );
+
+  endResetModel();
+
+  mIsReadeyToAddRows = false;
 }
 
 bool AbstractTableModel::indexIsValidAndInRange(const QModelIndex & index) const noexcept

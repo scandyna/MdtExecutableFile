@@ -31,9 +31,13 @@
  *
  * UML overview of the graphics scene
  *
+ * \note This diagrams puts some ideas that are not in the implementation yet
+ *
  * \startuml "Graphics view scene"
  * !include apps/ElfLayoutViewer/diagrams/LayoutViewScene.puml
  * \enduml
+ *
+ * \sa LayoutViewGraphicsScene
  *
  *
  * \section ElfTableViews ELF table views
@@ -68,7 +72,11 @@
  *
  * UML overview of the main window
  *
+ * \note This diagrams puts some ideas that are not in the implementation yet
+ *
  * \startuml "Main window"
  * !include apps/ElfLayoutViewer/diagrams/MainWindow.puml
  * \enduml
+ *
+ * \sa MainWindow
  */

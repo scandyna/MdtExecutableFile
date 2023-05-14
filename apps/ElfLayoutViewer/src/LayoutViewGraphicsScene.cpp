@@ -43,6 +43,13 @@ SegmentGraphicsItem *LayoutViewGraphicsScene::addSegment(const Mdt::ExecutableFi
   return item;
 }
 
+void LayoutViewGraphicsScene::clear() noexcept
+{
+  mSectionsAreaHeight = 0.0;
+  mSegmentLayout.clear();
+  mScene.clear();
+}
+
 void LayoutViewGraphicsScene::updateSectionsAreaHeight(const SectionGraphicsItem & item) noexcept
 {
   const qreal itemHeight = item.height();

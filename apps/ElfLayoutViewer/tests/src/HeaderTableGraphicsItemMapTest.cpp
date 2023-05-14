@@ -59,3 +59,24 @@ TEST_CASE("itemForId")
 
   REQUIRE( map.itemForId(id0) == item0.get() );
 }
+
+TEST_CASE("clear")
+{
+  HeaderTableGraphicsItemMap map;
+
+  SECTION("clear a empty map does nothing")
+  {
+    map.clear();
+  }
+
+  SECTION("1 element")
+  {
+    const auto item0 = makeItem();
+    const auto id0 = map.registerItem( item0.get() );
+    REQUIRE( map.containsId(id0) );
+
+    map.clear();
+
+    REQUIRE( !map.containsId(id0) );
+  }
+}

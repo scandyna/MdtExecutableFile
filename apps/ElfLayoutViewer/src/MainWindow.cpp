@@ -8,6 +8,7 @@
  **
  *****************************************************************************************/
 #include "MainWindow.h"
+#include <cassert>
 
 #include "SectionGraphicsItem.h"
 #include "SegmentGraphicsItem.h"
@@ -26,10 +27,13 @@
 
 #include <QItemSelectionModel>
 
+#include <QFileDialog>
+
 #include <QMatrix>
 #include <QDebug>
 
 #include <QCoreApplication>
+#include <QMessageBox>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -37,17 +41,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
   mUi.setupUi(this);
 
-  /// \todo just a sandbox
-
   using Mdt::ExecutableFile::Elf::SectionHeader;
   using Mdt::ExecutableFile::Elf::ProgramHeader;
   using Mdt::ExecutableFile::Elf::SegmentType;
 
-  readFile();
+//   readFile( QCoreApplication::applicationFilePath() );
 
   mUi.layoutView->setScene( mScene.scene() );
   mUi.layoutView->centerOn(0.0, 0.0);
   mUi.layoutView->show();
+
+  connect(mUi.action_FileOpen, &QAction::triggered, this, &MainWindow::openFile);
 
   connect(mUi.actionZoom_in, &QAction::triggered, this, &MainWindow::layoutViewZoomIn);
   connect(mUi.actionZoom_out, &QAction::triggered, this, &MainWindow::layoutViewZoomOut);
@@ -60,14 +64,10 @@ MainWindow::MainWindow(QWidget *parent)
   mSectionHeaderTableSortFilterModel.setSourceModel(&mSectionHeaderTableModel);
   mSectionHeaderTableSortFilterModel.setSortRole( mSectionHeaderTableModel.sortRole() );
   mUi.sectionHeaderTableView->setModel(&mSectionHeaderTableSortFilterModel);
-  mUi.sectionHeaderTableView->resizeColumnsToContents();
-  mUi.sectionHeaderTableView->resizeRowsToContents();
 
   mProgramHeaderTableSortFilterModel.setSourceModel(&mProgramHeaderTableModel);
   mProgramHeaderTableSortFilterModel.setSortRole( mProgramHeaderTableModel.sortRole() );
   mUi.programHeaderTableView->setModel(&mProgramHeaderTableSortFilterModel);
-  mUi.programHeaderTableView->resizeColumnsToContents();
-  mUi.programHeaderTableView->resizeRowsToContents();
 
 
   /// \todo should also react when entry is selected or clicked in a table view
@@ -77,6 +77,23 @@ MainWindow::MainWindow(QWidget *parent)
   connect(mUi.programHeaderTableView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &MainWindow::selectSegmentItemInLayoutView);
 
   connect(mUi.actionTrack_selected_item, &QAction::toggled, this, &MainWindow::setTrackSelectedItem);
+}
+
+/// \todo update app state
+void MainWindow::openFile()
+{
+  const QString filePath = QFileDialog::getOpenFileName(
+    this,
+    tr("Open file")
+  );
+
+  qDebug() << "selected file: " << filePath;
+
+  if( filePath.trimmed().isEmpty() ){
+    return;
+  }
+
+  readFile(filePath);
 }
 
 /// \todo should limit the zoom to some bounds
@@ -91,7 +108,7 @@ void MainWindow::layoutViewZoomIn()
 void MainWindow::layoutViewZoomOut()
 {
   mUi.layoutView->scale(1.0/1.2, 1.0);
-  
+
   qDebug() << "after zoom out matrix: " << mUi.layoutView->matrix();
 }
 
@@ -169,29 +186,62 @@ void MainWindow::selectSegmentItemInLayoutView(const QModelIndex & viewCurrent, 
   }
 }
 
-/// \todo just a sandbox
-void MainWindow::readFile()
+void MainWindow::clear()
 {
+  qDebug() << "Scene items: " << mScene.scene()->items().count();
+  qDebug() << "clear...";
+
+  mSectionHeaderTableGraphicsItemMap.clear();
+  mScene.clear();
+  mSectionHeaderTableModel.clear();
+  mProgramHeaderTableModel.clear();
+}
+
+void MainWindow::readFile(const QString &filePath)
+{
+  assert( !filePath.trimmed().isEmpty() );
+
   using Mdt::ExecutableFile::ElfFileIoEngine;
   using Mdt::ExecutableFile::ExecutableFileOpenMode;
   using Mdt::ExecutableFile::Elf::SectionHeaderTable;
   using Mdt::ExecutableFile::Elf::ProgramHeaderTable;
 
-  const QString filePath = QCoreApplication::applicationFilePath();
-
   ElfFileIoEngine reader;
   reader.openFile(filePath, ExecutableFileOpenMode::ReadOnly);
+
+  if( !reader.isExecutableOrSharedLibrary() ){
+    QMessageBox msgBox;
+    msgBox.setText(
+      tr("File %1 is not an ELF executable or shared library")
+      .arg(filePath)
+    );
+    msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec();
+    return;
+  }
+
   const SectionHeaderTable sectionHeaderTable = reader.getSectionHeaderTable();
   const ProgramHeaderTable programHeaderTable = reader.getProgramHeaderTable();
   reader.close();
 
+  clear();
+
+  mSectionHeaderTableModel.prepareToAddRows();
   for(const auto & header : sectionHeaderTable){
     addSection(header);
   }
+  mSectionHeaderTableModel.commitAddedRows();
+  mUi.sectionHeaderTableView->resizeColumnsToContents();
+  mUi.sectionHeaderTableView->resizeRowsToContents();
 
+  mProgramHeaderTableModel.prepareToAddRows();
   for(const auto & header : programHeaderTable){
     addSegment(header);
   }
+  mProgramHeaderTableModel.commitAddedRows();
+  mUi.programHeaderTableView->resizeColumnsToContents();
+  mUi.programHeaderTableView->resizeRowsToContents();
 }
 
 void MainWindow::addSection(const Mdt::ExecutableFile::Elf::SectionHeader & header) noexcept

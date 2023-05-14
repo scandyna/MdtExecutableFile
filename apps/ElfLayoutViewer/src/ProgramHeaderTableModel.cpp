@@ -19,7 +19,16 @@ ProgramHeaderTableModel::ProgramHeaderTableModel(QObject *parent)
 
 void ProgramHeaderTableModel::addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header, HeaderTableGraphicsItemMapId id) noexcept
 {
+  assert( isReadyToAddRows() );
+
   mTable.emplace_back(header, id);
+}
+
+void ProgramHeaderTableModel::clear() noexcept
+{
+  beginResetModel();
+  mTable.clear();
+  endResetModel();
 }
 
 int ProgramHeaderTableModel::rowCount(const QModelIndex & parent) const

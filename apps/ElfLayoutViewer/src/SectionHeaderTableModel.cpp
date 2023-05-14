@@ -20,7 +20,16 @@ SectionHeaderTableModel::SectionHeaderTableModel(QObject *parent)
 
 void SectionHeaderTableModel::addSection(const Mdt::ExecutableFile::Elf::SectionHeader & header, HeaderTableGraphicsItemMapId id) noexcept
 {
+  assert( isReadyToAddRows() );
+
   mTable.emplace_back(header, id);
+}
+
+void SectionHeaderTableModel::clear() noexcept
+{
+  beginResetModel();
+  mTable.clear();
+  endResetModel();
 }
 
 int SectionHeaderTableModel::rowCount(const QModelIndex & parent) const

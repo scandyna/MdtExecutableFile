@@ -24,6 +24,11 @@ void LayoutViewSegmentLayout::setPos(QPointF pos) noexcept
   mPos = pos; 
 }
 
+void LayoutViewSegmentLayout::clear() noexcept
+{
+  mMatrix.clear();
+}
+
 QPointF LayoutViewSegmentLayout::findPositionAndAddItem(const LayoutViewSegmentLayoutItem & item) noexcept
 {
   std::size_t rowNumber = 0;

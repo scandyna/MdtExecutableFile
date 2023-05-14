@@ -17,6 +17,8 @@
 #include "ui_MainWindow.h"
 #include <QMainWindow>
 
+#include <QString>
+
 #include <QGraphicsScene>
 
 #include "SectionHeaderTableModel.h"
@@ -44,6 +46,8 @@ class MainWindow : public QMainWindow
 
  private slots:
 
+  void openFile();
+
   void layoutViewZoomIn();
   void layoutViewZoomOut();
   void layoutViewZoomOriginal();
@@ -56,7 +60,8 @@ class MainWindow : public QMainWindow
 
  private:
 
-  void readFile();
+  void clear();
+  void readFile(const QString &filePath);
   void addSection(const Mdt::ExecutableFile::Elf::SectionHeader & header) noexcept;
   void addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header) noexcept;
 

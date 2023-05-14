@@ -283,3 +283,29 @@ TEST_CASE("findPositionAndAddItem")
   REQUIRE_THAT( pos.x(), WithinRel(10.0 + 6.0) );
   REQUIRE_THAT( pos.y(), WithinRel(20.0 + 30.0 + 40.0) );
 }
+
+TEST_CASE("clear")
+{
+  LayoutViewSegmentLayout layout;
+  layout.setPos( QPointF(10.0, 20.0) );
+
+  LayoutViewSegmentLayoutItem item;
+  QPointF pos;
+
+  item = makeItemWithFirstAndLastAddressAndHeight(0, 15, 30.0);
+  pos = layout.findPositionAndAddItem(item);
+  REQUIRE_THAT( pos.y(), WithinRel(20.0) );
+
+  layout.clear();
+
+  SECTION("after clear the layout is empty")
+  {
+    REQUIRE( layout.isEmpty() );
+  }
+
+  SECTION("after clear item goes to initial y pos")
+  {
+    pos = layout.findPositionAndAddItem(item);
+    REQUIRE_THAT( pos.y(), WithinRel(20.0) );
+  }
+}

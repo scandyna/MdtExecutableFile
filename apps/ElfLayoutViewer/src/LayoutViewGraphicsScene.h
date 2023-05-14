@@ -54,6 +54,10 @@ class LayoutViewGraphicsScene
    */
   SegmentGraphicsItem *addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header) noexcept;
 
+  /*! \brief Clear this scene
+   */
+  void clear() noexcept;
+
   /*! \brief Returns a pointer to the scene
    *
    * \warning The returned pointer is only valid for the lifetime of this scene

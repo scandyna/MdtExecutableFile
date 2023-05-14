@@ -9,6 +9,7 @@
  *****************************************************************************************/
 #include "LayoutViewGraphicsSceneTest.h"
 #include "LayoutViewGraphicsScene.h"
+#include <QLatin1String>
 
 using Mdt::ExecutableFile::Elf::SectionHeader;
 
@@ -31,6 +32,18 @@ void LayoutViewGraphicsSceneTest::sectionsAreaHeight()
   header.size = 20;
   scene.addSection(header);
   QVERIFY( scene.sectionsAreaHeight() > 0.0 );
+}
+
+void LayoutViewGraphicsSceneTest::clearTest()
+{
+  LayoutViewGraphicsScene scene;
+  QCOMPARE( scene.scene()->items().count(), 0 );
+
+  scene.scene()->addSimpleText( QLatin1String("Some text") );
+  QCOMPARE( scene.scene()->items().count(), 1 );
+
+  scene.clear();
+  QCOMPARE( scene.scene()->items().count(), 0 );
 }
 
 QTEST_MAIN(LayoutViewGraphicsSceneTest)

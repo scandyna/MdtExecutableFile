@@ -30,3 +30,8 @@ LayoutGraphicsItem *HeaderTableGraphicsItemMap::itemForId(HeaderTableGraphicsIte
 
   return mList[ id.value() ];
 }
+
+void HeaderTableGraphicsItemMap::clear() noexcept
+{
+  mList.clear();
+}

@@ -55,8 +55,17 @@ class ProgramHeaderTableModel : public AbstractTableModel
   explicit ProgramHeaderTableModel(QObject *parent = nullptr);
 
   /*! \brief Add a segment from given header to this table
+   *
+   * \pre This model must be ready to add rows
+   * \sa prepareToAddRows()
+   * \sa isReadyToAddRows()
+   * \sa commitAddedRows()
    */
   void addSegment(const Mdt::ExecutableFile::Elf::ProgramHeader & header, HeaderTableGraphicsItemMapId id) noexcept;
+
+  /*! \brief Clear this model
+   */
+  void clear() noexcept;
 
   /*! \brief Returns the row count
    */

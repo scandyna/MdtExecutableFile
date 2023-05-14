@@ -57,8 +57,17 @@ class SectionHeaderTableModel : public AbstractTableModel
   explicit SectionHeaderTableModel(QObject *parent = nullptr);
 
   /*! \brief Add a section from given header to this table
+   *
+   * \pre This model must be ready to add rows
+   * \sa prepareToAddRows()
+   * \sa isReadyToAddRows()
+   * \sa commitAddedRows()
    */
   void addSection(const Mdt::ExecutableFile::Elf::SectionHeader & header, HeaderTableGraphicsItemMapId id) noexcept;
+
+  /*! \brief Clear this model
+   */
+  void clear() noexcept;
 
   /*! \brief Returns the row count
    */

@@ -36,11 +36,30 @@ TEST_CASE("dimensions")
     ProgramHeader header;
     const auto id = HeaderTableGraphicsItemMapId::fromValue(1);
 
+    model.prepareToAddRows();
     model.addSegment(header, id);
+    model.commitAddedRows();
 
     REQUIRE( model.columnCount() == 3 );
     REQUIRE( model.rowCount() == 1 );
   }
+}
+
+TEST_CASE("clear")
+{
+  ProgramHeaderTableModel model;
+
+  ProgramHeader header;
+  const auto id = HeaderTableGraphicsItemMapId::fromValue(1);
+
+  model.prepareToAddRows();
+  model.addSegment(header, id);
+  model.commitAddedRows();
+  REQUIRE( model.rowCount() == 1 );
+
+  model.clear();
+
+  REQUIRE( model.rowCount() == 0 );
 }
 
 TEST_CASE("data")
@@ -56,7 +75,9 @@ TEST_CASE("data")
     header.filesz = 25;
     const auto id = HeaderTableGraphicsItemMapId::fromValue(1);
 
+    model.prepareToAddRows();
     model.addSegment(header, id);
+    model.commitAddedRows();
 
     QModelIndex index = model.index(0, typeColumn);
     REQUIRE( model.data(index, Qt::DisplayRole).toString() == QLatin1String("LOAD") );

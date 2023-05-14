@@ -2,22 +2,15 @@
 !include HeaderTable_LayoutView_Map.puml
 !include TableViews.puml
 
+class MainWindowStateMachine {
+}
+
 class MainWindow {
 }
 
 class LayoutViewGraphicsScene {
 }
 
-
-class CreateSectionHeaderTableModel {
-}
-
-class SomeCreate {
-}
-
-' SomeCreate --> CreateLayoutViewScene
-SomeCreate --> CreateSectionHeaderTableModel
-SomeCreate --> "2" HeaderTableGraphicsItemMap
 
 class MainWindowController {
 }
@@ -26,10 +19,9 @@ MainWindowController *--> LayoutViewGraphicsScene
 MainWindowController *--> SectionHeaderTableModel
 MainWindowController *--> ProgramHeaderTableModel
 MainWindowController *--> "2" HeaderTableGraphicsItemMap
-MainWindowController --> MainWindow
+MainWindow --> MainWindowController
 
-' MainWindowController --> SomeCreate
-
+hide AbstractTableModel
 hide methods
 hide attributes
 

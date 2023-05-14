@@ -67,6 +67,10 @@ class HeaderTableGraphicsItemMap
    */
   LayoutGraphicsItem *itemForId(HeaderTableGraphicsItemMapId id) const noexcept;
 
+  /*! \brief Clear this map
+   */
+  void clear() noexcept;
+
  private:
 
   std::vector<LayoutGraphicsItem*> mList;
